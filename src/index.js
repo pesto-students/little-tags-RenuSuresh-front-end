@@ -8,6 +8,7 @@ import i18next from "i18next";
 
 import lang_en from "./locales/en/common.json";
 import lang_hi from "./locales/hi/common.json";
+import "font-awesome/css/font-awesome.min.css";
 
 i18next.init({
   interpolation: { escapeValue: false }, // React already does escaping
