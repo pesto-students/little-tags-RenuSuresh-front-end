@@ -54,6 +54,7 @@
   align-items: center;
   border: 1px solid var(--clr-primary);
   background-color: var(--clr-secondary-light);
+  height: 1.5rem;
 }
 .header__lang > select {
   outline: none;
@@ -65,9 +66,20 @@
   display: flex;
   justify-content: space-around;
   flex: 0.3;
+  align-items: center;
 }
-.fa-user-circle,
-.fa-shopping-bag,
-.fa-bars {
-  font-size: 2rem;
+.header__user {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__user__label {
+  font-size: 0.75rem;
+  margin-bottom: -1.1rem;
+}
+
+.MuiSvgIcon-root {
+  height: 1.5em !important;
+  width: 1.5em !important;
 }

@@ -1,12 +1,26 @@
 {
-    "header":{
-        "category":{
-            "men":"Men",
-            "women":"Women",
-            "electronics": "Electronics"
-        }
+  "header": {
+    "category": {
+      "men": "Men",
+      "women": "Women",
+      "electronics": "Electronics"
     },
-    "home":{
-        
+    "user": {
+      "signup": "Signup",
+      "login": "Login"
+    },
+    "categorytype": {
+      "inthespotlight": {
+        "title": "IN THE SPOTLIGHT",
+        "summercollection": "SUMMER COLLECTION",
+        "wintercollection": "WINTER COLLECTION"
+      },
+      "specialcollectionforyou": {
+        "title": "SPECIAL COLLECTION FOR YOU",
+        "mensuits": "MEN SUITS",
+        "westernwear": "WESTERN WEAR"
+      },
+      "explorenewtrends": "EXplore top trends"
     }
+  }
 }
