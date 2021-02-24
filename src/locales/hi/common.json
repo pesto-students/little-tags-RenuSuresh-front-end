@@ -1,0 +1,9 @@
+{
+    "header":{
+        "category":{
+            "men":"पुरुष",
+            "women":"महिला",
+            "electronics": "इलेक्ट्रानिक्स"
+        }
+    }
+}

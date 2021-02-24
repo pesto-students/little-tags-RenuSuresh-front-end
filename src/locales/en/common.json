@@ -1,0 +1,12 @@
+{
+    "header":{
+        "category":{
+            "men":"Men",
+            "women":"Women",
+            "electronics": "Electronics"
+        }
+    },
+    "home":{
+        
+    }
+}

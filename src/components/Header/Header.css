@@ -1,0 +1,73 @@
+.header {
+  background-color: white;
+  height: 5rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.header__logo {
+  margin-left: 0.5rem;
+  height: 3.7vh;
+  /* background-color: #ffffff; */
+}
+
+.header__category {
+  display: flex;
+  flex: 0.2;
+  justify-content: space-around;
+}
+
+.header__category > * {
+  text-decoration: none;
+  color: #333333;
+}
+.header__search {
+  flex: 0.5;
+  display: flex;
+}
+.header__search__input {
+  width: 52vw;
+  height: 2.25rem;
+  border: 1px solid #f4f1f1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+.header__search__button {
+  margin-left: -2.5em;
+  width: 2.4em;
+  border: transparent;
+  cursor: pointer;
+}
+
+.fa.fa-search {
+  font-size: 1.5rem;
+  color: var(--clr-primary);
+}
+
+.header__lang {
+  margin-left: 2rem;
+  padding: 0.2rem 0.3rem 0.2rem 0.3rem;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--clr-primary);
+  background-color: var(--clr-secondary-light);
+}
+.header__lang > select {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.header__right {
+  display: flex;
+  justify-content: space-around;
+  flex: 0.3;
+}
+.fa-user-circle,
+.fa-shopping-bag,
+.fa-bars {
+  font-size: 2rem;
+}
