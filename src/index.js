@@ -12,12 +12,12 @@ import "font-awesome/css/font-awesome.min.css";
 
 i18next.init({
   interpolation: { escapeValue: false }, // React already does escaping
-  lng: "en", // language to use
+  lng: "English", // language to use
   resources: {
-    en: {
+    English: {
       common: lang_en, // 'common' is our custom namespace
     },
-    hi: {
+    Hindi: {
       common: lang_hi,
     },
   },

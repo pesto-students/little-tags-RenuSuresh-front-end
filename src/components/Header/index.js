@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Header.css";
 import { useTranslation } from "react-i18next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserCircle,
-  faShoppingBag,
-  faBars,
-} from "@fortawesome/free-solid-svg-icons";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import LocalMallIcon from "@material-ui/icons/LocalMall";
+import DehazeIcon from "@material-ui/icons/Dehaze";
+import "./Header.css";
+import { LANG_OPTION, LOGO_IMG } from "../../constant/properties";
 
 function HeaderIndex() {
-  const LANG_OPTION = ["en", "hi"];
-
   const [t, i18n] = useTranslation("common");
   const [lang, setLang] = useState("en");
 
@@ -24,11 +20,7 @@ function HeaderIndex() {
     <>
       <div className="header">
         <Link to="/">
-          <img
-            src="https://cdn.worldvectorlogo.com/logos/arrow-2.svg"
-            alt="logo"
-            className="header__logo"
-          />
+          <img src={LOGO_IMG} alt="logo" className="header__logo" />
         </Link>
 
         <div className="header__category">
@@ -54,14 +46,17 @@ function HeaderIndex() {
               ))}
             </select>
           </div>
-          <div>
-            <FontAwesomeIcon icon={faUserCircle} />
+          <div className="header__user">
+            <AccountCircleIcon />
+            <label className="header__user__label">
+              {t("header.user.login")} / {t("header.user.signup")}
+            </label>
           </div>
           <div>
-            <FontAwesomeIcon icon={faShoppingBag} />
+            <LocalMallIcon />
           </div>
           <div>
-            <FontAwesomeIcon icon={faBars} />
+            <DehazeIcon />
           </div>
         </div>
       </div>
