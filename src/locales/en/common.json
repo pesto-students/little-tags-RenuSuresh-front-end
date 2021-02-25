@@ -10,17 +10,23 @@
       "login": "Login"
     },
     "categorytype": {
-      "inthespotlight": {
-        "title": "IN THE SPOTLIGHT",
-        "summercollection": "SUMMER COLLECTION",
-        "wintercollection": "WINTER COLLECTION"
+      "spotlight": {
+        "title": "In the spotlight",
+        "summercollection": "Summer collection",
+        "wintercollection": "Winter collection",
+        "perfumesforhimandher": "Perfumes for him and her"
       },
-      "specialcollectionforyou": {
-        "title": "SPECIAL COLLECTION FOR YOU",
-        "mensuits": "MEN SUITS",
-        "westernwear": "WESTERN WEAR"
+      "special": {
+        "title": "Special collection for you",
+        "mensuits": "Men suits",
+        "westernwear": "Western wear"
       },
-      "explorenewtrends": "EXplore top trends"
+      "toptrends": {
+        "title": "Explore new trends",
+        "headphone": "latest headphone",
+        "jewellery": "jewellery",
+        "shoes": "shoes"
+      }
     }
   }
 }
