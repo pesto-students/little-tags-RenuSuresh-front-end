@@ -1,25 +1,32 @@
 {
-    "header":{
-        "category":{
-            "men":"पुरुष",
-            "women":"महिला",
-            "electronics": "इलेक्ट्रानिक्स"
-        },
-        "user":{
-            "signup":"साइन अप करें",
-            "login":"लॉग इन"
-        },
-        "categorytype": {
-            "inthespotlight": {
-              "title": "सुर्खियों में",
-              "summercollection": "गर्मियों के कलेक्‍शन",
-              "wintercollection": "सर्दीयों के कलेक्‍शन"
-            },
-            "specialcollectionforyou": {
-              "title": "विशेष कलेक्‍शन आपके लिए",
-              "mensuits": "पुरुषों के अनुरूप",
-              "westernwear": "पश्चिमी वस्त्र"
-            }
-          }
+  "header": {
+    "category": {
+      "men": "पुरुष",
+      "women": "महिला",
+      "electronics": "इलेक्ट्रानिक्स"
+    },
+    "user": {
+      "signup": "साइन अप करें",
+      "login": "लॉग इन"
+    },
+    "categorytype": {
+      "spotlight": {
+        "title": "सुर्खियों में",
+        "summercollection": "गर्मियों के कलेक्‍शन",
+        "wintercollection": "सर्दीयों के कलेक्‍शन",
+        "perfumesforhimandher": "महिला और पुरुष के लिए इत्र"
+      },
+      "special": {
+        "title": "विशेष कलेक्‍शन आपके लिए",
+        "mensuits": "पुरुषों के अनुरूप",
+        "westernwear": "पश्चिमी वस्त्र"
+      },
+      "toptrends": {
+        "title": "नई प्रवर्तिया",
+        "headphone": "लेटेस्ट हेडफोन्स",
+        "jewellery": "आभूषण",
+        "shoes": "जूते"
+      }
     }
+  }
 }

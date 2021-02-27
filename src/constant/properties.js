@@ -6,47 +6,47 @@ export const HOME_CARD_IMG = [
     spotlight: [
       {
         image:
-          "https://cdn.cliqueinc.com/posts/275534/best-winter-clothing-investments-275534-1545321572567-main.700x0c.jpg",
-        tagline: "WINTER COLLECTION",
+          "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSNcJqm7QuhO6VXMHCeXnmRwBOMbbv7ysVXK7EurfF4aYbmgVW6_Id9G-SQxqt5mlufiD0Zv5jK1zusacHOnTBhCrHJBSxdbehOzpcm834P&usqp=CAE",
+        tagline: "wintercollection",
       },
       {
         image:
-          "https://www.darjee.com/wp-content/uploads/2019/09/summer-clothes-for-men-darjee-cover-e1569322817572.jpg",
-        tagline: "SUMMER COLLECTION",
+          "https://m.media-amazon.com/images/I/714f5OwFr2L._AC_UL480_FMwebp_QL65_.jpg",
+        tagline: "summercollection",
       },
       {
         image:
-          "https://cdn.mos.cms.futurecdn.net/s47YoU2Uq4m79MsutG6HR4-768-80.jpg",
-        tagline: "PERFUMES FOR HIM AND HER",
+          "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/beauty-perfume-1582831596.png?crop=0.502xw:1.00xh;0.287xw,0&resize=640:*",
+        tagline: "perfumesforhimandher",
       },
     ],
     special: [
       {
         image:
           "https://ae01.alicdn.com/kf/Ha629ffdabd0741ecb2472adb603498a8s/Grey-Men-Suits-Cheap-Groom-Suit-Formal-Man-Suits-For-Best-Men-Slim-Fit-Groom-Tuxedos.jpg",
-        tagline: "MEN SUITS",
+        tagline: "mensuits",
       },
       {
         image:
-          "https://i1.wp.com/www.indiaretailing.com/wp-content/uploads/2019/11/womens-wear.jpg?resize=681%2C400&ssl=1",
-        tagline: "WESTERN WEAR",
+          "https://5.imimg.com/data5/VN/SI/MY-49025460/kalamkari-western-dress-500x500.jpg",
+        tagline: "westernwear",
       },
     ],
     toptrends: [
       {
         image:
-          "https://cdn.cliqueinc.com/posts/275534/best-winter-clothing-investments-275534-1545321572567-main.700x0c.jpg",
-        tagline: "WINTER COLLECTION",
+          "https://m.media-amazon.com/images/I/61HSxuSHiKL._AC_UY327_FMwebp_QL65_.jpg",
+        tagline: "headphone",
       },
       {
         image:
-          "https://cdn.cliqueinc.com/posts/275534/best-winter-clothing-investments-275534-1545321572567-main.700x0c.jpg",
-        tagline: "SUMMER COLLECTION",
+          "https://4.imimg.com/data4/KY/YH/MY-2550960/fine-gold-polish-jewellery-500x500.jpg",
+        tagline: "jewellery",
       },
       {
         image:
-          "https://cdn.cliqueinc.com/posts/275534/best-winter-clothing-investments-275534-1545321572567-main.700x0c.jpg",
-        tagline: "PERFUMES FOR HIM AND HER",
+          "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cushion-shoes-7659-1584132587.jpg?crop=0.87xw:1.00xh;0.0288xw,0&resize=640:*",
+        tagline: "shoes",
       },
     ],
   },
