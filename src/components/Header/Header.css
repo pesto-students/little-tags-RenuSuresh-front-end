@@ -25,6 +25,7 @@
 .header__search {
   flex: 0.5;
   display: flex;
+  margin-left: 2rem;
 }
 .header__search__input {
   width: 52vw;
