@@ -1,31 +1,83 @@
-import React, { useState } from "react";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardMedia from "@material-ui/core/CardMedia";
+import React from "react";
+
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+
 import { HOME_CARD_IMG } from "../../constant/properties";
 import "./Home.css";
 import { useTranslation } from "react-i18next";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: 345,
+    [theme.breakpoints.down("md")]: {
+      maxWidth: 200,
+    },
+    flex: 1,
+  },
+
+  media: {
+    width: "25rem",
+    height: "30rem",
+    padding: "2rem",
+    [theme.breakpoints.down("md")]: {
+      height: "20ch",
+    },
+  },
+  card: {
+    position: "relative",
+    height: "35ch",
+    width: "25rem",
+    margin: "10px",
+
+    [theme.breakpoints.down("md")]: {
+      height: "20ch",
+    },
+  },
+  overlay: {
+    position: "relative",
+    bottom: "6rem",
+    height: "6rem",
+    width: "100%",
+    color: "white",
+    backgroundColor: "#00000061",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontWeight: 700,
+  },
+
+  paper: {
+    height: 300,
+    width: 300,
+  },
+  control: {
+    padding: theme.spacing(2),
+  },
+}));
+
 function CategoryType({ category, type }) {
   const [t] = useTranslation("common");
   const { tagline, image } = category;
+  const classes = useStyles();
+
   return (
     <>
-      <Card className="card">
-        <CardActionArea>
-          <CardMedia
-            component="img"
+      <Grid item>
+        <Paper className={classes.paper} elevation={3}>
+          <img
+            src={image}
             alt={tagline}
-            image={image}
-            title={t(`header.categorytype.${type}.${tagline}`)}
+            style={{ objectFit: "contain", width: "100%" }}
           />
-          <div className="row__category__tag">
-            <span className="row__category__tag__span">
-              {t(`header.categorytype.${type}.${tagline}`)}
-            </span>
-          </div>
-        </CardActionArea>
-      </Card>
+        </Paper>
+        <div className={classes.overlay}>
+          <span className="row__category__tag__span">
+            {t(`header.categorytype.${type}.${tagline}`)}
+          </span>
+        </div>
+      </Grid>
     </>
   );
 }
@@ -37,9 +89,11 @@ function Row({ type }) {
     <>
       <h1 className="row__type">{t(`header.categorytype.${type}.title`)}</h1>
       <div className="row">
-        {HOME_CARD_IMG[0][type].map((category) => (
-          <CategoryType category={category} type={type} />
-        ))}
+        <Grid container justify="space-evenly">
+          {HOME_CARD_IMG[0][type].map((category) => (
+            <CategoryType category={category} type={type} />
+          ))}
+        </Grid>
       </div>
     </>
   );
