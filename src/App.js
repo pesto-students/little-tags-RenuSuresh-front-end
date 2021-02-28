@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import "./App.css";
 import Home from "./components/Home";
 import Header from "./components/Header";
-
+import CarouselContainer from "./components/CarouselContainer";
 function App() {
   return (
     <Suspense fallback="loading">
@@ -12,6 +12,7 @@ function App() {
           <Switch>
             <Route path="/">
               <Header />
+              <CarouselContainer />
               <Home />
             </Route>
           </Switch>

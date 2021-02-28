@@ -5,3 +5,11 @@
 .app {
   background-color: #f3f3f3;
 }
+
+.carousel {
+  text-align: center;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
