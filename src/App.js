@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import CarouselContainer from "./components/CarouselContainer";
+import FooterIndex from "./components/Footer";
 function App() {
   return (
     <Suspense fallback="loading">
@@ -14,6 +15,7 @@ function App() {
               <Header />
               <CarouselContainer />
               <Home />
+              <FooterIndex />
             </Route>
           </Switch>
         </div>

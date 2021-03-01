@@ -10,7 +10,8 @@ export const HOME_CARD_IMG = [
         tagline: "wintercollection",
       },
       {
-        image: "https://m.media-amazon.com/images/I/714f5OwFr2L._AC_UL480_FMwebp_QL65_.jpg",
+        image:
+          "https://m.media-amazon.com/images/I/714f5OwFr2L._AC_UL480_FMwebp_QL65_.jpg",
         tagline: "summercollection",
       },
       {
@@ -26,17 +27,20 @@ export const HOME_CARD_IMG = [
         tagline: "mensuits",
       },
       {
-        image: "https://5.imimg.com/data5/VN/SI/MY-49025460/kalamkari-western-dress-500x500.jpg",
+        image:
+          "https://5.imimg.com/data5/VN/SI/MY-49025460/kalamkari-western-dress-500x500.jpg",
         tagline: "westernwear",
       },
     ],
     toptrends: [
       {
-        image: "https://m.media-amazon.com/images/I/61HSxuSHiKL._AC_UY327_FMwebp_QL65_.jpg",
+        image:
+          "https://m.media-amazon.com/images/I/61HSxuSHiKL._AC_UY327_FMwebp_QL65_.jpg",
         tagline: "headphone",
       },
       {
-        image: "https://4.imimg.com/data4/KY/YH/MY-2550960/fine-gold-polish-jewellery-500x500.jpg",
+        image:
+          "https://4.imimg.com/data4/KY/YH/MY-2550960/fine-gold-polish-jewellery-500x500.jpg",
         tagline: "jewellery",
       },
       {
@@ -62,3 +66,6 @@ export const SLIDE_INFO = [
       "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },
 ];
+
+export const CONTACT_DETAILS =
+  "9 , Shivaji Colony, Opp Guddy Bar,\r\nAndheri Kurla Rd, Chakala,\r\nAndheri (west),\r\nMumbai\r\nMaharashtra- 400099\r\n02228232309";

@@ -28,5 +28,14 @@
         "shoes": "shoes"
       }
     }
+  },
+  "footer":{
+    "contact":"Contact details",
+    "terms":"terms and condition",
+    "shipping":"Shipping Policy",
+    "cancel": "Cancellation Policy",
+    "privacy":"Privacy Policy",
+    "policy":"Policy",
+    "quicklinks":"Quick Links"
   }
 }
