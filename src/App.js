@@ -3,7 +3,6 @@ import React, { Suspense } from "react";
 import "./App.css";
 import Home from "./components/Home";
 import Header from "./components/Header";
-import CarouselContainer from "./components/CarouselContainer";
 import FooterIndex from "./components/Footer";
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
           <Switch>
             <Route path="/">
               <Header />
-              <CarouselContainer />
               <Home />
               <FooterIndex />
             </Route>

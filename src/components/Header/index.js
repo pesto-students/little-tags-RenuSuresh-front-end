@@ -18,6 +18,7 @@ import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import "./Header.css";
+import LoginIndex from "../Login";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -102,6 +103,7 @@ const useStyles = makeStyles((theme) => ({
 function HeaderIndex() {
   const [t, i18n] = useTranslation("common");
   const [lang, setLang] = useState("en");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const changeLang = (event) => {
     setLang(event.target.value);
@@ -117,6 +119,7 @@ function HeaderIndex() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
+    setIsLoggedIn(true);
     setAnchorEl(event.currentTarget);
   };
 
@@ -125,6 +128,7 @@ function HeaderIndex() {
   };
 
   const handleMenuClose = () => {
+    setIsLoggedIn(false);
     setAnchorEl(null);
     handleMobileMenuClose();
   };
@@ -312,9 +316,9 @@ function HeaderIndex() {
           </div>
         </Toolbar>
       </AppBar>
-
+      {isLoggedIn && <LoginIndex handleMenuClose={handleMenuClose} />}
       {renderMobileMenu}
-      {renderMenu}
+      {!isLoggedIn && renderMenu}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 export const LANG_OPTION = ["English", "Hindi"];
 export const LOGO_IMG = "https://cdn.worldvectorlogo.com/logos/arrow-2.svg";
 
-export const HOME_CARD_IMG = [
+export const HOME_CATEGORY = [
   {
     spotlight: [
       {

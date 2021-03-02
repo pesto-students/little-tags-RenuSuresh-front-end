@@ -1,0 +1,28 @@
+.MuiButton-contained {
+  width: 80%;
+  height: 2.75rem;
+}
+.MuiDialogContent-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.MuiTypography-root {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login__or {
+  margin: 2rem 0rem 2rem 0rem;
+  text-align: center;
+}
+
+.MuiButton-textPrimary {
+  color: black !important;
+}
+
+.fa-google-plus-official,
+.fa-facebook {
+  margin-right: 1.25rem;
+  font-size: x-large !important;
+}

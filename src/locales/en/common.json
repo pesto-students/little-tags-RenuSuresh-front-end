@@ -37,5 +37,10 @@
     "privacy":"Privacy Policy",
     "policy":"Policy",
     "quicklinks":"Quick Links"
+  },
+  "login":{
+    "modalText":"Login",
+    "google":"Sign in with Google",
+    "facebook":"Continue with facebook"
   }
 }

@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
-import { HOME_CARD_IMG } from "../../constant/properties";
+import { HOME_CATEGORY } from "../../constant/properties";
 import "./Home.css";
 import { useTranslation } from "react-i18next";
 
@@ -90,8 +90,12 @@ function Row({ type }) {
       <h1 className="row__type">{t(`header.categorytype.${type}.title`)}</h1>
       <div className="row">
         <Grid container justify="space-evenly">
-          {HOME_CARD_IMG[0][type].map((category) => (
-            <CategoryType category={category} type={type} />
+          {HOME_CATEGORY[0][type].map((category, i) => (
+            <CategoryType
+              category={category}
+              type={type}
+              key={`${category}${i}`}
+            />
           ))}
         </Grid>
       </div>
