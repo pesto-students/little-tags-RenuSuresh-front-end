@@ -51,7 +51,7 @@ function LoginIndex({ handleMenuClose }) {
             {t(`login.google`)}
           </Button>
           <div className="login__or">
-            <span>OR</span>
+            <span>{t(`login.or`)}</span>
           </div>
           <Button
             variant="contained"

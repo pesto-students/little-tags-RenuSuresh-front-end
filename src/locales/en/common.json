@@ -30,7 +30,7 @@
     }
   },
   "footer":{
-    "contact":"Contact details",
+    "contactdetails":"Contact details",
     "terms":"terms and condition",
     "shipping":"Shipping Policy",
     "cancel": "Cancellation Policy",
@@ -41,6 +41,7 @@
   "login":{
     "modalText":"Login",
     "google":"Sign in with Google",
-    "facebook":"Continue with facebook"
+    "facebook":"Continue with facebook",
+    "or":"or"
   }
 }
