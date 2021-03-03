@@ -9,6 +9,9 @@ import i18next from "i18next";
 import lang_en from "./locales/en/common.json";
 import lang_hi from "./locales/hi/common.json";
 import "font-awesome/css/font-awesome.min.css";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./service/reducer";
 
 i18next.init({
   interpolation: { escapeValue: false }, // React already does escaping
@@ -23,11 +26,15 @@ i18next.init({
   },
 });
 
+const store = createStore(rootReducer);
+
 ReactDOM.render(
   <React.StrictMode>
-    <I18nextProvider i18n={i18next}>
-      <App />
-    </I18nextProvider>
+    <Provider store={store}>
+      <I18nextProvider i18n={i18next}>
+        <App />
+      </I18nextProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

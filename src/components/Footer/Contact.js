@@ -8,7 +8,7 @@ function Contact() {
   return (
     <>
       <div className="footer__contact">
-        <h3>{t(`footer.contactdetails`)}</h3>
+        <h3>{t(`footer.contactDetails`)}</h3>
         <pre>{CONTACT_DETAILS}</pre>
       </div>
     </>

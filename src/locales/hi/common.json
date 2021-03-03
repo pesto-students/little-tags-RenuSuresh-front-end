@@ -31,13 +31,13 @@
   },
 
   "footer": {
-    "contactdetails": "संपर्क संबंधी",
+    "contactDetails": "संपर्क संबंधी",
     "terms": "नियम और शर्तें",
     "shipping": "शिपिंग के नीति",
     "cancel": "कैंसलेशन के नीति",
     "privacy": "प्राइवेसी नीति",
     "policy": "नीति",
-    "quicklinks": "त्वरित सम्पक"
+    "quickLinks": "त्वरित सम्पक"
   },
   "login": {
     "modalText": "लॉग इन",

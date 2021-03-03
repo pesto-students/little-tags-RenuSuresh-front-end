@@ -4,12 +4,18 @@ import "./App.css";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import FooterIndex from "./components/Footer";
+import CategoryIndex from "./components/Category";
 function App() {
   return (
     <Suspense fallback="loading">
       <Router>
         <div className="app">
           <Switch>
+            <Route path="/search">
+              <Header />
+              <CategoryIndex />
+              <FooterIndex />
+            </Route>
             <Route path="/">
               <Header />
               <Home />

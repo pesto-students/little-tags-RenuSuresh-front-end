@@ -4,7 +4,6 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
@@ -19,6 +18,8 @@ import NativeSelect from "@material-ui/core/NativeSelect";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import "./Header.css";
 import LoginIndex from "../Login";
+import Category from "./Category";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -104,6 +105,10 @@ function HeaderIndex() {
   const [t, i18n] = useTranslation("common");
   const [lang, setLang] = useState("en");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const user = useSelector((state) => state);
+  // console.log("users>>>", user.userReducer);
+  const login = t("header.user.login");
+  const signup = t("header.user.signup");
 
   const changeLang = (event) => {
     setLang(event.target.value);
@@ -213,16 +218,7 @@ function HeaderIndex() {
       >
         <Toolbar>
           <Logo />
-          <Typography className={classes.title} noWrap>
-            {t("header.category.men")}
-          </Typography>
-          <Typography className={classes.title} noWrap>
-            {t("header.category.women")}
-          </Typography>
-          <Typography className={classes.title} noWrap>
-            {t("header.category.electronics")}
-          </Typography>
-
+          <Category />
           <div
             className={classes.search}
             style={{
@@ -288,7 +284,9 @@ function HeaderIndex() {
               >
                 <AccountCircle />
                 <label className="header__user__label">
-                  {t("header.user.login")} / {t("header.user.signup")}
+                  {user.userReducer.userData
+                    ? user.userReducer.userData
+                    : `${login}/${signup}`}
                 </label>
               </span>
             </IconButton>

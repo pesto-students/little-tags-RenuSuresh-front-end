@@ -12,12 +12,16 @@ import { useTranslation } from "react-i18next";
 import { facebookProvider, googleProvider } from "../../config/authMethod";
 import socialMediaAuth from "../../service/auth";
 import "./Login.css";
+import { Provider, useSelector, useDispatch } from "react-redux";
+import { SET_USER } from "../../constant/properties";
 
 function LoginIndex({ handleMenuClose }) {
   const [t] = useTranslation("common");
+  const dispatch = useDispatch();
 
   const handleLogin = async (provider) => {
     const res = await socialMediaAuth(provider);
+    dispatch({ type: SET_USER, data: res.providerData[0].displayName });
     handleClose();
   };
 

@@ -22,6 +22,10 @@
   text-decoration: none;
   color: #333333;
 }
+.header__category__link {
+  text-decoration: none;
+  color: #333333;
+}
 .header__search {
   flex: 0.5;
   display: flex;
