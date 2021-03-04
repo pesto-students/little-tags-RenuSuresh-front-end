@@ -30,12 +30,18 @@
     }
   },
   "footer":{
-    "contact":"Contact details",
+    "contactDetails":"Contact details",
     "terms":"terms and condition",
     "shipping":"Shipping Policy",
     "cancel": "Cancellation Policy",
     "privacy":"Privacy Policy",
     "policy":"Policy",
-    "quicklinks":"Quick Links"
+    "quickLinks":"Quick Links"
+  },
+  "login":{
+    "modalText":"Login",
+    "google":"Sign in with Google",
+    "facebook":"Continue with facebook",
+    "or":"or"
   }
 }

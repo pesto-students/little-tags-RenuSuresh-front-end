@@ -8,7 +8,7 @@ function QuickLinks() {
   return (
     <>
       <div className="footer__quicklinks">
-        <h3>{t(`footer.quicklinks`)}</h3>
+        <h3>{t(`footer.quickLinks`)}</h3>
         <ul>
           <li>{t("header.category.men")}</li>
           <li> {t("header.category.women")}</li>

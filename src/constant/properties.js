@@ -1,7 +1,7 @@
 export const LANG_OPTION = ["English", "Hindi"];
 export const LOGO_IMG = "https://cdn.worldvectorlogo.com/logos/arrow-2.svg";
 
-export const HOME_CARD_IMG = [
+export const HOME_CATEGORY = [
   {
     spotlight: [
       {
@@ -69,3 +69,5 @@ export const SLIDE_INFO = [
 
 export const CONTACT_DETAILS =
   "9 , Shivaji Colony, Opp Guddy Bar,\r\nAndheri Kurla Rd, Chakala,\r\nAndheri (west),\r\nMumbai\r\nMaharashtra- 400099\r\n02228232309";
+
+export const SET_USER = "SET_USER";
