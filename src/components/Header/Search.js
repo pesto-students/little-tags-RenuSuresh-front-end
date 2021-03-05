@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import "./Header.css";
+import option from "./searchOption.json";
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -61,13 +62,67 @@ function Search() {
   const classes = useStyles();
   const history = useHistory();
   const [search, setSearch] = useState("");
+  const [display, setDisplay] = useState(false);
+  const wrapperRef = useRef(null);
 
   const handleSearch = () => {
     history.push(`/search?title=${search}`);
     setSearch("");
   };
+
+  const inputSearch = ({ target: { value } }) => {
+    setSearch(value);
+
+    if (value.length > 1) {
+      setDisplay(true);
+    } else {
+      setDisplay(false);
+    }
+  };
+
+  const handleClickOutside = (event) => {
+    const { current: wrap } = wrapperRef;
+    if (wrap && !wrap.contains(event.target)) {
+      setDisplay(false);
+    }
+  };
+
+  const updateSearchDropDown = (value) => {
+    setSearch(value);
+    setDisplay(false);
+  };
+  const searchDropDown = (
+    <div className="header__searchdropdown">
+      {option
+        .filter(
+          ({ name }) => name.toLowerCase().indexOf(search.toLowerCase()) > -1
+        )
+        .map((value, i) => {
+          if (i > 2) {
+            return null;
+          }
+          return (
+            <div
+              onClick={() => updateSearchDropDown(value.name)}
+              className="option"
+              key={i}
+              tabIndex="0"
+            >
+              <span>{value.name}</span>
+            </div>
+          );
+        })}
+    </div>
+  );
+  useEffect(() => {
+    window.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <>
+    <div ref={wrapperRef} className="search">
       <div
         className={classes.search}
         style={{
@@ -82,14 +137,15 @@ function Search() {
             input: classes.inputInput,
           }}
           inputProps={{ "aria-label": "search" }}
-          onChange={({ target: { value } }) => setSearch(value)}
+          onChange={inputSearch}
           value={search}
         />
         <span onClick={handleSearch} className="header__search__button">
           <SearchIcon />
         </span>
       </div>
-    </>
+      {display && searchDropDown}
+    </div>
   );
 }
 

@@ -1,0 +1,64 @@
+[
+    {
+      "name": "Men",
+       "id": 1
+     },
+    {
+      "name": "Women",
+       "id": 2
+     },
+    {
+       "name": "Electronics",
+        "id": 3
+     },
+     {
+         "name":"Lenovo",
+         "id":4
+     },
+     {
+         "name":"Laptops",
+         "id":5
+     },
+     {
+         "name":"Casual",
+         "id":6
+     },
+     {
+        "name":"T-Shirts",
+        "id":7
+     },
+     {
+         "name":"shirts",
+         "id":8
+     },
+     {
+         "name":"Jacket",
+         "id":9
+     },
+     {
+        "name":"Jacket-women",
+        "id":10
+    },
+    {
+        "name":"Jacket-kids",
+        "id":11
+    },
+    {
+        "name":"Jacket-men",
+        "id":12
+    },
+    {
+        "name":"Jacket-black",
+        "id":13
+    },
+    {
+        "name":"Jacket-white",
+        "id":14
+    },
+    {
+        "name":"Jacket-red",
+        "id":15
+    }
+     
+
+  ]
