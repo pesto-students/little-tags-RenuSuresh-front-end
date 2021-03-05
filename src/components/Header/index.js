@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import InputBase from "@material-ui/core/InputBase";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import Select from "@material-ui/core/Select";
 
 import Logo from "./Logo";
 import { LANG_OPTION } from "../../constant/properties";
@@ -20,6 +19,7 @@ import "./Header.css";
 import LoginIndex from "../Login";
 import Category from "./Category";
 import { useSelector } from "react-redux";
+import Search from "./Search";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -39,44 +39,7 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: "3rem",
   },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    height: "2.25rem",
-    display: "flex",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-      height: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    color: "inherit",
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("lg")]: {
-      width: "40rem",
-    },
-  },
+
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
@@ -106,7 +69,6 @@ function HeaderIndex() {
   const [lang, setLang] = useState("en");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const user = useSelector((state) => state);
-  // console.log("users>>>", user.userReducer);
   const login = t("header.user.login");
   const signup = t("header.user.signup");
 
@@ -166,7 +128,6 @@ function HeaderIndex() {
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      //   id={mobileMenuId}
       keepMounted
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMobileMenuOpen}
@@ -219,28 +180,11 @@ function HeaderIndex() {
         <Toolbar>
           <Logo />
           <Category />
-          <div
-            className={classes.search}
-            style={{
-              background: "#f4f1f1",
-              boxShadow: "0px 4px 4px rgb(0 0 0 / 25%)",
-            }}
-          >
-            <div className={classes.searchIcon}></div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-            <SearchIcon />
-          </div>
+          <Search />
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <FormControl className={classes.formControl}>
+            {/* <FormControl className={classes.formControl}>
               <div
                 style={{
                   display: "flex",
@@ -266,8 +210,26 @@ function HeaderIndex() {
                   ))}
                 </NativeSelect>
               </div>
+            </FormControl> */}
+            <FormControl variant="filled" className={classes.formControl}>
+              <i className="fa fa-globe custom-globe"></i>
+              <Select
+                native
+                inputProps={{
+                  name: "age",
+                  id: "filled-age-native-simple",
+                }}
+                defaultValue={lang}
+                onChange={(e) => changeLang(e)}
+                value={lang}
+              >
+                {LANG_OPTION.map((lan, key) => (
+                  <option value={lan} key={key}>
+                    {lan}
+                  </option>
+                ))}
+              </Select>
             </FormControl>
-
             <IconButton
               edge="end"
               aria-label="account of current user"

@@ -40,9 +40,6 @@
 }
 
 .header__search__button {
-  margin-left: -2.5em;
-  width: 2.4em;
-  border: transparent;
   cursor: pointer;
 }
 
@@ -86,4 +83,21 @@
 .MuiSvgIcon-root {
   height: 1.5em !important;
   width: 1.5em !important;
+}
+.MuiFilledInput-root {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  width: 7rem;
+  margin-top: auto;
+}
+.MuiSelect-select.MuiSelect-select {
+  display: flex;
+  align-self: flex-end;
+}
+.custom-globe {
+  margin-right: 0.5rem;
+  align-self: center;
+  font-size: 1.5rem;
+  padding-top: 0.75rem;
 }

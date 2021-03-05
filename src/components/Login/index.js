@@ -14,6 +14,7 @@ import socialMediaAuth from "../../service/auth";
 import "./Login.css";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import { SET_USER } from "../../constant/properties";
+import glogo from "../../assets/images/icon_google.png";
 
 function LoginIndex({ handleMenuClose }) {
   const [t] = useTranslation("common");
@@ -46,25 +47,45 @@ function LoginIndex({ handleMenuClose }) {
           </Button>
         </DialogTitle>
         <DialogContent>
-          <Button
+          {/* <Button
             variant="contained"
             color="secondary"
             onClick={() => handleLogin(googleProvider)}
           >
             <i className="fa fa-google-plus-official"></i>
             {t(`login.google`)}
-          </Button>
+          </Button> */}
+          {/* <button className="login__google__btn">
+            <span className="login__google__wrapper">
+              <img src={glogo} alt="google" className="login__google__icon" />
+            </span>
+            <p className="btn-text">
+              <b>{t(`login.google`)}</b>
+            </p>
+          </button> */}
+          <button
+            className="loginBtn loginBtn--google"
+            onClick={() => handleLogin(googleProvider)}
+          >
+            {t(`login.google`)}
+          </button>
           <div className="login__or">
             <span>{t(`login.or`)}</span>
           </div>
-          <Button
+          <button
+            className="loginBtn loginBtn--facebook"
+            onClick={() => handleLogin(facebookProvider)}
+          >
+            {t(`login.facebook`)}
+          </button>
+          {/* <Button
             variant="contained"
             color="primary"
             onClick={() => handleLogin(facebookProvider)}
           >
             <i className="fa fa-facebook" aria-hidden="true"></i>
             {t(`login.facebook`)}
-          </Button>
+          </Button> */}
         </DialogContent>
       </Dialog>
     </React.Fragment>
