@@ -1,0 +1,68 @@
+.product {
+  min-height: calc(60vh);
+}
+.MuiGrid-item {
+  display: flex;
+  margin: 2rem 5rem !important;
+}
+.product__image {
+  object-fit: contain;
+  width: 100%;
+}
+
+.product__subimages {
+  margin-right: 1rem;
+}
+
+.product__label {
+  color: #314127;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-right: 0.75rem;
+}
+.product__deliverydate {
+  color: #026812;
+  font-weight: 600;
+  font-size: large;
+}
+.product__div {
+  margin: 0.9rem;
+}
+.MuiButton-contained {
+  max-width: fit-content;
+  margin-right: 2rem !important;
+}
+.product__size,
+.product__quantity {
+  text-transform: uppercase;
+  font-size: medium;
+  font-weight: 600;
+}
+.product__quantity {
+  margin-left: 1.75rem;
+}
+.product__select {
+  margin-left: 0.75rem;
+}
+@media only screen and (max-width: 426px) {
+  .MuiGrid-item {
+    display: flex;
+    margin: 2rem 1rem !important;
+  }
+
+  .MuiGrid-grid-xs-6 {
+    flex-grow: 0;
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+  .MuiTypography-h3 {
+    font-size: x-large !important;
+  }
+  .MuiButton-contained {
+    max-width: 100%;
+    margin-top: 2rem !important;
+  }
+  .product__image {
+    max-height: 32ch;
+  }
+}

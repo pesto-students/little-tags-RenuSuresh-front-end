@@ -9,18 +9,35 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Rating } from "@material-ui/lab";
 import Grid from "@material-ui/core/Grid";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Backdrop from "@material-ui/core/Backdrop";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { SET_PRODUCT, SET_CATEGORY } from "../../constant/properties";
+
+import "./Category.css";
 
 function Row({ category }) {
   const [product, setProduct] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     fetch("https://arrow-shopping-site.herokuapp.com/api/product")
       .then((res) => res.json())
       .then((result) => {
         setProduct(result.data.productList);
-      });
-  }, []);
 
-  const categoryRow = product.filter((Product) => Product.category === category);
+        dispatch({ type: SET_CATEGORY, data: result.data.productList });
+        setIsLoading(false);
+      });
+  }, [category, dispatch]);
+
+  const categoryRow = product.filter(
+    (Product) => Product.category === category
+  );
   const useStyles = makeStyles({
     root: {
       paddingLeft: "20%",
@@ -36,16 +53,45 @@ function Row({ category }) {
     },
   });
 
-  const classes = useStyles();
+  const useStylesBackdrop = makeStyles((theme) => ({
+    backdrop: {
+      zIndex: theme.zIndex.drawer + 1,
+      color: "#fff",
+    },
+  }));
 
+  const classes = useStyles();
+  const classesBackdrop = useStylesBackdrop();
+
+  const getProduct = (mapProduct) => {
+    dispatch({ type: SET_PRODUCT, data: mapProduct });
+
+    history.push(`/product`);
+  };
   return (
     <>
+      {isLoading && (
+        <Backdrop
+          className={classesBackdrop.backdrop}
+          open={isLoading}
+          invisible={true}
+        >
+          <CircularProgress color="secondary" />
+        </Backdrop>
+      )}
       <Grid container spacing={3} className={classes.root} justify="center">
         {categoryRow.map((mapProduct) => (
           <Grid spacing={3} item xs={12} sm={6} md={4}>
-            <Card className={classes.Card}>
+            <Card
+              className={classes.Card}
+              onClick={() => getProduct(mapProduct)}
+            >
               <CardActionArea className={classes.CardActionArea}>
-                <CardMedia component="img" alt={category} image={mapProduct.image} />
+                <CardMedia
+                  component="img"
+                  alt={category}
+                  image={mapProduct.image}
+                />
                 <CardContent>
                   <Typography gutterBottom component="h2">
                     {mapProduct.title}
@@ -66,7 +112,12 @@ function Row({ category }) {
                     <text size="small" color="primary">
                       ₹{mapProduct.sellingPrice}
                     </text>
-                    <text style={{ textDecorationLine: "line-through", textDecorationStyle: "solid" }}>
+                    <text
+                      style={{
+                        textDecorationLine: "line-through",
+                        textDecorationStyle: "solid",
+                      }}
+                    >
                       ₹{mapProduct.actualPrice}
                     </text>
                     <text size="small" color="primary">

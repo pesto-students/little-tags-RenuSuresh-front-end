@@ -71,3 +71,5 @@ export const CONTACT_DETAILS =
   "9 , Shivaji Colony, Opp Guddy Bar,\r\nAndheri Kurla Rd, Chakala,\r\nAndheri (west),\r\nMumbai\r\nMaharashtra- 400099\r\n02228232309";
 
 export const SET_USER = "SET_USER";
+export const SET_PRODUCT = "SET_PRODUCT";
+export const SET_CATEGORY = "SET_CATEGORY";

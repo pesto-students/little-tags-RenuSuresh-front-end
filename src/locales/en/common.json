@@ -29,19 +29,30 @@
       }
     }
   },
-  "footer":{
-    "contactDetails":"Contact details",
-    "terms":"terms and condition",
-    "shipping":"Shipping Policy",
+  "footer": {
+    "contactDetails": "Contact details",
+    "terms": "terms and condition",
+    "shipping": "Shipping Policy",
     "cancel": "Cancellation Policy",
-    "privacy":"Privacy Policy",
-    "policy":"Policy",
-    "quickLinks":"Quick Links"
+    "privacy": "Privacy Policy",
+    "policy": "Policy",
+    "quickLinks": "Quick Links"
   },
-  "login":{
-    "modalText":"Login",
-    "google":"Sign in with Google",
-    "facebook":"Continue with facebook",
-    "or":"or"
+  "login": {
+    "modalText": "Login",
+    "google": "Sign in with Google",
+    "facebook": "Continue with facebook",
+    "or": "or"
+  },
+  "product": {
+    "yourSavings": "Your savings",
+    "freeDelivery": "Free delivery",
+    "fastestDelivery": "Fastest delivery",
+    "tomorrow": "Tomorrow",
+    "addToBag": "Add to bag",
+    "addToWishlist": "Add to wishlist",
+    "size": "Size",
+    "quantity": "Quantity",
+    "off": "off"
   }
 }

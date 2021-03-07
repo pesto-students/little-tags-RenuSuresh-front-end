@@ -1,8 +1,22 @@
-import { SET_USER } from "../../constant/properties";
+import { SET_PRODUCT, SET_USER, SET_CATEGORY } from "../../constant/properties";
 
 export const setUser = (data) => {
   return {
     type: SET_USER,
+    data,
+  };
+};
+
+export const setProduct = (data) => {
+  return {
+    type: SET_PRODUCT,
+    data,
+  };
+};
+
+export const setCategory = (data) => {
+  return {
+    type: SET_CATEGORY,
     data,
   };
 };
