@@ -184,33 +184,6 @@ function HeaderIndex() {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            {/* <FormControl className={classes.formControl}>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <i
-                  className="fa fa-globe"
-                  style={{ marginRight: "0.5rem" }}
-                ></i>
-
-                <NativeSelect
-                  defaultValue={lang}
-                  onChange={(e) => changeLang(e)}
-                  value={lang}
-                  style={{ display: "flex", justifyContent: "space-between" }}
-                >
-                  {LANG_OPTION.map((lan, key) => (
-                    <option value={lan} key={key}>
-                      {lan}
-                    </option>
-                  ))}
-                </NativeSelect>
-              </div>
-            </FormControl> */}
             <FormControl variant="filled" className={classes.formControl}>
               <i className="fa fa-globe custom-globe"></i>
               <Select

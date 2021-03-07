@@ -3,6 +3,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
 
 import { HOME_CATEGORY } from "../../constant/properties";
 import "./Home.css";
@@ -65,18 +66,20 @@ function CategoryType({ category, type }) {
   return (
     <>
       <Grid item>
-        <Paper className={classes.paper} elevation={3}>
-          <img
-            src={image}
-            alt={tagline}
-            style={{ objectFit: "contain", width: "100%" }}
-          />
-        </Paper>
-        <div className={classes.overlay}>
-          <span className="row__category__tag__span">
-            {t(`header.categorytype.${type}.${tagline}`)}
-          </span>
-        </div>
+        <Link to={() => `/search?category=${tagline}`}>
+          <Paper className={classes.paper} elevation={3}>
+            <img
+              src={image}
+              alt={tagline}
+              style={{ objectFit: "contain", width: "100%" }}
+            />
+          </Paper>
+          <div className={classes.overlay}>
+            <span className="row__category__tag__span">
+              {t(`header.categorytype.${type}.${tagline}`)}
+            </span>
+          </div>
+        </Link>
       </Grid>
     </>
   );

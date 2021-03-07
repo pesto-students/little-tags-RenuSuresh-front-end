@@ -12,6 +12,18 @@
   height: 3.7vh;
 }
 
+@media only screen and (max-width: 426px) {
+  .header__logo {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .option {
+    max-width: 13rem;
+    font-size: 13px;
+  }
+}
+
 .header__category {
   display: flex;
   flex: 0.2;
@@ -109,6 +121,8 @@
 .header__searchdropdown {
   position: absolute;
   padding-left: 1.75rem;
+  padding-right: 1.75rem;
+
   margin-top: 2.75rem;
 }
 .option {
@@ -118,6 +132,7 @@
   background-color: #ffffff;
   cursor: pointer;
   padding-left: 2.75rem;
+  padding-right: 2.75rem;
   display: flex;
   align-items: center;
   font-weight: 600;
