@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function Category() {
   const categoryData = useSelector((state) => state);
   useEffect(() => {}, []);
-  return <div>category</div>;
+  return <div></div>;
 }
 
 export default Category;
