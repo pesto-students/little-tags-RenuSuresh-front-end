@@ -8,7 +8,7 @@ function CategoryIndex() {
   const name = new URLSearchParams(search).get("category");
 
   return (
-    <div>
+    <div className="category">
       <Row category={name} />
     </div>
   );

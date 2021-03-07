@@ -1,11 +1,11 @@
 .footer {
   display: flex;
   justify-content: space-around;
-  /* align-items: center; */
   padding-top: 4vh;
   height: 30vh;
   background-color: var(--clr-primary);
   color: white;
+  margin-top: auto;
 }
 .footer__contact > h3,
 .footer__quicklinks > h3,

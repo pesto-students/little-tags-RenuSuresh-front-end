@@ -43,6 +43,17 @@
     "modalText": "लॉग इन",
     "google": "गूगल के साथ प्रवेश",
     "facebook": "फ़ेसबुक के साथ जारी रखें",
-    "or":"अथवा"
+    "or": "अथवा"
+  },
+  "product": {
+    "yourSavings": "आपकी बचत",
+    "freeDelivery": "निःशुल्क डिलीवरी",
+    "fastestDelivery": "सबसे तेजी से डिलीवरी",
+    "tomorrow": "कल",
+    "addToBag": "बैग में जोड़ें",
+    "addToWishlist": "इच्छा सूची में जोड़ें",
+    "size": "माप",
+    "quantity": "मात्रा",
+    "off": "छूट"
   }
 }

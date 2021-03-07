@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> should render snapshot 1`] = `
+<div
+  className="footer"
+>
+  <div
+    className="footer__contact"
+  >
+    <h3>
+      footer.contactDetails
+    </h3>
+    <pre>
+      9 , Shivaji Colony, Opp Guddy Bar,
+Andheri Kurla Rd, Chakala,
+Andheri (west),
+Mumbai
+Maharashtra- 400099
+02228232309
+    </pre>
+  </div>
+  <div
+    className="footer__terms"
+  >
+    <h3>
+      footer.policy
+    </h3>
+    <ul>
+      <li>
+        footer.terms
+      </li>
+      <li>
+        footer.shipping
+      </li>
+      <li>
+        footer.cancel
+      </li>
+      <li>
+        footer.privacy
+      </li>
+    </ul>
+  </div>
+  <div
+    className="footer__quicklinks"
+  >
+    <h3>
+      footer.quickLinks
+    </h3>
+    <ul>
+      <li>
+        header.category.men
+      </li>
+      <li>
+         
+        header.category.women
+      </li>
+      <li>
+        header.category.electronics
+      </li>
+    </ul>
+  </div>
+</div>
+`;

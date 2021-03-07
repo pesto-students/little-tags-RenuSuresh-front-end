@@ -5,7 +5,7 @@ import { LOGO_IMG } from "../../constant/properties";
 function Logo() {
   return (
     <>
-      <Link to="/">
+      <Link to="/" className="header__logo">
         <img src={LOGO_IMG} alt="logo" className="header__logo" />
       </Link>
     </>

@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Header from "./components/Header";
 import FooterIndex from "./components/Footer";
 import CategoryIndex from "./components/Category";
+import ProductIndex from "./components/Product";
 function App() {
   return (
     <Suspense fallback="loading">
@@ -14,6 +15,11 @@ function App() {
             <Route path="/search">
               <Header />
               <CategoryIndex />
+              <FooterIndex />
+            </Route>
+            <Route path="/product">
+              <Header />
+              <ProductIndex />
               <FooterIndex />
             </Route>
             <Route path="/">

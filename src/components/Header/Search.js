@@ -73,7 +73,7 @@ function Search() {
   const inputSearch = ({ target: { value } }) => {
     setSearch(value);
 
-    if (value.length > 1) {
+    if (value.length > 2) {
       setDisplay(true);
     } else {
       setDisplay(false);
@@ -107,6 +107,11 @@ function Search() {
               className="option"
               key={i}
               tabIndex="0"
+              onKeyPress={(event) => {
+                if (event.keyCode === 13 || event.which === 13) {
+                  updateSearchDropDown(value.name);
+                }
+              }}
             >
               <span>{value.name}</span>
             </div>
