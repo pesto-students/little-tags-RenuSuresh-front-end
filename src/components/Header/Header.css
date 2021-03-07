@@ -101,3 +101,27 @@
   font-size: 1.5rem;
   padding-top: 0.75rem;
 }
+.search {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__searchdropdown {
+  position: absolute;
+  padding-left: 1.75rem;
+  margin-top: 2.75rem;
+}
+.option {
+  height: 2.75rem;
+  border-bottom: 1px solid white;
+  width: 45rem;
+  background-color: #ffffff;
+  cursor: pointer;
+  padding-left: 2.75rem;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+.option:hover {
+  background-color: #f4f1f1;
+}
