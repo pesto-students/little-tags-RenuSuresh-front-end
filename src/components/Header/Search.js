@@ -63,6 +63,7 @@ function Search() {
   const history = useHistory();
   const [search, setSearch] = useState("");
   const [display, setDisplay] = useState(false);
+
   const wrapperRef = useRef(null);
 
   const handleSearch = () => {
@@ -90,8 +91,9 @@ function Search() {
   const updateSearchDropDown = (value) => {
     setSearch(value);
     setDisplay(false);
-    handleSearch();
   };
+
+  console.log("search", search);
   const searchDropDown = (
     <div className="header__searchdropdown">
       {option
