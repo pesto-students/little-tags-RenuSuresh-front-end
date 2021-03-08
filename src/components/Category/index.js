@@ -5,11 +5,12 @@ import "./Category.css";
 
 function CategoryIndex() {
   const search = useLocation().search;
-  const name = new URLSearchParams(search).get("category");
+
+  let name = new URLSearchParams(search).get("category");
 
   return (
     <div className="category">
-      <Row category={name} />
+      <Row category={name.toLowerCase()} />
     </div>
   );
 }
