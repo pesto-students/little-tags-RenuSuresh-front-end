@@ -66,7 +66,7 @@ function Search() {
   const wrapperRef = useRef(null);
 
   const handleSearch = () => {
-    history.push(`/search?title=${search}`);
+    history.push(`/search?category=${search}`);
     setSearch("");
   };
 
@@ -90,6 +90,7 @@ function Search() {
   const updateSearchDropDown = (value) => {
     setSearch(value);
     setDisplay(false);
+    handleSearch();
   };
   const searchDropDown = (
     <div className="header__searchdropdown">
@@ -144,6 +145,13 @@ function Search() {
           inputProps={{ "aria-label": "search" }}
           onChange={inputSearch}
           value={search}
+          onKeyPress={(event) => {
+            if (event.keyCode === 13 || event.which === 13) {
+              setDisplay(false);
+
+              handleSearch();
+            }
+          }}
         />
         <span onClick={handleSearch} className="header__search__button">
           <SearchIcon />

@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { SET_PRODUCT, SET_CATEGORY } from "../../constant/properties";
-
+import Error from "./Error";
 import "./Category.css";
 
 function Row({ category }) {
@@ -34,10 +34,10 @@ function Row({ category }) {
         setIsLoading(false);
       });
   }, [category, dispatch]);
-
   const categoryRow = product.filter(
     (Product) => Product.category === category
   );
+  console.log("category>>>", categoryRow);
   const useStyles = makeStyles({
     root: {
       paddingLeft: "20%",
@@ -79,57 +79,65 @@ function Row({ category }) {
           <CircularProgress color="secondary" />
         </Backdrop>
       )}
-      <Grid container spacing={3} className={classes.root} justify="center">
-        {categoryRow.map((mapProduct) => (
-          <Grid spacing={3} item xs={12} sm={6} md={4}>
-            <Card
-              className={classes.Card}
-              onClick={() => getProduct(mapProduct)}
-            >
-              <CardActionArea className={classes.CardActionArea}>
-                <CardMedia
-                  component="img"
-                  alt={category}
-                  image={mapProduct.image}
-                />
-                <CardContent>
-                  <Typography gutterBottom component="h2">
-                    {mapProduct.title}
-                  </Typography>
+      {!isLoading && (
+        <Grid container spacing={3} className={classes.root} justify="center">
+          {categoryRow.length > 0 ? (
+            categoryRow.map((mapProduct) => (
+              <Grid spacing={3} item xs={12} sm={6} md={4}>
+                <Card
+                  className={classes.Card}
+                  onClick={() => getProduct(mapProduct)}
+                >
+                  <CardActionArea className={classes.CardActionArea}>
+                    <CardMedia
+                      component="img"
+                      alt={category}
+                      image={mapProduct.image}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom component="h2">
+                        {mapProduct.title}
+                      </Typography>
 
-                  <Rating
-                    name="half-rating-read"
-                    size="small"
-                    defaultValue={mapProduct.averageRating}
-                    precision={0.5}
-                    readOnly
-                  />
-                  <Typography>
-                    {mapProduct.averageRating}/{mapProduct.totalRating}
-                  </Typography>
+                      <Rating
+                        name="half-rating-read"
+                        size="small"
+                        defaultValue={mapProduct.averageRating}
+                        precision={0.5}
+                        readOnly
+                      />
+                      <Typography>
+                        {mapProduct.averageRating}/{mapProduct.totalRating}
+                      </Typography>
 
-                  <CardActions>
-                    <text size="small" color="primary">
-                      ₹{mapProduct.sellingPrice}
-                    </text>
-                    <text
-                      style={{
-                        textDecorationLine: "line-through",
-                        textDecorationStyle: "solid",
-                      }}
-                    >
-                      ₹{mapProduct.actualPrice}
-                    </text>
-                    <text size="small" color="primary">
-                      {mapProduct.discountPercentage} % off
-                    </text>
-                  </CardActions>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+                      <CardActions>
+                        <text size="small" color="primary">
+                          ₹{mapProduct.sellingPrice}
+                        </text>
+                        <text
+                          style={{
+                            textDecorationLine: "line-through",
+                            textDecorationStyle: "solid",
+                          }}
+                        >
+                          ₹{mapProduct.actualPrice}
+                        </text>
+                        <text size="small" color="primary">
+                          {mapProduct.discountPercentage} % off
+                        </text>
+                      </CardActions>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+            ))
+          ) : (
+            <>
+              <Error />
+            </>
+          )}
+        </Grid>
+      )}
     </>
   );
 }
