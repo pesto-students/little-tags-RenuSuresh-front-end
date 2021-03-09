@@ -27,6 +27,10 @@
         "jewellery": "jewellery",
         "shoes": "shoes"
       }
+    },
+    "language": {
+      "english": "English",
+      "hindi": "Hindi"
     }
   },
   "footer": {

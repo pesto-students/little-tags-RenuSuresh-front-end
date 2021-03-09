@@ -9,24 +9,15 @@
 
 .header__logo {
   margin-left: 0.5rem;
-  height: 3.7vh;
+  height: 2.7ch;
 }
-
-@media only screen and (max-width: 426px) {
-  .header__logo {
-    display: none;
-  }
-}
-@media only screen and (max-width: 1024px) {
-  .option {
-    max-width: 13rem;
-    font-size: 13px;
-  }
+.MuiTypography-body1 {
+  font-family: "Open Sans" !important;
 }
 
 .header__category {
   display: flex;
-  flex: 0.2;
+  flex: 0.6;
   justify-content: space-around;
 }
 
@@ -90,6 +81,10 @@
 .header__user__label {
   font-size: 0.75rem;
   margin-bottom: -1.1rem;
+  top: 82%;
+  position: absolute;
+  left: 83%;
+  transform: translate(-50%, -50%);
 }
 
 .MuiSvgIcon-root {
@@ -107,15 +102,14 @@
   display: flex;
   align-self: flex-end;
 }
-.custom-globe {
-  margin-right: 0.5rem;
-  align-self: center;
-  font-size: 1.5rem;
-  padding-top: 0.75rem;
-}
+
 .search {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
 }
 
 .header__searchdropdown {
@@ -139,4 +133,65 @@
 }
 .option:hover {
   background-color: #f4f1f1;
+}
+
+.MuiIconButton-edgeEnd {
+  margin-right: 25px !important;
+}
+select {
+  -moz-appearance: none;
+
+  -webkit-appearance: none;
+  font-size: large;
+  border: none;
+  margin-left: 4rem;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  line-height: 1.9;
+}
+
+select::-ms-expand {
+  display: none;
+}
+@media only screen and (max-width: 1440px) {
+  .makeStyles-formControl-7 {
+    left: 10%;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .option {
+    max-width: 13rem;
+    font-size: 13px;
+  }
+  .search {
+    width: 20rem;
+  }
+  .MuiTypography-noWrap {
+    font-size: 0.8rem !important;
+  }
+  .MuiIconButton-edgeEnd {
+    margin-right: 1px !important;
+  }
+  .makeStyles-formControl-7 {
+    left: 28% !important;
+  }
+  select {
+    font-size: medium;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .header__logo {
+    display: none;
+  }
+  .search {
+    width: 13rem;
+  }
+  .makeStyles-formControl-7 {
+    left: 0% !important;
+  }
+  select {
+    font-size: medium;
+  }
 }

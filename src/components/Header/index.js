@@ -8,13 +8,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import Select from "@material-ui/core/Select";
 
 import Logo from "./Logo";
 import { LANG_OPTION } from "../../constant/properties";
 import FormControl from "@material-ui/core/FormControl";
-import NativeSelect from "@material-ui/core/NativeSelect";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
+import LanguageIcon from "@material-ui/icons/Language";
 import "./Header.css";
 import LoginIndex from "../Login";
 import Category from "./Category";
@@ -42,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
   sectionDesktop: {
     display: "none",
+    margin: theme.spacing(1),
     [theme.breakpoints.up("md")]: {
       display: "flex",
     },
@@ -53,28 +53,36 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
     minWidth: 170,
+    display: "flex",
     [theme.breakpoints.up("md")]: {
-      display: "contents",
+      display: "flex",
     },
   },
   selectEmpty: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(1),
   },
 }));
 
 function HeaderIndex() {
   const [t, i18n] = useTranslation("common");
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState("english");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const user = useSelector((state) => state);
   const login = t("header.user.login");
   const signup = t("header.user.signup");
 
   const changeLang = (event) => {
-    setLang(event.target.value);
-    i18n.changeLanguage(event.target.value);
+    console.log("event is >>>", event.target.options.selectedIndex);
+    const l = LANG_OPTION[event.target.options.selectedIndex].toLowerCase();
+
+    console.log("english>>>", t(`header.language.english`));
+    console.log("hindi>>>", t(`header.language.hindi`));
+
+    setLang(t(`header.language.${l}`));
+    console.log(lang);
+    i18n.changeLanguage(l);
     handleMobileMenuClose();
   };
 
@@ -141,7 +149,21 @@ function HeaderIndex() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <p>
+          {user.userReducer.userData
+            ? user.userReducer.userData
+            : `${login}/${signup}`}
+        </p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton
+          aria-label="account of current user"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <LocalMallIcon />
+        </IconButton>
+        <p>0</p>
       </MenuItem>
       <MenuItem>
         <FormControl className={classes.formControl}>
@@ -151,20 +173,14 @@ function HeaderIndex() {
               alignItems: "center",
             }}
           >
-            <i className="fa fa-globe" style={{ marginRight: "0.5rem" }}></i>
-
-            <NativeSelect
-              defaultValue={lang}
-              onChange={(e) => changeLang(e)}
-              value={lang}
-              style={{ display: "flex", justifyContent: "space-between" }}
-            >
+            <LanguageIcon />
+            <select defaultValue={lang} onChange={(e) => changeLang(e)}>
               {LANG_OPTION.map((lan, key) => (
                 <option value={lan} key={key}>
-                  {lan}
+                  {t(`header.language.${lan}`)}
                 </option>
               ))}
-            </NativeSelect>
+            </select>
           </div>
         </FormControl>
       </MenuItem>
@@ -175,7 +191,13 @@ function HeaderIndex() {
     <div className={classes.grow}>
       <AppBar
         position="static"
-        style={{ background: "white", height: "4.75rem", color: "black" }}
+        style={{
+          background: "white",
+          height: "4.75rem",
+          color: "black",
+          justifyContent: "center",
+          flex: 1,
+        }}
       >
         <Toolbar>
           <Logo />
@@ -185,24 +207,17 @@ function HeaderIndex() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <FormControl variant="filled" className={classes.formControl}>
-              <i className="fa fa-globe custom-globe"></i>
-              <Select
-                native
-                inputProps={{
-                  name: "age",
-                  id: "filled-age-native-simple",
-                }}
-                defaultValue={lang}
-                onChange={(e) => changeLang(e)}
-                value={lang}
-              >
+              <LanguageIcon />
+
+              <select defaultValue={lang} onChange={(e) => changeLang(e)}>
                 {LANG_OPTION.map((lan, key) => (
                   <option value={lan} key={key}>
-                    {lan}
+                    {t(`header.language.${lan}`)}
                   </option>
                 ))}
-              </Select>
+              </select>
             </FormControl>
+
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -218,13 +233,13 @@ function HeaderIndex() {
                 }}
               >
                 <AccountCircle />
-                <label className="header__user__label">
-                  {user.userReducer.userData
-                    ? user.userReducer.userData
-                    : `${login}/${signup}`}
-                </label>
               </span>
             </IconButton>
+            <label className="header__user__label">
+              {user.userReducer.userData
+                ? user.userReducer.userData
+                : `${login}/${signup}`}
+            </label>
             <IconButton
               edge="end"
               aria-label="account of current user"

@@ -1,4 +1,4 @@
-export const LANG_OPTION = ["English", "Hindi"];
+export const LANG_OPTION = ["english", "hindi"];
 export const LOGO_IMG = "https://cdn.worldvectorlogo.com/logos/arrow-2.svg";
 
 export const HOME_CATEGORY = [

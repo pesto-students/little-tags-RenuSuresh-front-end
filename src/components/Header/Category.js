@@ -20,7 +20,7 @@ function Category() {
   const classes = useStyles();
 
   return (
-    <>
+    <div className="header__category">
       <Link to="/search?category=men" className="header__category__link">
         <Typography className={classes.title} noWrap>
           {t("header.category.men")}
@@ -39,7 +39,7 @@ function Category() {
           {t("header.category.electronics")}
         </Typography>
       </Link>
-    </>
+    </div>
   );
 }
 

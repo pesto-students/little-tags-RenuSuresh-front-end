@@ -42,7 +42,8 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("lg")]: {
-      width: "40rem",
+      maxWidth: "50rem",
+      minWidth: "25rem",
     },
   },
   sectionDesktop: {
