@@ -1,99 +1,28 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./Carousel.css";
-import { SLIDE_INFO } from "./../../constant/properties";
+import { SLIDE_INFO } from "../../constant/properties";
 
 import Box from "@material-ui/core/Box";
 import Fade from "@material-ui/core/Fade";
 import Paper from "@material-ui/core/Paper";
 
-// const data = [
-//   "FIRST CONTENT",
-//   "SECOND CONTENT",
-//   "LAAAAAARGE CONTENT",
-//   "MORE CONTENT",
-//   "ANITA LAVA LA TINA",
-//   "HANNAH",
-//   "LA RUTA NATURAL",
-//   "MORE SPANISH CONTENT",
-//   "EXTRA 1",
-//   "EXTRA 2",
-//   "EXTRA 3",
-//   "EXTRA 4",
-//   "EXTRA 5",
-// ];
 const dataPerPage = 3;
 
 const durationEnter = 1500;
 const durationExit = 500;
+function CarouselTestIndex() {
+  const [currentSlide, setcurrentSlide] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages] = useState(Math.ceil(SLIDE_INFO.length / dataPerPage));
 
-class CarouselTestIndex extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      currentSlide: 0,
-      currentPage: 1,
-      totalPages: Math.ceil(SLIDE_INFO.length / dataPerPage),
-      cycles: 0,
-      timerId: null,
-    };
-
-    this.handleClick = this.handleClick.bind(this);
-    this.handleCarouselTurn = this.handleCarouselTurn.bind(this);
-    this.getChangeOfPage = this.getChangeOfPage.bind(this);
-    this.getPointIndexes = this.getPointIndexes.bind(this);
-  }
-
-  componentDidMount() {
-    const timerId = setInterval(() => this.handleCarouselTurn(timerId), 5000);
-    this.setState({ timerId });
-  }
-
-  componentWillUnmount() {
-    const { timerId } = this.state;
-    clearInterval(timerId);
-  }
-
-  handleCarouselTurn(timerId) {
-    const newState = { ...this.state };
-
-    if (newState.cycles === 10) {
-      clearInterval(timerId);
-      return;
-    }
-
-    if (newState.currentSlide + 1 >= SLIDE_INFO.length) {
-      newState.cycles += 1;
-      newState.currentSlide = 0;
-    } else {
-      newState.currentSlide += 1;
-    }
-
-    newState.currentPage = this.getChangeOfPage(
-      newState.currentSlide,
-      newState.currentPage
-    );
-
-    this.setState({ ...newState });
-  }
-
-  handleClick(to) {
-    this.setState((prevState) => ({
-      currentSlide: to,
-      currentPage: this.getChangeOfPage(to, prevState.currentPage),
-    }));
-  }
-
-  getChangeOfPage(currentSlide, currentPage) {
-    const { totalPages } = this.state;
-    // Base case to return to the first page
+  const getChangeOfPage = useCallback(() => {
     if (currentSlide === 0) return 1;
 
     // If the change comes from the right side, move on to the next page
     if (currentSlide === (dataPerPage - 1) * currentPage) {
       // But if we are already at the last page, then return to the first page
       if (currentPage === totalPages) return 1;
-      return currentPage + 1;
+      return setCurrentPage((prev) => prev + 1);
     }
 
     // If the change comes from the left side, go back to the previous page
@@ -101,30 +30,44 @@ class CarouselTestIndex extends React.Component {
       currentSlide === (dataPerPage - 1) * (currentPage - 1) &&
       currentSlide !== 0
     )
-      return currentPage - 1;
+      return setCurrentPage((prev) => prev - 1);
 
     return currentPage;
+  }, [currentSlide, currentPage, totalPages]);
+  const handleCarouselTurn = useCallback(() => {
+    if (currentSlide + 1 >= SLIDE_INFO.length) {
+      setcurrentSlide(0);
+    } else {
+      setcurrentSlide((prev) => prev + 1);
+    }
+
+    setCurrentPage(getChangeOfPage(currentSlide, setCurrentPage));
+  }, [currentSlide, getChangeOfPage]);
+
+  useEffect(() => {
+    const tId = setInterval(() => handleCarouselTurn(), 5000);
+
+    return () => {
+      clearInterval(tId);
+    };
+  }, [handleCarouselTurn]);
+
+  function handleClick(to) {
+    setcurrentSlide(to);
+    setCurrentPage((prev) => getChangeOfPage(to, prev));
   }
 
-  getPointIndexes() {
-    const { currentPage } = this.state;
-
+  function getPointIndexes() {
     return [...Array(dataPerPage).keys()].map(
       (x) => x + (dataPerPage - 1) * (currentPage - 1)
     );
   }
+  const indexArray = getPointIndexes();
 
-  render() {
-    const { currentSlide, currentPage, totalPages } = this.state;
-
-    const indexArray = this.getPointIndexes();
-    console.log(indexArray);
-
-    return (
+  return (
+    <div>
       <div className="App">
         <Box className="principal">
-          {/* {currentSlide} */}
-
           <Box className="carousel">
             {SLIDE_INFO.map((d, index) => (
               <Fade
@@ -152,7 +95,7 @@ class CarouselTestIndex extends React.Component {
               return (
                 <span
                   key={`dot-${index}`}
-                  onClick={() => this.handleClick(index)}
+                  onClick={() => handleClick(index)}
                   style={{
                     marginLeft: "5px",
                     cursor: "pointer",
@@ -176,8 +119,8 @@ class CarouselTestIndex extends React.Component {
           </Box>
         </Box>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default CarouselTestIndex;
