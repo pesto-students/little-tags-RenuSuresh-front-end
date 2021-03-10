@@ -12,20 +12,24 @@
     "categorytype": {
       "spotlight": {
         "title": "In the spotlight",
-        "summercollection": "Summer collection",
-        "wintercollection": "Winter collection",
-        "perfumesforhimandher": "Perfumes for him and her"
+        "glasses": "Glasses",
+        "watches": "Watches",
+        "jackets": "Jackets",
+        "clothes": "Clothes"
       },
       "special": {
         "title": "Special collection for you",
-        "mensuits": "Men suits",
-        "westernwear": "Western wear"
+        "dress": "Dress",
+        "sleeveDress": "Sleeve Dress",
+        "kidDress": "Kid Dress",
+        "ladyShoe": "Lady Shoe"
       },
       "toptrends": {
         "title": "Explore new trends",
-        "headphone": "latest headphone",
-        "jewellery": "jewellery",
-        "shoes": "shoes"
+        "latestShoe": "Latest Shoe",
+        "watches": "Watches",
+        "stylishGlasses": "Stylish Glasses",
+        "shoes": "Shoes"
       }
     },
     "language": {

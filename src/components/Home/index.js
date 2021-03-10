@@ -1,11 +1,11 @@
 import React from "react";
 import Row from "./Row";
-import CarouselContainer from "../CarouselContainer";
+import CarouselTestIndex from "../CaraouselHome";
 
 function HomeIndex() {
   return (
     <div>
-      <CarouselContainer />
+      <CarouselTestIndex />
       <Row type="spotlight" />
       <Row type="special" />
       <Row type="toptrends" />

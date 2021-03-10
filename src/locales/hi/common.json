@@ -12,19 +12,23 @@
     "categorytype": {
       "spotlight": {
         "title": "सुर्खियों में",
-        "summercollection": "गर्मियों के कलेक्‍शन",
-        "wintercollection": "सर्दीयों के कलेक्‍शन",
-        "perfumesforhimandher": "महिला और पुरुष के लिए इत्र"
+        "glasses": "चश्मा",
+        "watches": "घड़ियाँ",
+        "jackets": "जैकेट",
+        "clothes": "कपडे"
       },
       "special": {
         "title": "विशेष कलेक्‍शन आपके लिए",
-        "mensuits": "पुरुषों के अनुरूप",
-        "westernwear": "पश्चिमी वस्त्र"
+        "dress": "ड्रेस",
+        "sleeveDress": "आस्तीन के वस्त्र",
+        "kidDress": "बच्चों के वस्त्र",
+        "ladyShoe": "लड़कियों के जूते"
       },
       "toptrends": {
         "title": "नई प्रवर्तिया",
-        "headphone": "लेटेस्ट हेडफोन्स",
-        "jewellery": "आभूषण",
+        "latestShoe": "लेटेस्ट जूते",
+        "watches": "घड़ियाँ",
+        "stylishGlasses": "स्टाइलिश चश्मे",
         "shoes": "जूते"
       }
     },
