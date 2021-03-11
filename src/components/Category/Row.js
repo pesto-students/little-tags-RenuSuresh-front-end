@@ -37,7 +37,7 @@ function Row({ category }) {
   const categoryRow = product.filter(
     (Product) => Product.category === category
   );
-  console.log("category>>>", categoryRow);
+
   const useStyles = makeStyles({
     root: {
       paddingLeft: "20%",
@@ -58,6 +58,9 @@ function Row({ category }) {
       zIndex: theme.zIndex.drawer + 1,
       color: "#fff",
     },
+    spinner: {
+      color: "#34ed35",
+    },
   }));
 
   const classes = useStyles();
@@ -76,7 +79,7 @@ function Row({ category }) {
           open={isLoading}
           invisible={true}
         >
-          <CircularProgress color="secondary" />
+          <CircularProgress className={classes.spinner} />
         </Backdrop>
       )}
       {!isLoading && (

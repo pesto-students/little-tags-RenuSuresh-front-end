@@ -138,20 +138,20 @@
 .MuiIconButton-edgeEnd {
   margin-right: 25px !important;
 }
-select {
+.header__translate {
   -moz-appearance: none;
 
   -webkit-appearance: none;
   font-size: large;
   border: none;
-  margin-left: 4rem;
+  margin-left: 4.75rem;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
   line-height: 1.9;
 }
 
-select::-ms-expand {
+.header__translate::-ms-expand {
   display: none;
 }
 @media only screen and (max-width: 1440px) {

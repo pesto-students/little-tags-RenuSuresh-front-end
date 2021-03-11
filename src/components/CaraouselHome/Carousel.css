@@ -1,6 +1,6 @@
 .principal {
   width: 98vw;
-  height: 70vh;
+  height: 55vh;
   margin: 0px auto;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,6 @@
 
 .carousel {
   position: relative;
-  /* margin-top: 25px; */
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -35,7 +34,7 @@
     width: 98vw;
     height: 53vh;
   }
-  img {
+  .slide__image {
     height: 20rem;
     width: 41rem;
     object-fit: contain;
@@ -47,7 +46,7 @@
     width: 98vw;
     height: 25vh;
   }
-  img {
+  .slide__image {
     height: 100%;
     width: 25rem;
     object-fit: contain;
@@ -58,7 +57,7 @@
     width: 98vw;
     height: 20vh;
   }
-  img {
+  .slide__image {
     height: 100%;
     width: 20rem;
     object-fit: contain;

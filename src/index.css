@@ -1,5 +1,6 @@
 :root {
-  --clr-primary: #8f005f;
+  --clr-primary: #0c0351;
+  --clr-primary-hover: #071566;
   --clr-secondary-light: #f8f8f8;
 }
 body {

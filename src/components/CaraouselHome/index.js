@@ -65,61 +65,60 @@ function CarouselTestIndex() {
   const indexArray = getPointIndexes();
 
   return (
-    <div>
-      <div className="App">
-        <Box className="principal">
-          <Box className="carousel">
-            {SLIDE_INFO.map((d, index) => (
-              <Fade
-                key={`${d}${index}`}
-                className="content"
-                in={index === currentSlide}
-                timeout={{ enter: durationEnter, exit: durationExit }}
-              >
-                <Paper elevation={2} className="paper">
-                  <img
-                    src={d.backgroundImage}
-                    alt={d.backgroundImage}
-                    className="slide__image"
-                  />
-                </Paper>
-              </Fade>
-            ))}
-          </Box>
-
-          <Box className="dot">
-            {indexArray.map((index) => {
-              if (currentPage > totalPages || index >= SLIDE_INFO.length) {
-                return null;
-              }
-              return (
-                <span
-                  key={`dot-${index}`}
-                  onClick={() => handleClick(index)}
-                  style={{
-                    marginLeft: "5px",
-                    cursor: "pointer",
-                    fontSize:
-                      // Right
-                      (index === (dataPerPage - 1) * currentPage &&
-                        currentPage < totalPages) ||
-                      // Left
-                      (index === (dataPerPage - 1) * (currentPage - 1) &&
-                        index !== 0)
-                        ? "15px"
-                        : "20px",
-                    color: currentSlide === index ? "salmon" : "pink",
-                    textShadow: "0 3px 3px mistyrose",
-                  }}
-                >
-                  &#9679;
-                </span>
-              );
-            })}
-          </Box>
+    <>
+      <Box className="principal">
+        <Box className="carousel">
+          {SLIDE_INFO.map((d, index) => (
+            <Fade
+              key={`${d}${index}`}
+              className="content"
+              in={index === currentSlide}
+              timeout={{ enter: durationEnter, exit: durationExit }}
+            >
+              <Paper elevation={2} className="paper">
+                <img
+                  src={d.backgroundImage}
+                  alt={d.backgroundImage}
+                  className="slide__image"
+                  type="image/webp"
+                />
+              </Paper>
+            </Fade>
+          ))}
         </Box>
-      </div>
-    </div>
+
+        <Box className="dot">
+          {indexArray.map((index) => {
+            if (currentPage > totalPages || index >= SLIDE_INFO.length) {
+              return null;
+            }
+            return (
+              <span
+                key={`dot-${index}`}
+                onClick={() => handleClick(index)}
+                style={{
+                  marginLeft: "5px",
+                  cursor: "pointer",
+                  fontSize:
+                    // Right
+                    (index === (dataPerPage - 1) * currentPage &&
+                      currentPage < totalPages) ||
+                    // Left
+                    (index === (dataPerPage - 1) * (currentPage - 1) &&
+                      index !== 0)
+                      ? "15px"
+                      : "20px",
+                  color: currentSlide === index ? "#526df0" : "#7f93f0",
+                  textShadow: "0 3px 3px mistyrose",
+                }}
+              >
+                &#9679;
+              </span>
+            );
+          })}
+        </Box>
+      </Box>
+    </>
   );
 }
 

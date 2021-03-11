@@ -62,6 +62,7 @@
     "addToWishlist": "इच्छा सूची में जोड़ें",
     "size": "माप",
     "quantity": "मात्रा",
-    "off": "छूट"
+    "off": "छूट",
+    "description": "वर्णन"
   }
 }

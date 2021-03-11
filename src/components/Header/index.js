@@ -174,7 +174,11 @@ function HeaderIndex() {
             }}
           >
             <LanguageIcon />
-            <select defaultValue={lang} onChange={(e) => changeLang(e)}>
+            <select
+              defaultValue={lang}
+              onChange={(e) => changeLang(e)}
+              className="header__translate"
+            >
               {LANG_OPTION.map((lan, key) => (
                 <option value={lan} key={key}>
                   {t(`header.language.${lan}`)}
@@ -209,7 +213,11 @@ function HeaderIndex() {
             <FormControl variant="filled" className={classes.formControl}>
               <LanguageIcon />
 
-              <select defaultValue={lang} onChange={(e) => changeLang(e)}>
+              <select
+                defaultValue={lang}
+                onChange={(e) => changeLang(e)}
+                className="header__translate"
+              >
                 {LANG_OPTION.map((lan, key) => (
                   <option value={lan} key={key}>
                     {t(`header.language.${lan}`)}

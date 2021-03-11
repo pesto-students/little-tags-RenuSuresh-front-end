@@ -61,6 +61,7 @@
     "addToWishlist": "Add to wishlist",
     "size": "Size",
     "quantity": "Quantity",
-    "off": "off"
+    "off": "off",
+    "description": "Description"
   }
 }

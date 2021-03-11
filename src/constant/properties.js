@@ -11,6 +11,9 @@ import watch_1 from "../assets/images/watch_1.jpg";
 import arrival1 from "../assets/images/arrival1.png";
 import arrival6 from "../assets/images/arrival6.png";
 import arrival8 from "../assets/images/arrival8.png";
+import slide_1 from "../assets/images/slide_1.webp";
+import slide_2 from "../assets/images/slide_2.webp";
+import slide_3 from "../assets/images/slide_3.webp";
 
 export const LANG_OPTION = ["english", "hindi"];
 export const LOGO_IMG = "https://cdn.worldvectorlogo.com/logos/arrow-2.svg";
@@ -78,16 +81,13 @@ export const HOME_CATEGORY = [
 
 export const SLIDE_INFO = [
   {
-    backgroundImage:
-      "https://70415bb9924dca896de0-34a37044c62e41b40b39fcedad8af927.lmsin.net/LS-Fest/LS-new/HP_LS_MEN_Desktop-1-04MAR2021.jpg",
+    backgroundImage: slide_1,
   },
   {
-    backgroundImage:
-      "https://s3.ap-south-1.amazonaws.com/tcsonline-live/weltpixel/owlcarouselslider/images/s/i/silk_1_1_.jpg",
+    backgroundImage: slide_2,
   },
   {
-    backgroundImage:
-      "https://www.sbicard.com/sbi-card-en/assets/media/images/personal/offers/categories/shopping/jc-brother-sep/d-jc-brother-sep.jpg",
+    backgroundImage: slide_3,
   },
 ];
 

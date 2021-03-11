@@ -5,12 +5,12 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { Rating } from "@material-ui/lab";
-import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 
 import "./Product.css";
 import { useTranslation } from "react-i18next";
+import Quantity from "./Quantity";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,8 +24,20 @@ const useStyles = makeStyles((theme) => ({
       height: "35ch",
       minWidth: "25ch",
     },
-    button: {
-      margin: theme.spacing(3),
+  },
+  gridContainer: {
+    justifyContent: "center",
+  },
+  gridItem: {
+    display: "flex",
+    margin: "2rem 3rem",
+    maxWidth: "88%",
+  },
+  button: {
+    marginBottom: "1rem",
+    marginRight: "2rem",
+    "@media (min-width: 600px)": {
+      marginBottom: "1rem",
     },
   },
 }));
@@ -64,14 +76,15 @@ function Product() {
   return (
     <div className="product__container">
       <div>
-        <Grid container>
-          <Grid item xs={6} sm={3}>
+        <Grid container className={classes.gridContainer}>
+          <Grid item xs={6} sm={3} className={classes.gridItem}>
             <div className="product__subimages">
               {productDetails.subImages &&
-                productDetails.subImages.map((subimage) => (
+                productDetails.subImages.map((subimage, i) => (
                   <div
                     style={{ gridColumnEnd: "span 3", marginBottom: "1rem" }}
                     onClick={() => changeImage(subimage)}
+                    key={i}
                   >
                     <img
                       src={subimage}
@@ -93,7 +106,7 @@ function Product() {
             </Paper>
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item xs={6} sm={4} className={classes.gridItem}>
             <div style={{ width: "100%" }}>
               <div>
                 <Typography gutterBottom variant="h3">
@@ -113,52 +126,61 @@ function Product() {
                 </Typography>
               </div>
               <div>
-                <CardActions>
-                  <text style={{ color: "#8E8A8A", fontSize: "1.25rem" }}>
-                    MRP:
-                  </text>
-                  <text
-                    style={{
-                      textDecorationLine: "line-through",
-                      textDecorationStyle: "solid",
-                      color: "#8E8A8A",
-                      fontSize: "1.25rem",
-                    }}
-                  >
-                    ₹{productDetails.actualPrice}
-                  </text>
-                  <text
-                    size="small"
-                    style={{
-                      color: "#c70000",
-                      fontSize: "2rem",
-                      fontWeight: "700",
-                    }}
-                  >
-                    ₹{productDetails.sellingPrice}
-                  </text>
-                </CardActions>
+                <>
+                  <div className="product__div">
+                    <p style={{ color: "#8E8A8A", fontSize: "1.25rem" }}>
+                      MRP:
+                    </p>
+                    <p
+                      style={{
+                        textDecorationLine: "line-through",
+                        textDecorationStyle: "solid",
+                        color: "#8E8A8A",
+                        fontSize: "1.25rem",
+                      }}
+                    >
+                      ₹{productDetails.actualPrice}
+                    </p>
+                    <p
+                      size="small"
+                      style={{
+                        color: "#c70000",
+                        fontSize: "1.5rem",
+                        fontWeight: "700",
+                      }}
+                    >
+                      ₹{productDetails.sellingPrice}
+                    </p>
+                  </div>
+                </>
               </div>
               <div className="product__div">
-                <label className="product__div">
+                <label className="product__label">
                   {t("product.yourSavings")}:
                 </label>
-                <text>
+                <p>
                   ₹{productDetails.actualPrice - productDetails.sellingPrice} (
-                  {productDetails.discountPercentage} % {t()})
-                </text>
+                  {productDetails.discountPercentage} % {t("product.off")})
+                </p>
+              </div>
+
+              <div style={{ margin: "0.9rem" }}>
+                <label className="product__label">
+                  {t("product.description")}:
+                </label>
+                <p className="product__descr">{productDetails.description}</p>
               </div>
               <div className="product__div">
                 <label className="product__label">
                   {t("product.freeDelivery")}:
                 </label>
-                <text className="product__deliverydate">{deliveryDate}</text>
+                <p className="product__deliverydate">{deliveryDate}</p>
               </div>
               <div className="product__div">
                 <label className="product__label">
                   {t("product.fastestDelivery")}:
                 </label>
-                <text>{t("product.tomorrow")} 3pm</text>
+                <p>{t("product.tomorrow")} 3pm</p>
               </div>
               <div className="product__div">
                 <label className="product__size">{t("product.size")}</label>
@@ -170,13 +192,9 @@ function Product() {
                 <label className="product__quantity">
                   {t("product.quantity")}
                 </label>
-                <select name="" id="" className="product__select">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                </select>
+                <Quantity />
               </div>
-              <div className="product__div">
+              <div className="product__btn">
                 <Button
                   variant="contained"
                   color="secondary"
