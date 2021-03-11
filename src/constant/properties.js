@@ -1,51 +1,75 @@
-export const LANG_OPTION = ["English", "Hindi"];
+import popular1 from "../assets/images/popular1.png";
+import popular2 from "../assets/images/popular2.png";
+import popular3 from "../assets/images/popular3.png";
+import popular4 from "../assets/images/popular4.png";
+import cloth_1 from "../assets/images/cloth_1.jpg";
+import cloth_2 from "../assets/images/cloth_2.jpg";
+import cloth_3 from "../assets/images/cloth_3.jpg";
+import shoe_1 from "../assets/images/shoe_1.jpg";
+import shoe_2 from "../assets/images/shoe_2.jpg";
+import watch_1 from "../assets/images/watch_1.jpg";
+import arrival1 from "../assets/images/arrival1.png";
+import arrival6 from "../assets/images/arrival6.png";
+import arrival8 from "../assets/images/arrival8.png";
+
+export const LANG_OPTION = ["english", "hindi"];
 export const LOGO_IMG = "https://cdn.worldvectorlogo.com/logos/arrow-2.svg";
 
 export const HOME_CATEGORY = [
   {
     spotlight: [
       {
-        image:
-          "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSNcJqm7QuhO6VXMHCeXnmRwBOMbbv7ysVXK7EurfF4aYbmgVW6_Id9G-SQxqt5mlufiD0Zv5jK1zusacHOnTBhCrHJBSxdbehOzpcm834P&usqp=CAE",
-        tagline: "wintercollection",
+        image: popular1,
+        tagline: "glasses",
       },
       {
-        image:
-          "https://m.media-amazon.com/images/I/714f5OwFr2L._AC_UL480_FMwebp_QL65_.jpg",
-        tagline: "summercollection",
+        image: popular2,
+        tagline: "watches",
       },
       {
-        image:
-          "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/beauty-perfume-1582831596.png?crop=0.502xw:1.00xh;0.287xw,0&resize=640:*",
-        tagline: "perfumesforhimandher",
+        image: popular3,
+        tagline: "jackets",
+      },
+      // https://m.media-amazon.com/images/I/81lPDmJfeWL._AC_UL480_FMwebp_QL65_.jpg
+      {
+        image: popular4,
+        tagline: "clothes",
       },
     ],
     special: [
       {
-        image:
-          "https://ae01.alicdn.com/kf/Ha629ffdabd0741ecb2472adb603498a8s/Grey-Men-Suits-Cheap-Groom-Suit-Formal-Man-Suits-For-Best-Men-Slim-Fit-Groom-Tuxedos.jpg",
-        tagline: "mensuits",
+        image: cloth_1,
+        tagline: "dress",
       },
       {
-        image:
-          "https://5.imimg.com/data5/VN/SI/MY-49025460/kalamkari-western-dress-500x500.jpg",
-        tagline: "westernwear",
+        image: cloth_2,
+        tagline: "sleeveDress",
+      },
+      {
+        image: cloth_3,
+        tagline: "kidDress",
+      },
+      {
+        image: shoe_1,
+        tagline: "ladyShoe",
       },
     ],
     toptrends: [
       {
-        image:
-          "https://m.media-amazon.com/images/I/61HSxuSHiKL._AC_UY327_FMwebp_QL65_.jpg",
-        tagline: "headphone",
+        image: shoe_2,
+        tagline: "latestShoe",
       },
       {
-        image:
-          "https://4.imimg.com/data4/KY/YH/MY-2550960/fine-gold-polish-jewellery-500x500.jpg",
-        tagline: "jewellery",
+        image: watch_1,
+        tagline: "watches",
+      },
+
+      {
+        image: arrival6,
+        tagline: "stylishGlasses",
       },
       {
-        image:
-          "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cushion-shoes-7659-1584132587.jpg?crop=0.87xw:1.00xh;0.0288xw,0&resize=640:*",
+        image: arrival8,
         tagline: "shoes",
       },
     ],
@@ -55,15 +79,15 @@ export const HOME_CATEGORY = [
 export const SLIDE_INFO = [
   {
     backgroundImage:
-      "https://cdn.londonandpartners.com/-/media/images/london/visit/things-to-do/shopping/shopping-hero.jpg?mw=1920&hash=343CEB589B8CEC8141571E67C33F71130419C7D5",
+      "https://70415bb9924dca896de0-34a37044c62e41b40b39fcedad8af927.lmsin.net/LS-Fest/LS-new/HP_LS_MEN_Desktop-1-04MAR2021.jpg",
   },
   {
     backgroundImage:
-      "https://www.iheartradio.ca/image/policy:1.10267552:1574700135/shopping.jpg?f=default&$p$f=08a6673",
+      "https://s3.ap-south-1.amazonaws.com/tcsonline-live/weltpixel/owlcarouselslider/images/s/i/silk_1_1_.jpg",
   },
   {
     backgroundImage:
-      "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "https://www.sbicard.com/sbi-card-en/assets/media/images/personal/offers/categories/shopping/jc-brother-sep/d-jc-brother-sep.jpg",
   },
 ];
 

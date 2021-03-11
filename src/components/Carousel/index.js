@@ -16,8 +16,12 @@ export default function CarouselSlide(props) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
-      <h1>{title}</h1>
-    </Card>
+    <div style={{ width: "100%" }} id="slider">
+      <div className="card__div">
+        <Card className={classes.card}>
+          <h1>{title}</h1>
+        </Card>
+      </div>
+    </div>
   );
 }

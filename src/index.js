@@ -15,12 +15,12 @@ import rootReducer from "./service/reducer";
 
 i18next.init({
   interpolation: { escapeValue: false }, // React already does escaping
-  lng: "English", // language to use
+  lng: "english", // language to use
   resources: {
-    English: {
+    english: {
       common: lang_en, // 'common' is our custom namespace
     },
-    Hindi: {
+    hindi: {
       common: lang_hi,
     },
   },
