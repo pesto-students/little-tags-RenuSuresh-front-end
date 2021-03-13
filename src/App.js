@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import FooterIndex from "./components/Footer";
 import CategoryIndex from "./components/Category";
 import ProductIndex from "./components/Product";
+import CartIndex from "./components/Cart";
 function App() {
   return (
     <Suspense fallback="loading">
@@ -20,6 +21,11 @@ function App() {
             <Route path="/product">
               <Header />
               <ProductIndex />
+              <FooterIndex />
+            </Route>
+            <Route path="/cart">
+              <Header />
+              <CartIndex />
               <FooterIndex />
             </Route>
             <Route path="/">

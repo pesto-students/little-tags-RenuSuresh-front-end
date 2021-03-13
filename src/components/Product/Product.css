@@ -44,15 +44,26 @@
 }
 .product__select {
   margin-left: 0.75rem;
+  background-color: white;
+  height: 1.5rem;
 }
 .product__descr {
   font-size: 0.9rem;
 }
-.MuiButton-containedSecondary {
-  background-color: var(--clr-primary) !important;
-}
+
 .MuiButton-containedSecondary:hover {
   background-color: var(--clr-primary-hover) !important;
+}
+.product__h1 {
+  font-size: 1.75rem;
+  padding-left: 1em;
+  text-transform: uppercase;
+}
+.product__error {
+  font-size: smaller;
+  color: red;
+  margin-left: 0.9rem;
+  margin-top: -1rem;
 }
 
 @media only screen and (max-width: 770px) {

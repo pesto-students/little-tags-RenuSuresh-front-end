@@ -13,27 +13,29 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "1em",
   },
 }));
-function Quantity() {
+function Quantity({ setQuantityFn }) {
   const classes = useStyles();
   const [counter, setCounter] = useState(1);
   const handleIncrement = () => {
     setCounter((prev) => prev + 1);
+    setQuantityFn(counter);
   };
   const handleDecrement = () => {
     setCounter((prev) => prev - 1);
+    setQuantityFn(counter);
   };
   return (
     <div>
       <ButtonGroup size="small" className={classes.buttonIncDec}>
-        <Button onClick={handleIncrement} className={classes.buttonGroup}>
-          +
+        <Button onClick={handleDecrement} className={classes.buttonGroup}>
+          -
         </Button>
 
         <Button disabled className={classes.buttonGroup}>
           {counter}
         </Button>
-        <Button onClick={handleDecrement} className={classes.buttonGroup}>
-          -
+        <Button onClick={handleIncrement} className={classes.buttonGroup}>
+          +
         </Button>
       </ButtonGroup>
     </div>

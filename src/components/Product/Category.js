@@ -9,6 +9,11 @@ import Typography from "@material-ui/core/Typography";
 import { Rating } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import { useHistory } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+import { SET_PRODUCT } from "../../constant/properties";
+import "./Product.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,32 +32,40 @@ const useStyles = makeStyles((theme) => ({
   },
   CardActionArea: {
     height: "100%",
-    textAlign: "-webkit-center",
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
   },
   cardImage: {
     height: "318px",
     width: "300px",
   },
+  cardComponentCustom: {
+    width: "inherit",
+  },
 }));
 
 function Category() {
   const classes = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const categoryData = useSelector((state) => {
     const data = state.categoryReducer.categoryData;
-    console.log("data is ?>>>", data);
     return data.slice(0, 8);
   });
+  const getProduct = (mapProduct) => {
+    dispatch({ type: SET_PRODUCT, data: mapProduct });
 
+    history.push(`/product?=${mapProduct.title}`);
+  };
   return (
     <div>
+      <h1 className="product__h1">Customer also View</h1>
       <Grid container spacing={3} className={classes.gridContainer}>
         {categoryData.map((category) => (
           <Grid item xs={12} sm={3}>
-            <Card
-              className={classes.Card}
-              // onClick={() => getProduct(mapProduct)}
-            >
+            <Card className={classes.Card} onClick={() => getProduct(category)}>
               <CardActionArea className={classes.CardActionArea}>
                 <CardMedia
                   component="img"
@@ -60,7 +73,7 @@ function Category() {
                   image={category.image}
                   className={classes.cardImage}
                 />
-                <CardContent>
+                <CardContent className={classes.cardComponentCustom}>
                   <Typography gutterBottom component="h2">
                     {category.title}
                   </Typography>

@@ -18,7 +18,7 @@
         "clothes": "कपडे"
       },
       "special": {
-        "title": "विशेष कलेक्‍शन आपके लिए",
+        "title": "विशेष कलेक्‍शन",
         "dress": "ड्रेस",
         "sleeveDress": "आस्तीन के वस्त्र",
         "kidDress": "बच्चों के वस्त्र",
@@ -64,5 +64,11 @@
     "quantity": "मात्रा",
     "off": "छूट",
     "description": "वर्णन"
+  },
+  "cart": {
+    "deliverTo": "डिलीवर करें",
+    "changeAddress": "पता परिवर्तन",
+    "remove": "हटाए",
+    "subtotal": "सबटोटल"
   }
 }

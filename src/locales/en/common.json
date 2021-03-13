@@ -18,7 +18,7 @@
         "clothes": "Clothes"
       },
       "special": {
-        "title": "Special collection for you",
+        "title": "Special collection",
         "dress": "Dress",
         "sleeveDress": "Sleeve Dress",
         "kidDress": "Kid Dress",
@@ -63,5 +63,11 @@
     "quantity": "Quantity",
     "off": "off",
     "description": "Description"
+  },
+  "cart": {
+    "deliverTo": "Deliver to",
+    "changeAddress": "Change address",
+    "remove": "Remove",
+    "subtotal": "Subtotal"
   }
 }
