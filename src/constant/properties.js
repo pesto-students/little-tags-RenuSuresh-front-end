@@ -17,6 +17,15 @@ import slide_3 from "../assets/images/slide_3.webp";
 
 export const LANG_OPTION = ["english", "hindi"];
 export const LOGO_IMG = "https://cdn.worldvectorlogo.com/logos/arrow-2.svg";
+export const CONTACT_DETAILS =
+  "9 , Shivaji Colony, Opp Guddy Bar,\r\nAndheri Kurla Rd, Chakala,\r\nAndheri (west),\r\nMumbai\r\nMaharashtra- 400099\r\n02228232309";
+
+export const SET_USER = "SET_USER";
+export const SET_PRODUCT = "SET_PRODUCT";
+export const SET_CATEGORY = "SET_CATEGORY";
+export const SET_CART_ITEM = "SET_CART_ITEM";
+export const MODIFY_ITEM_QUANTITY = "MODIFY_ITEM_QUANTITY";
+export const MODIFY_ITEM_SIZE = "MODIFY_ITEM_SIZE";
 
 export const HOME_CATEGORY = [
   {
@@ -91,9 +100,8 @@ export const SLIDE_INFO = [
   },
 ];
 
-export const CONTACT_DETAILS =
-  "9 , Shivaji Colony, Opp Guddy Bar,\r\nAndheri Kurla Rd, Chakala,\r\nAndheri (west),\r\nMumbai\r\nMaharashtra- 400099\r\n02228232309";
+export const ERRORS = {
+  SELECT_SIZE_ERROR: "Please select Size",
+};
 
-export const SET_USER = "SET_USER";
-export const SET_PRODUCT = "SET_PRODUCT";
-export const SET_CATEGORY = "SET_CATEGORY";
+export const SELECT_SIZE = "Select size";

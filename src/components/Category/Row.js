@@ -69,7 +69,7 @@ function Row({ category }) {
   const getProduct = (mapProduct) => {
     dispatch({ type: SET_PRODUCT, data: mapProduct });
 
-    history.push(`/product`);
+    history.push(`/product?search=${mapProduct.title}`);
   };
   return (
     <>

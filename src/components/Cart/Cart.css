@@ -1,0 +1,26 @@
+.product__quantity {
+  margin-left: 0rem;
+}
+.product__select {
+  margin-left: 0.75rem;
+  background-color: white;
+  height: 1.5rem;
+}
+.product__label {
+  font-size: smaller;
+  text-transform: uppercase;
+}
+.product__deliverydate {
+  font-size: smaller;
+}
+
+.product__size,
+.product__quantity {
+  width: 5em;
+}
+
+.product__size,
+.product__select,
+.product__quantity {
+  font-size: small;
+}

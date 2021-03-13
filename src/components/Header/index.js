@@ -14,11 +14,14 @@ import { LANG_OPTION } from "../../constant/properties";
 import FormControl from "@material-ui/core/FormControl";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import LanguageIcon from "@material-ui/icons/Language";
+import Badge from "@material-ui/core/Badge";
 import "./Header.css";
 import LoginIndex from "../Login";
 import Category from "./Category";
 import { useSelector } from "react-redux";
 import Search from "./Search";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -72,16 +75,12 @@ function HeaderIndex() {
   const user = useSelector((state) => state);
   const login = t("header.user.login");
   const signup = t("header.user.signup");
+  const cart = useSelector((state) => state.cartReducer.cart);
 
   const changeLang = (event) => {
-    console.log("event is >>>", event.target.options.selectedIndex);
     const l = LANG_OPTION[event.target.options.selectedIndex].toLowerCase();
 
-    console.log("english>>>", t(`header.language.english`));
-    console.log("hindi>>>", t(`header.language.hindi`));
-
     setLang(t(`header.language.${l}`));
-    console.log(lang);
     i18n.changeLanguage(l);
     handleMobileMenuClose();
   };
@@ -248,14 +247,18 @@ function HeaderIndex() {
                 ? user.userReducer.userData
                 : `${login}/${signup}`}
             </label>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <LocalMallIcon />
-            </IconButton>
+            <Link to="/cart" style={{ textDecoration: "none", color: "black" }}>
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <Badge badgeContent={cart.length} color="primary">
+                  <LocalMallIcon />
+                </Badge>
+              </IconButton>
+            </Link>
             <IconButton edge="end" aria-haspopup="true" color="inherit">
               <MenuIcon />
             </IconButton>
