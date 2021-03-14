@@ -68,6 +68,16 @@
     "deliverTo": "Deliver to",
     "changeAddress": "Change address",
     "remove": "Remove",
-    "subtotal": "Subtotal"
+    "addToWishList": "Add to wishlist",
+    "subtotal": "Bag Subtotal",
+    "noItemInBag": "Opps! no item in bag",
+    "continueShopping": "Continue shopping",
+    "bagTotalQty": "Bag total quantity",
+    "totalMrp": "Total MRP",
+    "totalDiscount": "Total discount",
+    "convenienceFee": "convenience fee",
+    "free": "Free",
+    "totalAmount": "Total Amount",
+    "placeOrder": "Place order"
   }
 }

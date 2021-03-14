@@ -91,7 +91,11 @@ function Category() {
 
                   <CardActions>
                     <text size="small" color="primary">
-                      ₹{category.sellingPrice}
+                      {category.sellingPrice.toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "INR",
+                      })}
                     </text>
                     <text
                       style={{
@@ -99,7 +103,11 @@ function Category() {
                         textDecorationStyle: "solid",
                       }}
                     >
-                      ₹{category.actualPrice}
+                      {category.actualPrice.toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "INR",
+                      })}
                     </text>
                     <text size="small" color="primary">
                       {category.discountPercentage} % off

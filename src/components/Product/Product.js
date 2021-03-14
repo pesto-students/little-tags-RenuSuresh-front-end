@@ -7,6 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import { Rating } from "@material-ui/lab";
 import Button from "@material-ui/core/Button";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
+import Snackbar from "@material-ui/core/Snackbar";
+import SnackbarContent from "@material-ui/core/SnackbarContent";
 
 import "./Product.css";
 import { useTranslation } from "react-i18next";
@@ -75,6 +77,7 @@ function Product() {
   const [quantity, setQuantity] = useState(1);
   const [error, setError] = useState(null);
   const [enableAddBtn, setEnableAddBtn] = useState(true);
+  const [openSnackBar, setOpenSnackBar] = useState(false);
 
   useEffect(() => {
     var t = new Date();
@@ -125,6 +128,7 @@ function Product() {
         type: SET_CART_ITEM,
         data: dispatchCartDetails,
       });
+      setOpenSnackBar(true);
       setSize(SELECT_SIZE);
     } else {
       setError(ERRORS.SELECT_SIZE_ERROR);
@@ -198,7 +202,11 @@ function Product() {
                   fontSize: "1.25rem",
                 }}
               >
-                ₹{productDetails.actualPrice}
+                {productDetails.actualPrice.toLocaleString("en-IN", {
+                  maximumFractionDigits: 2,
+                  style: "currency",
+                  currency: "INR",
+                })}
               </p>
               <p
                 size="small"
@@ -208,7 +216,11 @@ function Product() {
                   fontWeight: "700",
                 }}
               >
-                ₹{productDetails.sellingPrice}
+                {productDetails.sellingPrice.toLocaleString("en-IN", {
+                  maximumFractionDigits: 2,
+                  style: "currency",
+                  currency: "INR",
+                })}
               </p>
             </div>
           </>
@@ -216,8 +228,14 @@ function Product() {
         <div className="product__div">
           <label className="product__label">{t("product.yourSavings")}:</label>
           <p>
-            ₹{productDetails.actualPrice - productDetails.sellingPrice} (
-            {productDetails.discountPercentage} % {t("product.off")})
+            {(
+              productDetails.actualPrice - productDetails.sellingPrice
+            ).toLocaleString("en-IN", {
+              maximumFractionDigits: 2,
+              style: "currency",
+              currency: "INR",
+            })}{" "}
+            ({productDetails.discountPercentage} % {t("product.off")})
           </p>
         </div>
 
@@ -282,6 +300,19 @@ function Product() {
           {productImages}
           {productDesc}
         </Grid>
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          open={openSnackBar}
+          onClose={() => setOpenSnackBar(false)}
+          autoHideDuration={2000}
+        >
+          <SnackbarContent
+            style={{
+              backgroundColor: "green",
+            }}
+            message={<span id="client-snackbar">Product Added in Bag</span>}
+          />
+        </Snackbar>
       </div>
     </div>
   );

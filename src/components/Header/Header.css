@@ -143,9 +143,9 @@
   -moz-appearance: none;
 
   -webkit-appearance: none;
-  font-size: large;
+  font-size: medium;
   border: none;
-  margin-left: 4.75rem;
+  margin-left: 3.75rem;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;

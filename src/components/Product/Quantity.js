@@ -27,7 +27,11 @@ function Quantity({ setQuantityFn, quantity }) {
   return (
     <div>
       <ButtonGroup size="small" className={classes.buttonIncDec}>
-        <Button onClick={handleDecrement} className={classes.buttonGroup}>
+        <Button
+          onClick={handleDecrement}
+          className={classes.buttonGroup}
+          disabled={quantity <= 1}
+        >
           -
         </Button>
 

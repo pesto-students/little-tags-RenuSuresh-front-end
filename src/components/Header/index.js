@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     margin: theme.spacing(2),
-    minWidth: 170,
+    marginRight: "7em",
     display: "flex",
     [theme.breakpoints.up("md")]: {
       display: "flex",
@@ -67,6 +67,9 @@ const useStyles = makeStyles((theme) => ({
   },
   selectEmpty: {
     marginTop: theme.spacing(1),
+  },
+  iconColor: {
+    color: "#343333",
   },
 }));
 
@@ -194,7 +197,7 @@ function HeaderIndex() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <AccountCircle className={classes.iconColor} />
         </IconButton>
         <p>
           {user.userReducer.userData
@@ -208,19 +211,19 @@ function HeaderIndex() {
           aria-haspopup="true"
           color="inherit"
         >
-          <LocalMallIcon />
+          <LocalMallIcon className={classes.iconColor} />
         </IconButton>
-        <p>0</p>
+        <p>{cart.length}</p>
       </MenuItem>
       <MenuItem>
-        <FormControl className={classes.formControl}>
+        <div className={classes.formControl}>
           <div
             style={{
               display: "flex",
               alignItems: "center",
             }}
           >
-            <LanguageIcon />
+            <LanguageIcon className={classes.iconColor} />
             <select
               defaultValue={lang}
               onChange={(e) => changeLang(e)}
@@ -233,7 +236,7 @@ function HeaderIndex() {
               ))}
             </select>
           </div>
-        </FormControl>
+        </div>
       </MenuItem>
     </Menu>
   );
@@ -257,8 +260,8 @@ function HeaderIndex() {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <FormControl variant="filled" className={classes.formControl}>
-              <LanguageIcon />
+            <div variant="filled" className={classes.formControl}>
+              <LanguageIcon fontSize="small" className={classes.iconColor} />
 
               <select
                 defaultValue={lang}
@@ -271,7 +274,7 @@ function HeaderIndex() {
                   </option>
                 ))}
               </select>
-            </FormControl>
+            </div>
 
             <IconButton
               edge="end"
@@ -287,7 +290,7 @@ function HeaderIndex() {
                   alignItems: "center",
                 }}
               >
-                <AccountCircle />
+                <AccountCircle className={classes.iconColor} />
               </span>
             </IconButton>
             <label className="header__user__label">
@@ -303,12 +306,12 @@ function HeaderIndex() {
                 color="inherit"
               >
                 <Badge badgeContent={cart.length} color="primary">
-                  <LocalMallIcon />
+                  <LocalMallIcon className={classes.iconColor} />
                 </Badge>
               </IconButton>
             </Link>
             <IconButton edge="end" aria-haspopup="true" color="inherit">
-              <MenuIcon />
+              <MenuIcon className={classes.iconColor} />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>

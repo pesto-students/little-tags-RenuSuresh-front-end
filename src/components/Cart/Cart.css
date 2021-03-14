@@ -1,3 +1,6 @@
+.cart {
+  min-height: calc(70vh);
+}
 .cart__quantity {
   margin-left: 0rem;
 }
@@ -34,4 +37,33 @@
   color: #026812;
   font-weight: 600;
   font-size: small;
+}
+.cart__empty{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em;
+}
+
+
+.cart__emptyBag{
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 3em;
+  font-weight: 400;
+  color: var(--clr-primary);
+}
+
+@media only screen and (max-width: 770px) {
+  .cart__emptyImage{
+    width: 100%;
+      height: 50%;
+  }
+  .cart__emptyBag{
+    
+    font-size: 2em;
+    
+  }
+  .cart__placeOrder{
+    font-size: 0.7em;
+  }
 }

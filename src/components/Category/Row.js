@@ -118,7 +118,11 @@ function Row({ category }) {
 
                       <CardActions>
                         <text size="small" color="primary">
-                          ₹{mapProduct.sellingPrice}
+                          {mapProduct.sellingPrice.toLocaleString("en-IN", {
+                            maximumFractionDigits: 2,
+                            style: "currency",
+                            currency: "INR",
+                          })}
                         </text>
                         <text
                           style={{
@@ -126,7 +130,11 @@ function Row({ category }) {
                             textDecorationStyle: "solid",
                           }}
                         >
-                          ₹{mapProduct.actualPrice}
+                          {mapProduct.actualPrice.toLocaleString("en-IN", {
+                            maximumFractionDigits: 2,
+                            style: "currency",
+                            currency: "INR",
+                          })}
                         </text>
                         <text size="small" color="primary">
                           {mapProduct.discountPercentage} % off

@@ -8,7 +8,6 @@ import Button from "@material-ui/core/Button";
 import { shallowEqual, useSelector } from "react-redux";
 import Quantity from "../Product/Quantity";
 import { useDispatch } from "react-redux";
-// import { CartContext } from "./index";
 import { createSelector } from "reselect";
 import {
   MODIFY_ITEM_QUANTITY,
@@ -109,7 +108,6 @@ function CartItems() {
   };
 
   const removeFromBag = (productId) => {
-    console.log(productId);
     dispatch({
       type: REMOVE_FROM_BAG,
       productId: productId,
@@ -117,96 +115,104 @@ function CartItems() {
   };
   return (
     <>
-      {cart.cartReducer.cart.map((item) => (
-        <Grid item md={12} xs={12} key={item.data.productId}>
-          <div className={classes.root}>
-            <Paper className={classes.paper} elevation={3}>
-              <Grid container className={classes.prodContainer}>
-                <Grid item>
-                  <ButtonBase className={classes.image}>
-                    <img
-                      className={classes.img}
-                      alt="complex"
-                      src={item.data.image}
-                    />
-                  </ButtonBase>
-                </Grid>
-                <Grid item xs={12} sm container>
-                  <Grid item xs container direction="column">
-                    <Grid item xs>
+      <Grid container xs={12} sm={12} md={12}>
+        {cart.cartReducer.cart.map((item) => (
+          <Grid item md={12} xs={12} key={item.data.productId}>
+            <div className={classes.root}>
+              <Paper className={classes.paper} elevation={3}>
+                <Grid container className={classes.prodContainer}>
+                  <Grid item>
+                    <ButtonBase className={classes.image}>
+                      <img
+                        className={classes.img}
+                        alt="complex"
+                        src={item.data.image}
+                      />
+                    </ButtonBase>
+                  </Grid>
+                  <Grid item xs={12} sm container>
+                    <Grid item xs container direction="column">
+                      <Grid item xs>
+                        <Typography
+                          gutterBottom
+                          variant="subtitle1"
+                          className={classes.title}
+                        >
+                          {item.data.title}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs className={classes.size}>
+                        <label className="cart__size">
+                          {t("product.size")}
+                        </label>
+
+                        <select
+                          name=""
+                          id=""
+                          className="cart__select"
+                          onChange={(e) => changeSize(e, item.data.productId)}
+                          value={item.size}
+                        >
+                          <option value="S">S</option>
+                          <option value="M">M</option>
+                          <option value="L">L</option>
+                        </select>
+                      </Grid>
+                      <Grid item xs className={classes.size}>
+                        <label className="cart__quantity">
+                          {t("product.quantity")}
+                        </label>
+
+                        <Quantity
+                          setQuantityFn={(key) =>
+                            setQuantityFn(key, item.data.productId)
+                          }
+                          key={item.data.productId}
+                          quantity={item.quantity}
+                        />
+                      </Grid>
+                      <Grid item xs className={classes.size}>
+                        <label className="cart__label">
+                          {t("product.freeDelivery")}:
+                        </label>
+                        <p className="cart__deliverydate">{deliveryDate}</p>
+                      </Grid>
+                    </Grid>
+                    <Grid item>
                       <Typography
-                        gutterBottom
                         variant="subtitle1"
-                        className={classes.title}
+                        className={classes.sellingPrice}
                       >
-                        {item.data.title}
+                        {item.data.sellingPrice.toLocaleString("en-IN", {
+                          maximumFractionDigits: 2,
+                          style: "currency",
+                          currency: "INR",
+                        })}
                       </Typography>
                     </Grid>
-                    <Grid item xs className={classes.size}>
-                      <label className="cart__size">{t("product.size")}</label>
-
-                      <select
-                        name=""
-                        id=""
-                        className="cart__select"
-                        onChange={(e) => changeSize(e, item.data.productId)}
-                        value={item.size}
-                      >
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                      </select>
-                    </Grid>
-                    <Grid item xs className={classes.size}>
-                      <label className="cart__quantity">
-                        {t("product.quantity")}
-                      </label>
-
-                      <Quantity
-                        setQuantityFn={(key) =>
-                          setQuantityFn(key, item.data.productId)
-                        }
-                        key={item.data.productId}
-                        quantity={item.quantity}
-                      />
-                    </Grid>
-                    <Grid item xs className={classes.size}>
-                      <label className="cart__label">
-                        {t("product.freeDelivery")}:
-                      </label>
-                      <p className="cart__deliverydate">
-                        {() => deliveryDate(item.data.productId)}
-                      </p>
-                    </Grid>
                   </Grid>
-                  <Grid item>
-                    <Typography
-                      variant="subtitle1"
-                      className={classes.sellingPrice}
+                </Grid>
+                <Grid container className={classes.buttonGridContainer}>
+                  <Grid item xs={5} className={classes.removeBtnGrid}>
+                    <Button
+                      className={classes.button}
+                      onClick={() => removeFromBag(item.data.productId)}
                     >
-                      ₹{item.data.sellingPrice}
-                    </Typography>
+                      {t(`cart.remove`)}
+                    </Button>
+                  </Grid>
+
+                  <Grid item xs={7}>
+                    <Button className={classes.button}>
+                      {t(`cart.addToWishList`)}
+                    </Button>
                   </Grid>
                 </Grid>
-              </Grid>
-              <Grid container className={classes.buttonGridContainer}>
-                <Grid item xs={5} className={classes.removeBtnGrid}>
-                  <Button
-                    className={classes.button}
-                    onClick={() => removeFromBag(item.data.productId)}
-                  >
-                    Remove
-                  </Button>
-                </Grid>
-
-                <Grid item xs={7}>
-                  <Button className={classes.button}>Add to wish list</Button>
-                </Grid>
-              </Grid>
-            </Paper>
-          </div>
-        </Grid>
-      ))}
+              </Paper>
+            </div>
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 }

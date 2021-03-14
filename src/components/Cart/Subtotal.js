@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles({
   root: {
@@ -66,6 +67,8 @@ export default function Subtotal() {
   const [totalMrp, setTotalMrp] = useState(0);
   const [totalDiscount, setTotalDiscount] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [t] = useTranslation("common");
+
   setTimeout(function () {});
   useEffect(() => {
     let count = 0;
@@ -81,9 +84,7 @@ export default function Subtotal() {
     setTotalDiscount(totalmrp - sellingPrice);
     setTotalAmount(sellingPrice);
   }, [cart]);
-  setTimeout(function () {
-    console.log("cart outside >>>", cart);
-  }, 2);
+
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -92,31 +93,50 @@ export default function Subtotal() {
           component="h2"
           className={classes.subtotalText}
         >
-          Bag Subtotal
+          {t("cart.subtotal")}
         </Typography>
 
         <Typography variant="body2" component="p" className={classes.qty}>
-          Bag total Quantity ({totalItems})
+          {t(`cart.bagTotalQty`)} ({totalItems})
         </Typography>
         <Typography variant="body2" component="p" className={classes.qty}>
-          <label>Total MRP:</label>
-          <p>₹{totalMrp}</p>
+          <label>{t(`cart.totalMrp`)}</label>
+          <p>
+            {totalMrp.toLocaleString("en-IN", {
+              maximumFractionDigits: 2,
+              style: "currency",
+              currency: "INR",
+            })}
+          </p>
         </Typography>
         <Typography variant="body2" component="p" className={classes.qty}>
-          <label>Total discount</label>
-          <p>-₹{totalDiscount}</p>
+          <label>{t(`cart.totalDiscount`)}</label>
+          <p>
+            -
+            {totalDiscount.toLocaleString("en-IN", {
+              maximumFractionDigits: 2,
+              style: "currency",
+              currency: "INR",
+            })}
+          </p>
         </Typography>
         <Typography variant="body2" component="p" className={classes.qty}>
-          <label>Convenience Fee</label>
-          <p>Free</p>
+          <label>{t(`cart.convenienceFee`)}</label>
+          <p>{t("cart.free")}</p>
         </Typography>
         <Typography
           variant="body2"
           component="p"
           className={classes.totalAmount}
         >
-          <label>Total Amount</label>
-          <p>₹{totalAmount}</p>
+          <label>{t(`cart.totalAmount`)}</label>
+          <p>
+            {totalAmount.toLocaleString("en-IN", {
+              maximumFractionDigits: 2,
+              style: "currency",
+              currency: "INR",
+            })}
+          </p>
         </Typography>
       </CardContent>
       <CardActions>
@@ -126,7 +146,7 @@ export default function Subtotal() {
           size="small"
           className={classes.button}
         >
-          <span>Place order</span>
+          <span className="cart__placeOrder">Place order</span>
         </Button>
       </CardActions>
     </Card>

@@ -69,6 +69,17 @@
     "deliverTo": "डिलीवर करें",
     "changeAddress": "पता परिवर्तन",
     "remove": "हटाए",
-    "subtotal": "सबटोटल"
+    "subtotal": "बैग सबटोटल",
+    "addToWishList": "इच्छा सूची में जोड़ें",
+
+    "noItemInBag": "उफ़! बैग में कोई आइटम नहीं है",
+
+    "continueShopping": "खरीदारी जारी रखें",
+    "bagTotalQty": "बैग कुल मात्रा",
+    "totalMrp": "कुल एमआरपी",
+    "totalDiscount": "कुल छूट",
+    "convenienceFee": "सुविधा शुल्क",
+    "free": "नि: शुल्क",
+    "totalAmount": "कुल राशि"
   }
 }
