@@ -97,13 +97,13 @@ const useStyles = makeStyles((theme) => ({
 
 function CategoryType({ category, type }) {
   const [t] = useTranslation("common");
-  const { tagline, image } = category;
+  const { tagline, image, name } = category;
   const classes = useStyles();
 
   return (
     <>
       <Grid item sm={1} className={classes.gridItem}>
-        <Link to={() => `/search?category=${tagline}`} className="row__link">
+        <Link to={() => `/search?category=${name}`} className="row__link">
           <Paper className={classes.paper}>
             <img
               src={image}

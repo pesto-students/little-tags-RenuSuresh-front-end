@@ -23,6 +23,7 @@ import Search from "./Search";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import option from "./searchOption.json";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -80,6 +81,7 @@ function HeaderIndex() {
   const login = t("header.user.login");
   const signup = t("header.user.signup");
   const cart = useSelector((state) => state.cartReducer.cart);
+  const history = useHistory();
 
   const changeLang = (event) => {
     const l = LANG_OPTION[event.target.options.selectedIndex].toLowerCase();
@@ -92,6 +94,8 @@ function HeaderIndex() {
   const updateSearchDropDown = (value) => {
     setSearch(value);
     setDisplay(false);
+    history.push(`/search?category=${value}`);
+    setSearch("");
   };
 
   const classes = useStyles();

@@ -34,56 +34,68 @@ export const HOME_CATEGORY = [
       {
         image: popular1,
         tagline: "glasses",
+        name: "glass",
       },
       {
         image: popular2,
         tagline: "watches",
+        name: "watch",
       },
       {
         image: popular3,
         tagline: "jackets",
+        name: "jacket",
       },
       // https://m.media-amazon.com/images/I/81lPDmJfeWL._AC_UL480_FMwebp_QL65_.jpg
       {
         image: popular4,
         tagline: "clothes",
+        name: "cloth",
       },
     ],
     special: [
       {
         image: cloth_1,
         tagline: "dress",
+        name: "dress",
       },
       {
         image: cloth_2,
         tagline: "sleeveDress",
+        name: "sleeve",
       },
       {
         image: cloth_3,
         tagline: "kidDress",
+        name: "kids",
       },
       {
         image: shoe_1,
         tagline: "ladyShoe",
+        name: "shoe",
       },
     ],
     toptrends: [
       {
         image: shoe_2,
         tagline: "latestShoe",
+        name: "shoe",
       },
       {
         image: watch_1,
         tagline: "watches",
+        name: "watch",
       },
 
       {
         image: arrival6,
         tagline: "stylishGlasses",
+        name: "glass",
       },
       {
         image: arrival8,
         tagline: "shoes",
+        name: "shoe",
       },
     ],
   },
