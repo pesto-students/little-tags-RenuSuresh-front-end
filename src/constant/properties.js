@@ -11,9 +11,22 @@ import watch_1 from "../assets/images/watch_1.jpg";
 import arrival1 from "../assets/images/arrival1.png";
 import arrival6 from "../assets/images/arrival6.png";
 import arrival8 from "../assets/images/arrival8.png";
+import slide_1 from "../assets/images/slide_1.webp";
+import slide_2 from "../assets/images/slide_2.webp";
+import slide_3 from "../assets/images/slide_3.webp";
 
 export const LANG_OPTION = ["english", "hindi"];
 export const LOGO_IMG = "https://cdn.worldvectorlogo.com/logos/arrow-2.svg";
+export const CONTACT_DETAILS =
+  "9 , Shivaji Colony, Opp Guddy Bar,\r\nAndheri Kurla Rd, Chakala,\r\nAndheri (west),\r\nMumbai\r\nMaharashtra- 400099\r\n02228232309";
+
+export const SET_USER = "SET_USER";
+export const SET_PRODUCT = "SET_PRODUCT";
+export const SET_CATEGORY = "SET_CATEGORY";
+export const SET_CART_ITEM = "SET_CART_ITEM";
+export const MODIFY_ITEM_QUANTITY = "MODIFY_ITEM_QUANTITY";
+export const MODIFY_ITEM_SIZE = "MODIFY_ITEM_SIZE";
+export const REMOVE_FROM_BAG = "REMOVE_FROM_BAG";
 
 export const HOME_CATEGORY = [
   {
@@ -21,56 +34,68 @@ export const HOME_CATEGORY = [
       {
         image: popular1,
         tagline: "glasses",
+        name: "glass",
       },
       {
         image: popular2,
         tagline: "watches",
+        name: "watch",
       },
       {
         image: popular3,
         tagline: "jackets",
+        name: "jacket",
       },
       // https://m.media-amazon.com/images/I/81lPDmJfeWL._AC_UL480_FMwebp_QL65_.jpg
       {
         image: popular4,
         tagline: "clothes",
+        name: "cloth",
       },
     ],
     special: [
       {
         image: cloth_1,
         tagline: "dress",
+        name: "dress",
       },
       {
         image: cloth_2,
         tagline: "sleeveDress",
+        name: "sleeve",
       },
       {
         image: cloth_3,
         tagline: "kidDress",
+        name: "kids",
       },
       {
         image: shoe_1,
         tagline: "ladyShoe",
+        name: "shoe",
       },
     ],
     toptrends: [
       {
         image: shoe_2,
         tagline: "latestShoe",
+        name: "shoe",
       },
       {
         image: watch_1,
         tagline: "watches",
+        name: "watch",
       },
 
       {
         image: arrival6,
         tagline: "stylishGlasses",
+        name: "glass",
       },
       {
         image: arrival8,
         tagline: "shoes",
+        name: "shoe",
       },
     ],
   },
@@ -78,22 +103,18 @@ export const HOME_CATEGORY = [
 
 export const SLIDE_INFO = [
   {
-    backgroundImage:
-      "https://70415bb9924dca896de0-34a37044c62e41b40b39fcedad8af927.lmsin.net/LS-Fest/LS-new/HP_LS_MEN_Desktop-1-04MAR2021.jpg",
+    backgroundImage: slide_1,
   },
   {
-    backgroundImage:
-      "https://s3.ap-south-1.amazonaws.com/tcsonline-live/weltpixel/owlcarouselslider/images/s/i/silk_1_1_.jpg",
+    backgroundImage: slide_2,
   },
   {
-    backgroundImage:
-      "https://www.sbicard.com/sbi-card-en/assets/media/images/personal/offers/categories/shopping/jc-brother-sep/d-jc-brother-sep.jpg",
+    backgroundImage: slide_3,
   },
 ];
 
-export const CONTACT_DETAILS =
-  "9 , Shivaji Colony, Opp Guddy Bar,\r\nAndheri Kurla Rd, Chakala,\r\nAndheri (west),\r\nMumbai\r\nMaharashtra- 400099\r\n02228232309";
+export const ERRORS = {
+  SELECT_SIZE_ERROR: "Please select Size",
+};
 
-export const SET_USER = "SET_USER";
-export const SET_PRODUCT = "SET_PRODUCT";
-export const SET_CATEGORY = "SET_CATEGORY";
+export const SELECT_SIZE = "Select size";

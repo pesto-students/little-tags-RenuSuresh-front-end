@@ -1,0 +1,69 @@
+.cart {
+  min-height: calc(70vh);
+}
+.cart__quantity {
+  margin-left: 0rem;
+}
+.cart__select {
+  margin-left: 0.75rem;
+  background-color: white;
+  height: 1.5rem;
+}
+.cart__label {
+  font-size: smaller;
+  text-transform: uppercase;
+}
+.cart__deliverydate {
+  font-size: smaller;
+}
+
+.cart__size,
+.cart__quantity {
+  width: 5em;
+}
+
+.cart__size,
+.cart__select,
+.cart__quantity {
+  font-size: small;
+}
+.cart__label {
+  color: #314127;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-right: 0.75rem;
+}
+.cart__deliverydate {
+  color: #026812;
+  font-weight: 600;
+  font-size: small;
+}
+.cart__empty{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em;
+}
+
+
+.cart__emptyBag{
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 3em;
+  font-weight: 400;
+  color: var(--clr-primary);
+}
+
+@media only screen and (max-width: 770px) {
+  .cart__emptyImage{
+    width: 100%;
+      height: 50%;
+  }
+  .cart__emptyBag{
+    
+    font-size: 2em;
+    
+  }
+  .cart__placeOrder{
+    font-size: 0.7em;
+  }
+}

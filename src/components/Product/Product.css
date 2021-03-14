@@ -1,10 +1,10 @@
 .product {
-  min-height: calc(60vh);
+  min-height: calc(70vh);
 }
 .MuiGrid-item {
   display: flex;
-  margin: 2rem 5rem !important;
 }
+
 .product__image {
   object-fit: contain;
   width: 100%;
@@ -25,13 +25,14 @@
   font-weight: 600;
   font-size: large;
 }
-.product__div {
+.product__div,
+.product__btn {
   margin: 0.9rem;
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans";
 }
-.MuiButton-contained {
-  max-width: fit-content;
-  margin-right: 2rem !important;
-}
+
 .product__size,
 .product__quantity {
   text-transform: uppercase;
@@ -43,17 +44,41 @@
 }
 .product__select {
   margin-left: 0.75rem;
+  background-color: white;
+  height: 1.5rem;
 }
+.product__descr {
+  font-size: 0.9rem;
+}
+
+.MuiButton-containedSecondary:hover {
+  background-color: var(--clr-primary-hover) !important;
+}
+.product__h1 {
+  font-size: 1.75rem;
+  padding-left: 1em;
+  text-transform: uppercase;
+}
+.product__error {
+  font-size: smaller;
+  color: red;
+  margin-left: 0.9rem;
+  margin-top: -1rem;
+}
+
+@media only screen and (max-width: 770px) {
+  .product__btn {
+    flex-direction: column;
+  }
+}
+
 @media only screen and (max-width: 426px) {
   .MuiGrid-item {
     display: flex;
-    margin: 2rem 1rem !important;
   }
 
   .MuiGrid-grid-xs-6 {
     flex-grow: 0;
-    max-width: 100% !important;
-    flex-basis: 100% !important;
   }
   .MuiTypography-h3 {
     font-size: x-large !important;
@@ -64,5 +89,24 @@
   }
   .product__image {
     max-height: 32ch;
+  }
+  .product__label {
+    font-size: 0.9rem;
+  }
+  .product__descr {
+    font-size: 0.8rem;
+  }
+  .product__deliverydate {
+    color: #026812;
+    font-weight: 600;
+    font-size: small;
+  }
+  .product__size,
+  .product__select,
+  .product__quantity {
+    font-size: small;
+  }
+  .product__btn {
+    flex-direction: column;
   }
 }

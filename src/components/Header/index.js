@@ -14,11 +14,16 @@ import { LANG_OPTION } from "../../constant/properties";
 import FormControl from "@material-ui/core/FormControl";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import LanguageIcon from "@material-ui/icons/Language";
+import Badge from "@material-ui/core/Badge";
 import "./Header.css";
 import LoginIndex from "../Login";
 import Category from "./Category";
 import { useSelector } from "react-redux";
 import Search from "./Search";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import option from "./searchOption.json";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -54,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     margin: theme.spacing(2),
-    minWidth: 170,
+    marginRight: "7em",
     display: "flex",
     [theme.breakpoints.up("md")]: {
       display: "flex",
@@ -63,27 +68,37 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(1),
   },
+  iconColor: {
+    color: "#343333",
+  },
 }));
 
 function HeaderIndex() {
   const [t, i18n] = useTranslation("common");
   const [lang, setLang] = useState("english");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [search, setSearch] = useState("");
+  const [display, setDisplay] = useState(false);
+
   const user = useSelector((state) => state);
   const login = t("header.user.login");
   const signup = t("header.user.signup");
+  const cart = useSelector((state) => state.cartReducer.cart);
+  const history = useHistory();
 
   const changeLang = (event) => {
-    console.log("event is >>>", event.target.options.selectedIndex);
     const l = LANG_OPTION[event.target.options.selectedIndex].toLowerCase();
 
-    console.log("english>>>", t(`header.language.english`));
-    console.log("hindi>>>", t(`header.language.hindi`));
-
     setLang(t(`header.language.${l}`));
-    console.log(lang);
     i18n.changeLanguage(l);
     handleMobileMenuClose();
+  };
+
+  const updateSearchDropDown = (value) => {
+    setSearch(value);
+    setDisplay(false);
+    history.push(`/search?category=${value}`);
+    setSearch("");
   };
 
   const classes = useStyles();
@@ -111,7 +126,42 @@ function HeaderIndex() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
+  const searchDropDown = (
+    <div className="header__searchdropdown">
+      {option
+        .filter(
+          ({ name }) => name.toLowerCase().indexOf(search.toLowerCase()) > -1
+        )
+        .map((value, i) => {
+          if (i > 2) {
+            return null;
+          }
+          return (
+            <div
+              onClick={() => updateSearchDropDown(value.name)}
+              className="option"
+              key={i}
+              tabIndex="0"
+              onKeyPress={(event) => {
+                if (event.keyCode === 13 || event.which === 13) {
+                  updateSearchDropDown(value.name);
+                }
+              }}
+            >
+              <span>{value.name}</span>
+            </div>
+          );
+        })}
+    </div>
+  );
+  const getSearch = (data) => {
+    if (data.length > 2) {
+      setDisplay(true);
+    } else {
+      setDisplay(false);
+    }
+    setSearch(data);
+  };
   const renderMenu = (
     <Menu
       getContentAnchorEl={null}
@@ -147,7 +197,7 @@ function HeaderIndex() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <AccountCircle className={classes.iconColor} />
         </IconButton>
         <p>
           {user.userReducer.userData
@@ -161,20 +211,24 @@ function HeaderIndex() {
           aria-haspopup="true"
           color="inherit"
         >
-          <LocalMallIcon />
+          <LocalMallIcon className={classes.iconColor} />
         </IconButton>
-        <p>0</p>
+        <p>{cart.length}</p>
       </MenuItem>
       <MenuItem>
-        <FormControl className={classes.formControl}>
+        <div className={classes.formControl}>
           <div
             style={{
               display: "flex",
               alignItems: "center",
             }}
           >
-            <LanguageIcon />
-            <select defaultValue={lang} onChange={(e) => changeLang(e)}>
+            <LanguageIcon className={classes.iconColor} />
+            <select
+              defaultValue={lang}
+              onChange={(e) => changeLang(e)}
+              className="header__translate"
+            >
               {LANG_OPTION.map((lan, key) => (
                 <option value={lan} key={key}>
                   {t(`header.language.${lan}`)}
@@ -182,7 +236,7 @@ function HeaderIndex() {
               ))}
             </select>
           </div>
-        </FormControl>
+        </div>
       </MenuItem>
     </Menu>
   );
@@ -202,21 +256,25 @@ function HeaderIndex() {
         <Toolbar>
           <Logo />
           <Category />
-          <Search />
+          <Search getSearch={getSearch} initialSearch={search} />
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <FormControl variant="filled" className={classes.formControl}>
-              <LanguageIcon />
+            <div variant="filled" className={classes.formControl}>
+              <LanguageIcon fontSize="small" className={classes.iconColor} />
 
-              <select defaultValue={lang} onChange={(e) => changeLang(e)}>
+              <select
+                defaultValue={lang}
+                onChange={(e) => changeLang(e)}
+                className="header__translate"
+              >
                 {LANG_OPTION.map((lan, key) => (
                   <option value={lan} key={key}>
                     {t(`header.language.${lan}`)}
                   </option>
                 ))}
               </select>
-            </FormControl>
+            </div>
 
             <IconButton
               edge="end"
@@ -232,7 +290,7 @@ function HeaderIndex() {
                   alignItems: "center",
                 }}
               >
-                <AccountCircle />
+                <AccountCircle className={classes.iconColor} />
               </span>
             </IconButton>
             <label className="header__user__label">
@@ -240,16 +298,20 @@ function HeaderIndex() {
                 ? user.userReducer.userData
                 : `${login}/${signup}`}
             </label>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <LocalMallIcon />
-            </IconButton>
+            <Link to="/cart" style={{ textDecoration: "none", color: "black" }}>
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <Badge badgeContent={cart.length} color="primary">
+                  <LocalMallIcon className={classes.iconColor} />
+                </Badge>
+              </IconButton>
+            </Link>
             <IconButton edge="end" aria-haspopup="true" color="inherit">
-              <MenuIcon />
+              <MenuIcon className={classes.iconColor} />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
@@ -267,6 +329,14 @@ function HeaderIndex() {
       {isLoggedIn && <LoginIndex handleMenuClose={handleMenuClose} />}
       {renderMobileMenu}
       {!isLoggedIn && renderMenu}
+      <div
+        style={{
+          position: "absolute",
+          zIndex: 1,
+        }}
+      >
+        {display && searchDropDown}
+      </div>
     </div>
   );
 }

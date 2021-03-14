@@ -18,7 +18,7 @@
         "clothes": "Clothes"
       },
       "special": {
-        "title": "Special collection for you",
+        "title": "Special collection",
         "dress": "Dress",
         "sleeveDress": "Sleeve Dress",
         "kidDress": "Kid Dress",
@@ -61,6 +61,23 @@
     "addToWishlist": "Add to wishlist",
     "size": "Size",
     "quantity": "Quantity",
-    "off": "off"
+    "off": "off",
+    "description": "Description"
+  },
+  "cart": {
+    "deliverTo": "Deliver to",
+    "changeAddress": "Change address",
+    "remove": "Remove",
+    "addToWishList": "Add to wishlist",
+    "subtotal": "Bag Subtotal",
+    "noItemInBag": "Opps! no item in bag",
+    "continueShopping": "Continue shopping",
+    "bagTotalQty": "Bag total quantity",
+    "totalMrp": "Total MRP",
+    "totalDiscount": "Total discount",
+    "convenienceFee": "convenience fee",
+    "free": "Free",
+    "totalAmount": "Total Amount",
+    "placeOrder": "Place order"
   }
 }

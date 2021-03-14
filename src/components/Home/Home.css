@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-evenly;
   margin-top: 2rem;
-  margin-bottom: 6rem;
 }
 
 .row__category__tag {
@@ -40,7 +39,7 @@
   animation-name: fadeInUp;
   font-family: "Cinzel", serif;
   font-weight: 700;
-  font-size: 7ch;
+  font-size: 2em;
   font-style: normal;
   width: 10ch;
   color: #0c0351;
@@ -56,7 +55,6 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  margin-top: 6rem;
 }
 
 .fade-in-section {
@@ -73,15 +71,7 @@
   visibility: visible;
 }
 
-.MuiGrid-spacing-xs-3 {
-  margin-left: -13rem !important;
-  margin-bottom: -6rem !important;
-}
 @media only screen and (max-width: 769px) {
-  .MuiGrid-spacing-xs-3 {
-    margin-left: -13rem !important;
-    margin-bottom: -6rem !important;
-  }
   .row__type {
     font-size: 4ch;
   }
@@ -91,10 +81,6 @@
 }
 
 @media only screen and (max-width: 426px) {
-  .MuiGrid-spacing-xs-3 {
-    margin-left: 0rem !important;
-    margin-bottom: 0rem !important;
-  }
   .row__type {
     font-size: 4ch;
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import errorImage from "../../assets/images/error.png";
+import errorImage from "../../assets/images/error.webp";
 import { useHistory } from "react-router-dom";
 
 function Error() {
@@ -10,7 +10,7 @@ function Error() {
   };
   return (
     <div className="category__error">
-      <img src={errorImage} alt="error" />
+      <img src={errorImage} alt="error" type="image/webp" />
       <h1>No data available!!</h1>
       <button onClick={goToHome}>Back</button>
     </div>

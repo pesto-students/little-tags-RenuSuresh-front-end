@@ -18,7 +18,7 @@
         "clothes": "कपडे"
       },
       "special": {
-        "title": "विशेष कलेक्‍शन आपके लिए",
+        "title": "विशेष कलेक्‍शन",
         "dress": "ड्रेस",
         "sleeveDress": "आस्तीन के वस्त्र",
         "kidDress": "बच्चों के वस्त्र",
@@ -62,6 +62,25 @@
     "addToWishlist": "इच्छा सूची में जोड़ें",
     "size": "माप",
     "quantity": "मात्रा",
-    "off": "छूट"
+    "off": "छूट",
+    "description": "वर्णन"
+  },
+  "cart": {
+    "deliverTo": "डिलीवर करें",
+    "changeAddress": "पता परिवर्तन",
+    "remove": "हटाए",
+    "subtotal": "बैग सबटोटल",
+    "addToWishList": "इच्छा सूची में जोड़ें",
+
+    "noItemInBag": "उफ़! बैग में कोई आइटम नहीं है",
+
+    "continueShopping": "खरीदारी जारी रखें",
+    "bagTotalQty": "बैग कुल मात्रा",
+    "totalMrp": "कुल एमआरपी",
+    "totalDiscount": "कुल छूट",
+    "convenienceFee": "सुविधा शुल्क",
+    "free": "नि: शुल्क",
+    "totalAmount": "कुल राशि",
+    "placeOrder": "ऑर्डर करें"
   }
 }

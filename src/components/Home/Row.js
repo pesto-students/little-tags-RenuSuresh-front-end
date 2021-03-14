@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     width: 300,
     transition: "0.5s ease-in-out",
     "@media (max-width: 780px)": {
-      width: 250,
+      width: 240,
       height: 318,
     },
     "@media (max-width: 1028px)": {
@@ -85,17 +85,25 @@ const useStyles = makeStyles((theme) => ({
   control: {
     padding: theme.spacing(2),
   },
+  gridContainer: {
+    width: "100%",
+  },
+  gridItem: {
+    "@media (min-width: 600px)": {
+      maxWidth: "34.333333%;",
+    },
+  },
 }));
 
 function CategoryType({ category, type }) {
   const [t] = useTranslation("common");
-  const { tagline, image } = category;
+  const { tagline, image, name } = category;
   const classes = useStyles();
 
   return (
     <>
-      <Grid item sm={1}>
-        <Link to={() => `/search?category=${tagline}`} className="row__link">
+      <Grid item sm={1} className={classes.gridItem}>
+        <Link to={() => `/search?category=${name}`} className="row__link">
           <Paper className={classes.paper}>
             <img
               src={image}
@@ -103,13 +111,12 @@ function CategoryType({ category, type }) {
               style={{ objectFit: "contain", width: "100%" }}
             />
           </Paper>
-          {/* <div className="product__description"> */}
+
           <div className={classes.overlay}>
             <span className="row__category__tag__span">
               {t(`header.categorytype.${type}.${tagline}`)}
             </span>
           </div>
-          {/* </div> */}
         </Link>
       </Grid>
     </>
@@ -118,6 +125,7 @@ function CategoryType({ category, type }) {
 
 function Row({ type }) {
   const [t] = useTranslation("common");
+  const classes = useStyles();
 
   return (
     <>
@@ -129,7 +137,12 @@ function Row({ type }) {
         </FadeInSection>
       </div>
       <div className="row">
-        <Grid container justify="space-evenly" spacing={3}>
+        <Grid
+          container
+          justify="space-evenly"
+          spacing={3}
+          className={classes.gridContainer}
+        >
           {HOME_CATEGORY[0][type].map((category, i) => (
             <CategoryType
               category={category}
