@@ -2,6 +2,7 @@ import {
   SET_CART_ITEM,
   MODIFY_ITEM_QUANTITY,
   MODIFY_ITEM_SIZE,
+  REMOVE_FROM_BAG,
 } from "../../constant/properties";
 
 const initialState = {
@@ -11,7 +12,6 @@ const initialState = {
 function productReducer(state = initialState, action) {
   switch (action.type) {
     case SET_CART_ITEM:
-      console.log("actions>>>", action.data);
       return {
         ...state,
         cart: [...state.cart, action.data],
@@ -31,8 +31,22 @@ function productReducer(state = initialState, action) {
           item["size"] = action.data[0];
         }
       });
+
       return {
         ...state,
+      };
+    case REMOVE_FROM_BAG:
+      let newBag = [...state.cart];
+      const index = state.cart.findIndex((bagItem) => {
+        return bagItem.data.productId === action.productId;
+      });
+
+      if (index > -1) {
+        newBag.splice(index, 1);
+      }
+      return {
+        ...state,
+        cart: newBag,
       };
 
     default:

@@ -1,26 +1,37 @@
-.product__quantity {
+.cart__quantity {
   margin-left: 0rem;
 }
-.product__select {
+.cart__select {
   margin-left: 0.75rem;
   background-color: white;
   height: 1.5rem;
 }
-.product__label {
+.cart__label {
   font-size: smaller;
   text-transform: uppercase;
 }
-.product__deliverydate {
+.cart__deliverydate {
   font-size: smaller;
 }
 
-.product__size,
-.product__quantity {
+.cart__size,
+.cart__quantity {
   width: 5em;
 }
 
-.product__size,
-.product__select,
-.product__quantity {
+.cart__size,
+.cart__select,
+.cart__quantity {
+  font-size: small;
+}
+.cart__label {
+  color: #314127;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-right: 0.75rem;
+}
+.cart__deliverydate {
+  color: #026812;
+  font-weight: 600;
   font-size: small;
 }

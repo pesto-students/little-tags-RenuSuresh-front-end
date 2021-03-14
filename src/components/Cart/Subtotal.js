@@ -36,11 +36,17 @@ const useStyles = makeStyles({
     fontWeight: "600",
     fontSize: "1.1em",
     marginBottom: "1.5em",
+    "@media only screen and (max-width: 769px)": {
+      fontSize: "0.8em",
+    },
   },
   totalAmount: {
     fontSize: "1.5em",
     color: "#0c0351",
     fontWeight: "600",
+    "@media only screen and (max-width: 769px)": {
+      fontSize: "1.2em",
+    },
   },
   button: {
     backgroundColor: "#0c0351",
@@ -90,8 +96,7 @@ export default function Subtotal() {
         </Typography>
 
         <Typography variant="body2" component="p" className={classes.qty}>
-          <label>Bag total Quantity</label>
-          <p>({totalItems})</p>
+          Bag total Quantity ({totalItems})
         </Typography>
         <Typography variant="body2" component="p" className={classes.qty}>
           <label>Total MRP:</label>

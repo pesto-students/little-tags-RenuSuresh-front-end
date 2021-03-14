@@ -1,11 +1,12 @@
 .footer {
   display: flex;
   justify-content: space-around;
-  padding-top: 4vh;
-  height: 30vh;
+  padding-top: 1em;
+  height: 20vh;
   background-color: var(--clr-primary);
   color: white;
   margin-top: auto;
+  font-size: small;
 }
 .footer__contact > h3,
 .footer__quicklinks > h3,

@@ -13,9 +13,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "1em",
   },
 }));
-function Quantity({ setQuantityFn }) {
+function Quantity({ setQuantityFn, quantity }) {
   const classes = useStyles();
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(quantity);
   const handleIncrement = () => {
     setCounter((prev) => prev + 1);
     setQuantityFn(counter);

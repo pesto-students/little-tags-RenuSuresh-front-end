@@ -34,8 +34,11 @@ function Row({ category }) {
         setIsLoading(false);
       });
   }, [category, dispatch]);
+
   const categoryRow = product.filter(
-    (Product) => Product.category === category
+    (Product) =>
+      Product.title.toLowerCase().includes(category) ||
+      Product.category.toLowerCase().includes(category)
   );
 
   const useStyles = makeStyles({

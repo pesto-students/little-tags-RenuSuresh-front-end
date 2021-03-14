@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     justifyContent: "space-between",
-    margin: "1rem 2rem 0rem 2rem",
+    margin: "2rem 2rem 2rem 2rem",
     padding: theme.spacing(2),
   },
   bullet: {

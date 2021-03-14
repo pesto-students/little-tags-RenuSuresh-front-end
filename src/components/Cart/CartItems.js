@@ -13,6 +13,7 @@ import { createSelector } from "reselect";
 import {
   MODIFY_ITEM_QUANTITY,
   MODIFY_ITEM_SIZE,
+  REMOVE_FROM_BAG,
 } from "../../constant/properties";
 import { useTranslation } from "react-i18next";
 import "./Cart.css";
@@ -20,8 +21,8 @@ import "./Cart.css";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginTop: "2rem",
     marginRight: "2rem",
+    marginBottom: "2rem",
   },
   paper: {
     marginLeft: "2rem",
@@ -74,12 +75,7 @@ function CartItems() {
   const classes = useStyles();
   const [t] = useTranslation("common");
   const [deliveryDate, setDeliveryDate] = useState("");
-  const [size, setSize] = useState(null);
-  //   const cart = useSelector((state) => state.cartReducer.cart, shallowEqual);
   const cart = useSelector(allSelectors);
-  console.log("cartItem>>>", cart);
-  //   const [cart] = useContext(ContextValue)
-  //   const [changeqty, setChangeqty] = useContext(CartContext);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -103,9 +99,8 @@ function CartItems() {
       type: MODIFY_ITEM_QUANTITY,
       data: arg,
     });
-    // setChangeqty(arg[0]);
   };
-  //   console.log(" use context is >>>", changeqty);
+
   const changeSize = (...arg) => {
     dispatch({
       type: MODIFY_ITEM_SIZE,
@@ -113,6 +108,13 @@ function CartItems() {
     });
   };
 
+  const removeFromBag = (productId) => {
+    console.log(productId);
+    dispatch({
+      type: REMOVE_FROM_BAG,
+      productId: productId,
+    });
+  };
   return (
     <>
       {cart.cartReducer.cart.map((item) => (
@@ -141,14 +143,12 @@ function CartItems() {
                       </Typography>
                     </Grid>
                     <Grid item xs className={classes.size}>
-                      <label className="product__size">
-                        {t("product.size")}
-                      </label>
+                      <label className="cart__size">{t("product.size")}</label>
 
                       <select
                         name=""
                         id=""
-                        className="product__select"
+                        className="cart__select"
                         onChange={(e) => changeSize(e, item.data.productId)}
                         value={item.size}
                       >
@@ -158,7 +158,7 @@ function CartItems() {
                       </select>
                     </Grid>
                     <Grid item xs className={classes.size}>
-                      <label className="product__quantity">
+                      <label className="cart__quantity">
                         {t("product.quantity")}
                       </label>
 
@@ -167,13 +167,16 @@ function CartItems() {
                           setQuantityFn(key, item.data.productId)
                         }
                         key={item.data.productId}
+                        quantity={item.quantity}
                       />
                     </Grid>
                     <Grid item xs className={classes.size}>
-                      <label className="product__label">
+                      <label className="cart__label">
                         {t("product.freeDelivery")}:
                       </label>
-                      <p className="product__deliverydate">{deliveryDate}</p>
+                      <p className="cart__deliverydate">
+                        {() => deliveryDate(item.data.productId)}
+                      </p>
                     </Grid>
                   </Grid>
                   <Grid item>
@@ -188,7 +191,12 @@ function CartItems() {
               </Grid>
               <Grid container className={classes.buttonGridContainer}>
                 <Grid item xs={5} className={classes.removeBtnGrid}>
-                  <Button className={classes.button}>Remove</Button>
+                  <Button
+                    className={classes.button}
+                    onClick={() => removeFromBag(item.data.productId)}
+                  >
+                    Remove
+                  </Button>
                 </Grid>
 
                 <Grid item xs={7}>

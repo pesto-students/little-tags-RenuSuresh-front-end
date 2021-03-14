@@ -22,6 +22,7 @@ import { useSelector } from "react-redux";
 import Search from "./Search";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import option from "./searchOption.json";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -72,6 +73,9 @@ function HeaderIndex() {
   const [t, i18n] = useTranslation("common");
   const [lang, setLang] = useState("english");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [search, setSearch] = useState("");
+  const [display, setDisplay] = useState(false);
+
   const user = useSelector((state) => state);
   const login = t("header.user.login");
   const signup = t("header.user.signup");
@@ -83,6 +87,11 @@ function HeaderIndex() {
     setLang(t(`header.language.${l}`));
     i18n.changeLanguage(l);
     handleMobileMenuClose();
+  };
+
+  const updateSearchDropDown = (value) => {
+    setSearch(value);
+    setDisplay(false);
   };
 
   const classes = useStyles();
@@ -110,7 +119,42 @@ function HeaderIndex() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
+  const searchDropDown = (
+    <div className="header__searchdropdown">
+      {option
+        .filter(
+          ({ name }) => name.toLowerCase().indexOf(search.toLowerCase()) > -1
+        )
+        .map((value, i) => {
+          if (i > 2) {
+            return null;
+          }
+          return (
+            <div
+              onClick={() => updateSearchDropDown(value.name)}
+              className="option"
+              key={i}
+              tabIndex="0"
+              onKeyPress={(event) => {
+                if (event.keyCode === 13 || event.which === 13) {
+                  updateSearchDropDown(value.name);
+                }
+              }}
+            >
+              <span>{value.name}</span>
+            </div>
+          );
+        })}
+    </div>
+  );
+  const getSearch = (data) => {
+    if (data.length > 2) {
+      setDisplay(true);
+    } else {
+      setDisplay(false);
+    }
+    setSearch(data);
+  };
   const renderMenu = (
     <Menu
       getContentAnchorEl={null}
@@ -205,7 +249,7 @@ function HeaderIndex() {
         <Toolbar>
           <Logo />
           <Category />
-          <Search />
+          <Search getSearch={getSearch} initialSearch={search} />
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
@@ -278,6 +322,14 @@ function HeaderIndex() {
       {isLoggedIn && <LoginIndex handleMenuClose={handleMenuClose} />}
       {renderMobileMenu}
       {!isLoggedIn && renderMenu}
+      <div
+        style={{
+          position: "absolute",
+          zIndex: 1,
+        }}
+      >
+        {display && searchDropDown}
+      </div>
     </div>
   );
 }

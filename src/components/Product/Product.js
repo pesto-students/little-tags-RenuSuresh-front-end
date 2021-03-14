@@ -111,7 +111,7 @@ function Product() {
     setImage(image);
   };
 
-  const setQuantityFn = (qty) => setQuantity(qty);
+  const setQuantityFn = (qty) => setQuantity(qty + 1);
 
   const addToCartHandle = () => {
     const dispatchCartDetails = {
@@ -252,7 +252,7 @@ function Product() {
           </select>
 
           <label className="product__quantity">{t("product.quantity")}</label>
-          <Quantity setQuantityFn={setQuantityFn} />
+          <Quantity setQuantityFn={setQuantityFn} quantity={quantity} />
         </div>
         {error && <p className="product__error">{error}</p>}
 

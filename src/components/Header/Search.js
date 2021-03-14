@@ -59,13 +59,17 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-function Search() {
+function Search({ getSearch, initialSearch }) {
   const classes = useStyles();
   const history = useHistory();
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(initialSearch);
   const [display, setDisplay] = useState(false);
 
   const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    setSearch(initialSearch);
+  }, [initialSearch]);
 
   const handleSearch = () => {
     history.push(`/search?category=${search}`);
@@ -74,12 +78,7 @@ function Search() {
 
   const inputSearch = ({ target: { value } }) => {
     setSearch(value);
-
-    if (value.length > 2) {
-      setDisplay(true);
-    } else {
-      setDisplay(false);
-    }
+    getSearch(value);
   };
 
   const handleClickOutside = (event) => {
@@ -89,40 +88,6 @@ function Search() {
     }
   };
 
-  const updateSearchDropDown = (value) => {
-    setSearch(value);
-    setDisplay(false);
-  };
-
-  console.log("search", search);
-  const searchDropDown = (
-    <div className="header__searchdropdown">
-      {option
-        .filter(
-          ({ name }) => name.toLowerCase().indexOf(search.toLowerCase()) > -1
-        )
-        .map((value, i) => {
-          if (i > 2) {
-            return null;
-          }
-          return (
-            <div
-              onClick={() => updateSearchDropDown(value.name)}
-              className="option"
-              key={i}
-              tabIndex="0"
-              onKeyPress={(event) => {
-                if (event.keyCode === 13 || event.which === 13) {
-                  updateSearchDropDown(value.name);
-                }
-              }}
-            >
-              <span>{value.name}</span>
-            </div>
-          );
-        })}
-    </div>
-  );
   useEffect(() => {
     window.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -160,7 +125,6 @@ function Search() {
           <SearchIcon />
         </span>
       </div>
-      {display && searchDropDown}
     </div>
   );
 }

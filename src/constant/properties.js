@@ -26,6 +26,7 @@ export const SET_CATEGORY = "SET_CATEGORY";
 export const SET_CART_ITEM = "SET_CART_ITEM";
 export const MODIFY_ITEM_QUANTITY = "MODIFY_ITEM_QUANTITY";
 export const MODIFY_ITEM_SIZE = "MODIFY_ITEM_SIZE";
+export const REMOVE_FROM_BAG = "REMOVE_FROM_BAG";
 
 export const HOME_CATEGORY = [
   {

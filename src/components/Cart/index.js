@@ -26,17 +26,14 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2, 0),
   },
   subtotalMain: {
-    margin: "2rem",
+    margin: "0rem 2rem 2rem 2rem",
   },
 }));
 export const CartContext = createContext(null);
 function CartIndex() {
   const classes = useStyles();
-  //   const [cartChange, setCartChange] = useContext(CartContext);
-  //   const cart = useSelector((state) => state.cartReducer.cart);
 
   return (
-    // <CartContext.Provider value={cart}>
     <div>
       <Grid container>
         <Grid container xs={12} sm={12} md={7}>
@@ -55,7 +52,6 @@ function CartIndex() {
         </Grid>
       </Grid>
     </div>
-    // </CartContext.Provider>
   );
 }
 
