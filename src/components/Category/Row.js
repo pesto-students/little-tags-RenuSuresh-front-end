@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -34,25 +36,22 @@ function Row({ category }) {
         setIsLoading(false);
       });
   }, [category, dispatch]);
-
-  const categoryRow = product.filter(
-    (Product) =>
-      Product.title.toLowerCase().includes(category) ||
-      Product.category.toLowerCase().includes(category)
-  );
+  const categoryRow = product.filter((Product) => Product.category === category);
 
   const useStyles = makeStyles({
     root: {
-      paddingLeft: "20%",
-      paddingTop: "5%",
-      paddingBottom: "5%",
+      padding: 0,
+      margin: "12px",
+      flexDirection: "row",
     },
-    Card: {
-      width: "100%",
-      height: "100%",
+    card: {
+      maxWidth: 345,
+      boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.3)",
+      backgroundColor: "#fafafa",
     },
+
     CardActionArea: {
-      height: "100%",
+      height: "fit-content",
     },
   });
 
@@ -72,36 +71,30 @@ function Row({ category }) {
   const getProduct = (mapProduct) => {
     dispatch({ type: SET_PRODUCT, data: mapProduct });
 
-    history.push(`/product?search=${mapProduct.title}`);
+    history.push(`/product`);
   };
   return (
     <>
       {isLoading && (
-        <Backdrop
-          className={classesBackdrop.backdrop}
-          open={isLoading}
-          invisible={true}
-        >
+        <Backdrop className={classesBackdrop.backdrop} open={isLoading} invisible={true}>
           <CircularProgress className={classes.spinner} />
         </Backdrop>
       )}
       {!isLoading && (
-        <Grid container spacing={3} className={classes.root} justify="center">
+        <Grid item md={9} container spacing={3} direction="column" className={classes.root}>
           {categoryRow.length > 0 ? (
             categoryRow.map((mapProduct) => (
-              <Grid spacing={3} item xs={12} sm={6} md={4}>
-                <Card
-                  className={classes.Card}
-                  onClick={() => getProduct(mapProduct)}
-                >
+              <Grid spacing={3} item xs={12} sm={6} md={3} lg={3}>
+                <Card className={classes.Card} onClick={() => getProduct(mapProduct)} style={{ height: "fit-content" }}>
                   <CardActionArea className={classes.CardActionArea}>
                     <CardMedia
                       component="img"
                       alt={category}
                       image={mapProduct.image}
+                      style={{ maxHeight: "350px", maxWidth: "450px" }}
                     />
-                    <CardContent>
-                      <Typography gutterBottom component="h2">
+                    <CardContent style={{ maxHeight: "650px", maxWidth: "450px" }}>
+                      <Typography gutterBottom component="h5" noWrap="true">
                         {mapProduct.title}
                       </Typography>
 
@@ -118,11 +111,7 @@ function Row({ category }) {
 
                       <CardActions>
                         <text size="small" color="primary">
-                          {mapProduct.sellingPrice.toLocaleString("en-IN", {
-                            maximumFractionDigits: 2,
-                            style: "currency",
-                            currency: "INR",
-                          })}
+                          ₹{mapProduct.sellingPrice}
                         </text>
                         <text
                           style={{
@@ -130,11 +119,7 @@ function Row({ category }) {
                             textDecorationStyle: "solid",
                           }}
                         >
-                          {mapProduct.actualPrice.toLocaleString("en-IN", {
-                            maximumFractionDigits: 2,
-                            style: "currency",
-                            currency: "INR",
-                          })}
+                          ₹{mapProduct.actualPrice}
                         </text>
                         <text size="small" color="primary">
                           {mapProduct.discountPercentage} % off
