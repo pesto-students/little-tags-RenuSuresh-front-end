@@ -146,7 +146,7 @@ export default function Subtotal() {
           size="small"
           className={classes.button}
         >
-          <span className="cart__placeOrder">Place order</span>
+          <span className="cart__placeOrder">{t(`cart.placeOrder`)}</span>
         </Button>
       </CardActions>
     </Card>
