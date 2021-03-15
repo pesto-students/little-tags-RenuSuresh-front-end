@@ -1,3 +1,4 @@
+import { LocalConvenienceStoreOutlined } from "@material-ui/icons";
 import { SET_PRODUCT } from "../../constant/properties";
 
 const initialState = {
@@ -7,6 +8,7 @@ const initialState = {
 function productReducer(state = initialState, action) {
   switch (action.type) {
     case SET_PRODUCT:
+      console.log("aaa", action.data);
       return {
         ...state,
         productData: action.data,
