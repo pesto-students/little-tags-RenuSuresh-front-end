@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Button from "@material-ui/core/Button";
-import { shallowEqual, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Quantity from "../Product/Quantity";
 import { useDispatch } from "react-redux";
 import { createSelector } from "reselect";
@@ -13,6 +13,7 @@ import {
   MODIFY_ITEM_QUANTITY,
   MODIFY_ITEM_SIZE,
   REMOVE_FROM_BAG,
+  ADD_TO_WISHLIST,
 } from "../../constant/properties";
 import { useTranslation } from "react-i18next";
 import "./Cart.css";
@@ -113,6 +114,12 @@ function CartItems() {
       productId: productId,
     });
   };
+  const addToWishlist = (productId) => {
+    dispatch({
+      type: ADD_TO_WISHLIST,
+      productId: productId,
+    });
+  };
   return (
     <>
       <Grid container xs={12} sm={12} md={12}>
@@ -203,7 +210,10 @@ function CartItems() {
                   </Grid>
 
                   <Grid item xs={7}>
-                    <Button className={classes.button}>
+                    <Button
+                      className={classes.button}
+                      onClick={() => addToWishlist(item.data.productId)}
+                    >
                       {t(`cart.addToWishList`)}
                     </Button>
                   </Grid>

@@ -82,5 +82,8 @@
     "free": "नि: शुल्क",
     "totalAmount": "कुल राशि",
     "placeOrder": "ऑर्डर करें"
+  },
+  "address": {
+    "addAddress": "पता जोड़ें"
   }
 }

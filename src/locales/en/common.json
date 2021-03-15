@@ -79,5 +79,8 @@
     "free": "Free",
     "totalAmount": "Total Amount",
     "placeOrder": "Place order"
+  },
+  "address": {
+    "addAddress": "Add address"
   }
 }
