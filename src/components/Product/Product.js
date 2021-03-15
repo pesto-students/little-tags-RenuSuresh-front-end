@@ -190,7 +190,7 @@ function Product() {
                   fontSize: "1.25rem",
                 }}
               >
-                {productDetails.actualPrice}
+                ₹{productDetails.actualPrice}
               </p>
               <p
                 size="small"
@@ -200,7 +200,7 @@ function Product() {
                   fontWeight: "700",
                 }}
               >
-                {productDetails.sellingPrice}
+                ₹{productDetails.sellingPrice}
               </p>
             </div>
           </>
