@@ -24,10 +24,7 @@ function CategoryIndex() {
   const classes = useStyles();
   return (
     <div className="category">
-      <Grid container>
-        <CheckBoxesGroup className="checkbox" />
-        <Row category={name.toLowerCase()} />
-      </Grid>
+      <Row category={name.toLowerCase()} />
     </div>
   );
 }

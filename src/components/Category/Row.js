@@ -80,7 +80,7 @@ function Row({ category }) {
         </Backdrop>
       )}
       {!isLoading && (
-        <Grid item md={9} container spacing={3} direction="column" className={classes.root}>
+        <Grid item md={12} container spacing={3} direction="column" className={classes.root}>
           {categoryRow.length > 0 ? (
             categoryRow.map((mapProduct) => (
               <Grid spacing={3} item xs={12} sm={6} md={3} lg={3}>
@@ -90,7 +90,7 @@ function Row({ category }) {
                       component="img"
                       alt={category}
                       image={mapProduct.image}
-                      style={{ maxHeight: "350px", maxWidth: "450px" }}
+                      style={{ maxHeight: "460px", maxWidth: "450px" }}
                     />
                     <CardContent style={{ maxHeight: "650px", maxWidth: "450px" }}>
                       <Typography gutterBottom component="h2" noWrap="true">

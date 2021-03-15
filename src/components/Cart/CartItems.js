@@ -9,12 +9,7 @@ import { useSelector } from "react-redux";
 import Quantity from "../Product/Quantity";
 import { useDispatch } from "react-redux";
 import { createSelector } from "reselect";
-import {
-  MODIFY_ITEM_QUANTITY,
-  MODIFY_ITEM_SIZE,
-  REMOVE_FROM_BAG,
-  ADD_TO_WISHLIST,
-} from "../../constant/properties";
+import { MODIFY_ITEM_QUANTITY, MODIFY_ITEM_SIZE, REMOVE_FROM_BAG, ADD_TO_WISHLIST } from "../../constant/properties";
 import { useTranslation } from "react-i18next";
 import "./Cart.css";
 
@@ -34,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   img: {
     margin: "auto",
     display: "block",
-    maxWidth: "100%",
+    maxWidth: "80%",
     maxHeight: "100%",
   },
   sellingPrice: {
@@ -56,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     height: "2.75rem",
   },
   size: {
-    margin: "0.5em",
+    margin: "0.5rem 0.5rem 0.5rem 0rem",
   },
   title: {
     color: "#0c0351",
@@ -130,28 +125,18 @@ function CartItems() {
                 <Grid container className={classes.prodContainer}>
                   <Grid item>
                     <ButtonBase className={classes.image}>
-                      <img
-                        className={classes.img}
-                        alt="complex"
-                        src={item.data.image}
-                      />
+                      <img className={classes.img} alt="complex" src={item.data.image} />
                     </ButtonBase>
                   </Grid>
                   <Grid item xs={12} sm container>
                     <Grid item xs container direction="column">
                       <Grid item xs>
-                        <Typography
-                          gutterBottom
-                          variant="subtitle1"
-                          className={classes.title}
-                        >
+                        <Typography gutterBottom variant="subtitle1" className={classes.title}>
                           {item.data.title}
                         </Typography>
                       </Grid>
                       <Grid item xs className={classes.size}>
-                        <label className="cart__size">
-                          {t("product.size")}
-                        </label>
+                        <label className="cart__size">{t("product.size")}</label>
 
                         <select
                           name=""
@@ -166,30 +151,21 @@ function CartItems() {
                         </select>
                       </Grid>
                       <Grid item xs className={classes.size}>
-                        <label className="cart__quantity">
-                          {t("product.quantity")}
-                        </label>
+                        <label className="cart__quantity">{t("product.quantity")}</label>
 
                         <Quantity
-                          setQuantityFn={(key) =>
-                            setQuantityFn(key, item.data.productId)
-                          }
+                          setQuantityFn={(key) => setQuantityFn(key, item.data.productId)}
                           key={item.data.productId}
                           quantity={item.quantity}
                         />
                       </Grid>
                       <Grid item xs className={classes.size}>
-                        <label className="cart__label">
-                          {t("product.freeDelivery")}:
-                        </label>
+                        <label className="cart__label">{t("product.freeDelivery")}:</label>
                         <p className="cart__deliverydate">{deliveryDate}</p>
                       </Grid>
                     </Grid>
                     <Grid item>
-                      <Typography
-                        variant="subtitle1"
-                        className={classes.sellingPrice}
-                      >
+                      <Typography variant="subtitle1" className={classes.sellingPrice}>
                         {item.data.sellingPrice.toLocaleString("en-IN", {
                           maximumFractionDigits: 2,
                           style: "currency",
@@ -201,19 +177,13 @@ function CartItems() {
                 </Grid>
                 <Grid container className={classes.buttonGridContainer}>
                   <Grid item xs={5} className={classes.removeBtnGrid}>
-                    <Button
-                      className={classes.button}
-                      onClick={() => removeFromBag(item.data.productId)}
-                    >
+                    <Button className={classes.button} onClick={() => removeFromBag(item.data.productId)}>
                       {t(`cart.remove`)}
                     </Button>
                   </Grid>
 
                   <Grid item xs={7}>
-                    <Button
-                      className={classes.button}
-                      onClick={() => addToWishlist(item.data.productId)}
-                    >
+                    <Button className={classes.button} onClick={() => addToWishlist(item.data.productId)}>
                       {t(`cart.addToWishList`)}
                     </Button>
                   </Grid>
