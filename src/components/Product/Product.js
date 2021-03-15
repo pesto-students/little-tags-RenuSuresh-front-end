@@ -99,9 +99,7 @@ function Product() {
     setImage(productDetails.image);
     let cartItem = product.cartReducer.cart;
 
-    const cartItems = cartItem.filter(
-      (item) => item.data.productId === productDetails.productId
-    );
+    const cartItems = cartItem.filter((item) => item.data.productId === productDetails.productId);
 
     if (cartItems.length > 0) {
       setEnableAddBtn(false);
@@ -161,11 +159,7 @@ function Product() {
           ))}
       </div>
       <Paper className={classes.paper} elevation={3}>
-        <img
-          src={image}
-          alt={productDetails.title}
-          className="product__image"
-        />
+        <img src={image} alt={productDetails.title} className="product__image" />
       </Paper>
     </Grid>
   );
@@ -179,13 +173,7 @@ function Product() {
           </Typography>
         </div>
         <div style={{ display: "flex" }}>
-          <Rating
-            name="half-rating-read"
-            size="small"
-            defaultValue={productDetails.averageRating}
-            precision={0.5}
-            readOnly
-          />
+          <Rating name="half-rating-read" size="small" defaultValue={4.5} precision={0.5} readOnly />
           <Typography variant="h6">
             {productDetails.averageRating}/{productDetails.totalRating}
           </Typography>
@@ -220,9 +208,7 @@ function Product() {
         <div className="product__div">
           <label className="product__label">{t("product.yourSavings")}:</label>
           <p>
-            {(
-              productDetails.actualPrice - productDetails.sellingPrice
-            ).toLocaleString("en-IN", {
+            {(productDetails.actualPrice - productDetails.sellingPrice).toLocaleString("en-IN", {
               maximumFractionDigits: 2,
               style: "currency",
               currency: "INR",
@@ -240,21 +226,13 @@ function Product() {
           <p className="product__deliverydate">{deliveryDate}</p>
         </div>
         <div className="product__div">
-          <label className="product__label">
-            {t("product.fastestDelivery")}:
-          </label>
+          <label className="product__label">{t("product.fastestDelivery")}:</label>
           <p>{t("product.tomorrow")} 3pm</p>
         </div>
         <div className="product__div">
           <label className="product__size">{t("product.size")}</label>
 
-          <select
-            name=""
-            id=""
-            className="product__select"
-            onChange={changeSize}
-            value={size}
-          >
+          <select name="" id="" className="product__select" onChange={changeSize} value={size}>
             <option>Select size</option>
             <option value="S">S</option>
             <option value="M">M</option>
