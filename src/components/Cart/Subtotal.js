@@ -69,7 +69,6 @@ export default function Subtotal() {
   const [totalAmount, setTotalAmount] = useState(0);
   const [t] = useTranslation("common");
 
-  setTimeout(function () {});
   useEffect(() => {
     let count = 0;
     let totalmrp = 0;

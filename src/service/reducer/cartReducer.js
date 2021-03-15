@@ -3,10 +3,12 @@ import {
   MODIFY_ITEM_QUANTITY,
   MODIFY_ITEM_SIZE,
   REMOVE_FROM_BAG,
+  ADD_TO_WISHLIST,
 } from "../../constant/properties";
 
 const initialState = {
   cart: [],
+  wishlist: [],
 };
 
 function productReducer(state = initialState, action) {
@@ -48,6 +50,18 @@ function productReducer(state = initialState, action) {
         ...state,
         cart: newBag,
       };
+    case ADD_TO_WISHLIST:
+      let cartArr = [...state.cart];
+      let wishlistArr = [...state.wishlist];
+      const indexofProduct = state.cart.findIndex((bagItem) => {
+        return bagItem.data.productId === action.productId;
+      });
+
+      if (indexofProduct > -1) {
+        wishlistArr.push(cartArr[indexofProduct]);
+        cartArr.splice(indexofProduct, 1);
+      }
+      return { ...state, cart: cartArr, wishlist: wishlistArr };
 
     default:
       return { ...state };
