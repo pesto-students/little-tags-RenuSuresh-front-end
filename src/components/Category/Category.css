@@ -1,5 +1,5 @@
 .category {
-  min-height: calc(70vh);
+  min-height: calc(60vh);
   margin-right: 4rem;
 }
 .category__error > img {
@@ -16,4 +16,8 @@
   font-size: medium;
   border: 1px solid var(--clr-primary);
   cursor: pointer;
+}
+
+.checkbox {
+  background: "green";
 }
