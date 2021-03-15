@@ -80,7 +80,7 @@ function Row({ category }) {
         </Backdrop>
       )}
       {!isLoading && (
-        <Grid item md={12} container spacing={3} direction="column" className={classes.root}>
+        <Grid item md={12} container spacing={3} direction="column" className={classes.root} justify="center">
           {categoryRow.length > 0 ? (
             categoryRow.map((mapProduct) => (
               <Grid spacing={3} item xs={12} sm={6} md={3} lg={3}>
