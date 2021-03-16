@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -26,12 +26,14 @@ import { createSelector } from "reselect";
 import { SET_SELECTED_ADDRESS } from "../../constant/properties";
 import { makeStyles } from "@material-ui/core/styles";
 import "./AddressModal.css";
+import AddAddressModal from "./AddAddressModal";
 
 const useStyles = makeStyles((theme) => ({
   button: {
     backgroundColor: "#0c0351",
     fontSize: "1.1em",
     fontWeight: "600",
+    marginTop: "3em",
   },
   root: {
     width: "100%",
@@ -44,6 +46,13 @@ const useStyles = makeStyles((theme) => ({
   name: {
     fontWeight: 600,
   },
+  horizontal: {
+    minWidth: "-webkit-fill-available",
+  },
+  horizontalFull: {
+    minWidth: "-webkit-fill-available",
+    height: "0.6em",
+  },
 }));
 
 const allSelectors = createSelector(
@@ -55,7 +64,11 @@ function AddressModalIndex({ handleMenuClose }) {
   const [t] = useTranslation("common");
   const dispatch = useDispatch();
   const commAddress = useSelector(allSelectors);
+  const [isAddAddress, setIsAddAddress] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
   const classes = useStyles();
+  let cartAddress = {};
 
   const handleClose = () => {
     handleMenuClose();
@@ -69,6 +82,25 @@ function AddressModalIndex({ handleMenuClose }) {
       handleClose();
     }, 1000);
   };
+  const addr = commAddress.addressReducer.selectedAddress.id;
+  if (addr) {
+    cartAddress = commAddress.addressReducer.selectedAddress;
+  } else {
+    const defaultaddr = commAddress.addressReducer.addressData.filter(
+      (add) => add.default
+    );
+    cartAddress = defaultaddr[0];
+  }
+
+  const handleAddAddressClose = () => {
+    setIsAddAddress(false);
+    setAnchorEl(null);
+  };
+
+  const handleAddAddressOpen = (event) => {
+    setIsAddAddress(true);
+    setAnchorEl(event.currentTarget);
+  };
 
   return (
     <React.Fragment>
@@ -80,7 +112,12 @@ function AddressModalIndex({ handleMenuClose }) {
         aria-labelledby="max-width-dialog-title"
       >
         <DialogTitle id="max-width-dialog-title">
-          <span style={{ color: "var(--clr-primary)", fontWeight: "600" }}>
+          <span
+            style={{
+              color: "var(--clr-primary)",
+              fontWeight: "600",
+            }}
+          >
             CHANGE DELIVERY ADDRESS
           </span>
 
@@ -102,7 +139,13 @@ function AddressModalIndex({ handleMenuClose }) {
                   <ListItem alignItems="flex-start">
                     <FormControlLabel
                       value={address.id}
-                      control={<Radio color="primary" />}
+                      control={
+                        <Radio
+                          color="primary"
+                          size="small"
+                          checked={address.id == cartAddress.id}
+                        />
+                      }
                     />
 
                     <ListItemText
@@ -131,16 +174,29 @@ function AddressModalIndex({ handleMenuClose }) {
                       }
                     />
                   </ListItem>
-                  <Divider variant="inset" component="li" />
+
+                  {i < commAddress.addressReducer.addressData.length - 1 && (
+                    <Divider
+                      variant="inset"
+                      component="li"
+                      className={classes.horizontal}
+                    />
+                  )}
                 </>
               ))}
             </RadioGroup>
           </List>
+          <Divider
+            variant="fullWidth"
+            component="hr"
+            className={classes.horizontalFull}
+          />
           <Button
             variant="contained"
             color="secondary"
             size="small"
             className={classes.button}
+            onClick={handleAddAddressOpen}
           >
             <span className="address__placeOrder">
               {t(`address.addAddress`)}
@@ -148,6 +204,9 @@ function AddressModalIndex({ handleMenuClose }) {
           </Button>
         </DialogContent>
       </Dialog>
+      {isAddAddress && (
+        <AddAddressModal handleAddAddressClose={handleAddAddressClose} />
+      )}
     </React.Fragment>
   );
 }

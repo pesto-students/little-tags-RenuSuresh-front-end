@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { LOGO_IMG } from "../../constant/properties";
+import LOGO_IMG from "../../assets/images/logo.png";
 
 function Logo() {
   return (

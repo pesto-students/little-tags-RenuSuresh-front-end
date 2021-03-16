@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import AddressModalIndex from "../AddressModal";
 import { createSelector } from "reselect";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,6 +37,10 @@ const useStyles = makeStyles((theme) => ({
   },
   deliverTo: {
     marginBottom: "0.6em",
+    textTransform: "capitalize",
+    fontSize: "2em",
+    color: "#0c0351",
+    fontWeight: "600",
   },
 }));
 
@@ -49,6 +54,8 @@ function AddressBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const commAddress = useSelector(allSelectors);
+  const [t] = useTranslation("common");
+
   let cartAddress = {};
 
   const handleProfileMenuOpen = (event) => {
@@ -76,7 +83,7 @@ function AddressBar() {
       <Card className={classes.root} variant="outlined">
         <CardContent className={classes.addressCard}>
           <Typography variant="h5" component="h2" className={classes.deliverTo}>
-            Deliver To
+            {t(`cart.deliverTo`)}
           </Typography>
 
           <>
