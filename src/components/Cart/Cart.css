@@ -1,5 +1,6 @@
 .cart {
   min-height: calc(70vh);
+  margin: 0rem 12rem 0rem 12rem;
 }
 .cart__quantity {
   margin-left: 0rem;

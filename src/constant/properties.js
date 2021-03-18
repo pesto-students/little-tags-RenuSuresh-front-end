@@ -14,6 +14,8 @@ import arrival8 from "../assets/images/arrival8.png";
 import slide_1 from "../assets/images/slide_1.webp";
 import slide_2 from "../assets/images/slide_2.webp";
 import slide_3 from "../assets/images/slide_3.webp";
+import PhonePeImage from "../assets/images/phone-pe.png";
+import GooglePayImage from "../assets/images/google-pay.png";
 
 export const LANG_OPTION = ["english", "hindi"];
 export const LOGO_IMG = "https://cdn.worldvectorlogo.com/logos/arrow-2.svg";
@@ -121,3 +123,7 @@ export const ERRORS = {
 };
 
 export const SELECT_SIZE = "Select size";
+export const PAY_WITH_UPI = [
+  { id: 1, type: "PhonePe", image: PhonePeImage },
+  { id: 2, type: "Google Pay", image: GooglePayImage },
+];

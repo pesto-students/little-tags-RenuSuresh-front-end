@@ -7,6 +7,8 @@ import FooterIndex from "./components/Footer";
 import CategoryIndex from "./components/Category";
 import ProductIndex from "./components/Product";
 import CartIndex from "./components/Cart";
+import PaymentIndex from "./components/Checkout";
+import ThankYouIndex from "./components/ThankYou";
 function App() {
   return (
     <Suspense fallback="loading">
@@ -26,6 +28,16 @@ function App() {
             <Route path="/cart">
               <Header />
               <CartIndex />
+              <FooterIndex />
+            </Route>
+            <Route path="/payment">
+              <Header />
+              <PaymentIndex />
+              <FooterIndex />
+            </Route>
+            <Route path="/orderPlacedSuccessfully">
+              <Header />
+              <ThankYouIndex />
               <FooterIndex />
             </Route>
             <Route path="/">

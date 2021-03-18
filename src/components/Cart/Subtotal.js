@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
   root: {
@@ -68,6 +69,7 @@ export default function Subtotal() {
   const [totalDiscount, setTotalDiscount] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [t] = useTranslation("common");
+  const history = useHistory();
 
   useEffect(() => {
     let count = 0;
@@ -84,6 +86,9 @@ export default function Subtotal() {
     setTotalAmount(sellingPrice);
   }, [cart]);
 
+  const goToPayment = () => {
+    history.push("/payment");
+  };
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -144,6 +149,7 @@ export default function Subtotal() {
           color="secondary"
           size="small"
           className={classes.button}
+          onClick={goToPayment}
         >
           <span className="cart__placeOrder">{t(`cart.placeOrder`)}</span>
         </Button>
