@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import AddressModalIndex from "../AddressModal";
 import { createSelector } from "reselect";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -17,56 +13,29 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     margin: "2rem 2rem 2rem 2rem",
     padding: theme.spacing(2),
+    "@media only screen and (max-width: 770px)": {
+      width: "80%",
+    },
   },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-  addressCard: {
-    paddingLeft: 40,
-  },
-  name: {
-    fontWeight: 600,
-  },
+
   deliverTo: {
     marginBottom: "0.6em",
     textTransform: "capitalize",
-    fontSize: "2em",
-    color: "#0c0351",
+    fontSize: "0.9em",
+    color: "#184f80",
     fontWeight: "600",
   },
 }));
-
 const allSelectors = createSelector(
   (state) => state,
   (state) => state
 );
-
-function AddressBar() {
+function Address() {
   const classes = useStyles();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const commAddress = useSelector(allSelectors);
   const [t] = useTranslation("common");
+  const commAddress = useSelector(allSelectors);
 
   let cartAddress = {};
-
-  const handleProfileMenuOpen = (event) => {
-    setIsLoggedIn(true);
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setIsLoggedIn(false);
-    setAnchorEl(null);
-  };
 
   const addr = commAddress.addressReducer.selectedAddress.id;
   if (addr) {
@@ -79,11 +48,11 @@ function AddressBar() {
   }
 
   return (
-    <>
+    <div>
       <Card className={classes.root} variant="outlined">
         <CardContent className={classes.addressCard}>
           <Typography variant="h5" component="h2" className={classes.deliverTo}>
-            {t(`cart.deliverTo`)}
+            SELECTED ADDRESS
           </Typography>
 
           <>
@@ -98,20 +67,9 @@ function AddressBar() {
             </Typography>
           </>
         </CardContent>
-        <CardActions>
-          <Button
-            variant="outlined"
-            color="primary"
-            size="small"
-            onClick={handleProfileMenuOpen}
-          >
-            Add/ Change Address
-          </Button>
-        </CardActions>
       </Card>
-      {isLoggedIn && <AddressModalIndex handleMenuClose={handleMenuClose} />}
-    </>
+    </div>
   );
 }
 
-export default AddressBar;
+export default Address;
