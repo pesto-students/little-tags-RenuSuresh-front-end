@@ -91,6 +91,9 @@ const useStyles = makeStyles((theme) => ({
     color: "#535559",
     fontWeight: "600",
   },
+  titleText: {
+    fontSize: "0.8em",
+  },
 }));
 
 const allSelectors = createSelector(
@@ -168,7 +171,15 @@ function CheckoutDetails() {
                   />
                 </ListItemAvatar>
                 <ListItemText
-                  primary={item.data.title}
+                  primary={
+                    <Typography
+                      component="body1"
+                      variant="span"
+                      className={classes.titleText}
+                    >
+                      {item.data.title}
+                    </Typography>
+                  }
                   secondary={
                     <React.Fragment>
                       <Typography

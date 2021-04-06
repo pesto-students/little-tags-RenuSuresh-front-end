@@ -9,7 +9,7 @@ function Contact() {
     <>
       <div className="footer__contact">
         <h3>{t(`footer.contactDetails`)}</h3>
-        <pre>{CONTACT_DETAILS}</pre>
+        <pre className="footer__contact__details">{CONTACT_DETAILS}</pre>
       </div>
     </>
   );

@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "var(--clr-primary)",
     color: "white",
     fontWeight: 600,
+    borderRadius: 0,
     "@media (min-width: 600px)": {
       marginBottom: "1rem",
     },
@@ -56,6 +57,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "2rem",
     backgroundColor: "#d5d4d4",
     color: "black",
+    borderRadius: 0,
+
     "@media (min-width: 600px)": {
       marginBottom: "1rem",
     },
@@ -99,7 +102,9 @@ function Product() {
     setImage(productDetails.image);
     let cartItem = product.cartReducer.cart;
 
-    const cartItems = cartItem.filter((item) => item.data.productId === productDetails.productId);
+    const cartItems = cartItem.filter(
+      (item) => item.data.productId === productDetails.productId
+    );
 
     if (cartItems.length > 0) {
       setEnableAddBtn(false);
@@ -159,7 +164,11 @@ function Product() {
           ))}
       </div>
       <Paper className={classes.paper} elevation={3}>
-        <img src={image} alt={productDetails.title} className="product__image" />
+        <img
+          src={image}
+          alt={productDetails.title}
+          className="product__image"
+        />
       </Paper>
     </Grid>
   );
@@ -173,7 +182,13 @@ function Product() {
           </Typography>
         </div>
         <div style={{ display: "flex" }}>
-          <Rating name="half-rating-read" size="small" defaultValue={4.5} precision={0.5} readOnly />
+          <Rating
+            name="half-rating-read"
+            size="small"
+            defaultValue={4.5}
+            precision={0.5}
+            readOnly
+          />
           <Typography variant="h6">
             {productDetails.averageRating}/{productDetails.totalRating}
           </Typography>
@@ -181,13 +196,21 @@ function Product() {
         <div>
           <>
             <div className="product__div">
-              <p style={{ color: "#8E8A8A", fontSize: "1.25rem" }}>MRP:</p>
+              <p
+                style={{
+                  color: "#8E8A8A",
+                  fontSize: "1.25rem",
+                }}
+              >
+                MRP:
+              </p>
               <p
                 style={{
                   textDecorationLine: "line-through",
                   textDecorationStyle: "solid",
                   color: "#8E8A8A",
                   fontSize: "1.25rem",
+                  marginRight: "1em",
                 }}
               >
                 ₹{productDetails.actualPrice}
@@ -208,7 +231,9 @@ function Product() {
         <div className="product__div">
           <label className="product__label">{t("product.yourSavings")}:</label>
           <p>
-            {(productDetails.actualPrice - productDetails.sellingPrice).toLocaleString("en-IN", {
+            {(
+              productDetails.actualPrice - productDetails.sellingPrice
+            ).toLocaleString("en-IN", {
               maximumFractionDigits: 2,
               style: "currency",
               currency: "INR",
@@ -217,8 +242,17 @@ function Product() {
           </p>
         </div>
 
-        <div style={{ margin: "0.9rem" }}>
-          <label className="product__label">{t("product.description")}:</label>
+        <div
+          className="product__div"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "baseline",
+          }}
+        >
+          <label className="product__label" style={{ marginBottom: "0.5em" }}>
+            {t("product.description")}:
+          </label>
           <p className="product__descr">{productDetails.description}</p>
         </div>
         <div className="product__div">
@@ -226,13 +260,21 @@ function Product() {
           <p className="product__deliverydate">{deliveryDate}</p>
         </div>
         <div className="product__div">
-          <label className="product__label">{t("product.fastestDelivery")}:</label>
+          <label className="product__label">
+            {t("product.fastestDelivery")}:
+          </label>
           <p>{t("product.tomorrow")} 3pm</p>
         </div>
         <div className="product__div">
           <label className="product__size">{t("product.size")}</label>
 
-          <select name="" id="" className="product__select" onChange={changeSize} value={size}>
+          <select
+            name=""
+            id=""
+            className="product__select"
+            onChange={changeSize}
+            value={size}
+          >
             <option>Select size</option>
             <option value="S">S</option>
             <option value="M">M</option>

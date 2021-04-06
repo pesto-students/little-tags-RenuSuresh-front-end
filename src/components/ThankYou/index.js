@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ThankYou.css";
-import shipping from "../../assets/images/shipping.png";
+import shipping from "../../assets/images/shipping.webp";
 import { Grid, Typography, Button } from "@material-ui/core";
 import { classes } from "istanbul-lib-coverage";
 import { makeStyles } from "@material-ui/styles";

@@ -35,7 +35,9 @@
     "language": {
       "english": "अंग्रेजी",
       "hindi": "हिंदी"
-    }
+    },
+    "wishlist": "इच्छा-सूची",
+    "orderHistory": "ऑर्डर का इतिहास"
   },
 
   "footer": {

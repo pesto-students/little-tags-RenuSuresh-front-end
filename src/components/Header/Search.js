@@ -58,6 +58,9 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  iconColor: {
+    color: "#3c6787",
+  },
 }));
 function Search({ getSearch, initialSearch }) {
   const classes = useStyles();
@@ -100,8 +103,8 @@ function Search({ getSearch, initialSearch }) {
       <div
         className={classes.search}
         style={{
-          background: "#f4f1f1",
-          boxShadow: "0px 4px 4px rgb(0 0 0 / 25%)",
+          background: "#e0e4e5",
+          // boxShadow: "0px 4px 4px rgb(0 0 0 / 25%)",
         }}
       >
         <InputBase
@@ -122,7 +125,7 @@ function Search({ getSearch, initialSearch }) {
           }}
         />
         <span onClick={handleSearch} className="header__search__button">
-          <SearchIcon />
+          <SearchIcon className={classes.iconColor} fontSize="small" />
         </span>
       </div>
     </div>

@@ -9,7 +9,7 @@ function QuickLinks() {
     <>
       <div className="footer__quicklinks">
         <h3>{t(`footer.quickLinks`)}</h3>
-        <ul>
+        <ul className="footer__contact__details">
           <li>{t("header.category.men")}</li>
           <li> {t("header.category.women")}</li>
           <li>{t("header.category.electronics")}</li>

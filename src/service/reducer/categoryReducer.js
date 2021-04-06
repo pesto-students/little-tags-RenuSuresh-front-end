@@ -1,7 +1,8 @@
-import { SET_CATEGORY } from "../../constant/properties";
+import { SET_CATEGORY, SET_FILTER } from "../../constant/properties";
 
 const initialState = {
   categoryData: [],
+  category: [],
 };
 
 function categoryReducer(state = initialState, action) {
@@ -10,6 +11,11 @@ function categoryReducer(state = initialState, action) {
       return {
         ...state,
         categoryData: action.data,
+      };
+    case SET_FILTER:
+      return {
+        ...state,
+        category: action.data,
       };
     default:
       return { ...state };

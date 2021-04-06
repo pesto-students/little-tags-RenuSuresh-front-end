@@ -35,7 +35,9 @@
     "language": {
       "english": "English",
       "hindi": "Hindi"
-    }
+    },
+    "wishlist": "Wishlist",
+    "orderHistory": "Order history"
   },
   "footer": {
     "contactDetails": "Contact details",
@@ -55,7 +57,7 @@
   "product": {
     "yourSavings": "Your savings",
     "freeDelivery": "Free delivery",
-    "fastestDelivery": "Fastest delivery",
+    "fastestDelivery": "Express delivery",
     "tomorrow": "Tomorrow",
     "addToBag": "Add to bag",
     "addToWishlist": "Add to wishlist",

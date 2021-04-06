@@ -1,7 +1,16 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "./Category.css";
-import { Checkbox, FormLabel, FormControl, FormControlLabel, FormGroup, Grid } from "@material-ui/core/";
+import {
+  Checkbox,
+  FormLabel,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  Grid,
+} from "@material-ui/core/";
+import { useDispatch } from "react-redux";
+import { SET_FILTER } from "../../constant/properties";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 function CheckBoxesGroup() {
   const [brand, setBrand] = React.useState([]);
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     let target = event.target;
@@ -30,21 +40,36 @@ function CheckBoxesGroup() {
       }
     });
   };
+  dispatch({ type: SET_FILTER, data: brand });
 
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Grid item md={3} lg={3}>
-        <FormLabel component="legend">Filters</FormLabel>
         <FormControl component="fieldset" className={classes.formControl}>
           <FormLabel component="legend">Brand</FormLabel>
           <FormGroup>
-            <FormControlLabel control={<Checkbox onChange={handleChange} value="nike" />} label="nike" />
-            <FormControlLabel control={<Checkbox onChange={handleChange} value="puma" />} label="puma" />
-            <FormControlLabel control={<Checkbox onChange={handleChange} value="dressberry" />} label="dressberry" />
-            <FormControlLabel control={<Checkbox onChange={handleChange} value="octave" />} label="octave" />
-            <FormControlLabel control={<Checkbox onChange={handleChange} value="roadster" />} label="roadster" />
+            <FormControlLabel
+              control={<Checkbox onChange={handleChange} value="nike" />}
+              label="nike"
+            />
+            <FormControlLabel
+              control={<Checkbox onChange={handleChange} value="puma" />}
+              label="puma"
+            />
+            <FormControlLabel
+              control={<Checkbox onChange={handleChange} value="dressberry" />}
+              label="dressberry"
+            />
+            <FormControlLabel
+              control={<Checkbox onChange={handleChange} value="octave" />}
+              label="octave"
+            />
+            <FormControlLabel
+              control={<Checkbox onChange={handleChange} value="roadster" />}
+              label="roadster"
+            />
           </FormGroup>
         </FormControl>
       </Grid>
