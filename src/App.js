@@ -9,6 +9,8 @@ import ProductIndex from "./components/Product";
 import CartIndex from "./components/Cart";
 import PaymentIndex from "./components/Checkout";
 import ThankYouIndex from "./components/ThankYou";
+import HistoryIndex from "./components/History";
+import WishlistIndex from "./components/Wishlist";
 function App() {
   return (
     <Suspense fallback="loading">
@@ -38,6 +40,16 @@ function App() {
             <Route path="/orderPlacedSuccessfully">
               <Header />
               <ThankYouIndex />
+              <FooterIndex />
+            </Route>
+            <Route path="/history">
+              <Header />
+              <HistoryIndex />
+              <FooterIndex />
+            </Route>
+            <Route path="/wishlist">
+              <Header />
+              <WishlistIndex />
               <FooterIndex />
             </Route>
             <Route path="/">

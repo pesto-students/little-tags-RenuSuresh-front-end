@@ -1,0 +1,30 @@
+.history {
+  min-height: calc(70vh);
+  margin: 4rem;
+}
+
+.address__header {
+  display: flex;
+  margin-bottom: 2em;
+  margin-left: 2.5em;
+}
+.address__col {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  margin-right: 5em;
+}
+
+.address__p {
+  font-size: 0.8rem;
+}
+.address__label {
+  font-weight: 800;
+  font-size: 0.99rem;
+}
+
+.product__buyagain {
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+}
