@@ -1,0 +1,23 @@
+.wishlist {
+  min-height: calc(70vh);
+  margin: 4rem;
+}
+.wishlist__title {
+  display: flex;
+  justify-content: center;
+}
+.wishlist__product {
+  display: flex;
+  justify-content: center;
+}
+
+.wishlist__product__label {
+  font-size: 0.8em;
+}
+
+.wishlist__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -4em;
+}
