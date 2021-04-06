@@ -15,8 +15,8 @@ Enzyme.configure({ adapter: new Adapter() });
 const { mount } = Enzyme;
 
 describe("<Footer />", () => {
-  it("should render snapshot", () => {
-    const tree = renderer.create(<Footer />).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+  // it("should render snapshot", () => {
+  //   const tree = renderer.create(<Footer />).toJSON();
+  //   expect(tree).toMatchSnapshot();
+  // });
 });

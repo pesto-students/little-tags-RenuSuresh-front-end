@@ -17,6 +17,8 @@ import LanguageIcon from "@material-ui/icons/Language";
 import Badge from "@material-ui/core/Badge";
 import "./Header.css";
 import LoginIndex from "../Login";
+import Login from "../Login/Login";
+
 import Category from "./Category";
 import { useSelector } from "react-redux";
 import Search from "./Search";
@@ -24,7 +26,16 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import option from "./searchOption.json";
 import { useHistory } from "react-router-dom";
-
+import MenuItems from "./MenuItems";
+import Tooltip from "@material-ui/core/Tooltip";
+import Button from "@material-ui/core/Button";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Grow from "@material-ui/core/Grow";
+import Paper from "@material-ui/core/Paper";
+import Popper from "@material-ui/core/Popper";
+import MenuList from "@material-ui/core/MenuList";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import HistoryIcon from "@material-ui/icons/History";
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -69,7 +80,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   iconColor: {
-    color: "#343333",
+    color: "#03045e",
+    fontSize: "0.8em",
+  },
+  overlap: {
+    zIndex: 1,
   },
 }));
 
@@ -79,6 +94,10 @@ function HeaderIndex() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [search, setSearch] = useState("");
   const [display, setDisplay] = useState(false);
+  const [showLang, setShowLang] = useState(false);
+
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
 
   const user = useSelector((state) => state);
   const login = t("header.user.login");
@@ -87,8 +106,10 @@ function HeaderIndex() {
   const history = useHistory();
 
   const changeLang = (event) => {
-    const l = LANG_OPTION[event.target.options.selectedIndex].toLowerCase();
-
+    const l =
+      event.target != undefined
+        ? LANG_OPTION[event.target.options.selectedIndex].toLowerCase()
+        : LANG_OPTION[event].toLowerCase();
     setLang(t(`header.language.${l}`));
     i18n.changeLanguage(l);
     handleMobileMenuClose();
@@ -126,6 +147,30 @@ function HeaderIndex() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpen(false);
+    }
+  }
+  const handleLang = (key) => {
+    changeLang(key);
+    setOpen(false);
+  };
+
   const searchDropDown = (
     <div className="header__searchdropdown">
       {option
@@ -215,6 +260,27 @@ function HeaderIndex() {
         </IconButton>
         <p>{cart.length}</p>
       </MenuItem>
+
+      <MenuItem>
+        <IconButton
+          aria-label="account of current user"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <FavoriteIcon className={classes.iconColor} />
+        </IconButton>
+        <p>{t(`header.wishlist`)}</p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton
+          aria-label="account of current user"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <HistoryIcon className={classes.iconColor} />
+        </IconButton>
+        <p>{t(`header.orderHistory`)}</p>
+      </MenuItem>
       <MenuItem>
         <div className={classes.formControl}>
           <div
@@ -260,44 +326,17 @@ function HeaderIndex() {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <div variant="filled" className={classes.formControl}>
-              <LanguageIcon fontSize="small" className={classes.iconColor} />
-
-              <select
-                defaultValue={lang}
-                onChange={(e) => changeLang(e)}
-                className="header__translate"
-              >
-                {LANG_OPTION.map((lan, key) => (
-                  <option value={lan} key={key}>
-                    {t(`header.language.${lan}`)}
-                  </option>
-                ))}
-              </select>
-            </div>
-
             <IconButton
-              edge="end"
-              aria-label="account of current user"
+              ref={anchorRef}
+              aria-controls={open ? "menu-list-grow" : undefined}
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
+              onClick={handleToggle}
             >
-              <span
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <AccountCircle className={classes.iconColor} />
-              </span>
+              <Tooltip title="Change Language">
+                <LanguageIcon className={classes.iconColor} />
+              </Tooltip>
             </IconButton>
-            <label className="header__user__label">
-              {user.userReducer.userData
-                ? user.userReducer.userData
-                : `${login}/${signup}`}
-            </label>
+
             <Link to="/cart" style={{ textDecoration: "none", color: "black" }}>
               <IconButton
                 edge="end"
@@ -310,9 +349,68 @@ function HeaderIndex() {
                 </Badge>
               </IconButton>
             </Link>
-            <IconButton edge="end" aria-haspopup="true" color="inherit">
-              <MenuIcon className={classes.iconColor} />
+
+            <IconButton
+              edge="end"
+              aria-label="account of current user"
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              <Tooltip
+                title={
+                  user.userReducer.userData
+                    ? user.userReducer.userData
+                    : `${login}/ ${signup}`
+                }
+              >
+                <AccountCircle className={classes.iconColor} />
+              </Tooltip>
             </IconButton>
+
+            <MenuItems />
+
+            {/* popper start */}
+
+            <Popper
+              open={open}
+              anchorEl={anchorRef.current}
+              role={undefined}
+              transition
+              disablePortal
+              className={classes.overlap}
+            >
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{
+                    transformOrigin:
+                      placement === "bottom" ? "center top" : "center bottom",
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleClose}>
+                      <MenuList
+                        autoFocusItem={open}
+                        id="menu-list-grow"
+                        onKeyDown={handleListKeyDown}
+                      >
+                        {LANG_OPTION.map((lan, key) => (
+                          <MenuItem
+                            value={lan}
+                            key={key}
+                            onClick={() => handleLang(key)}
+                          >
+                            {t(`header.language.${lan}`)}
+                          </MenuItem>
+                        ))}
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
+            {/* popper  end */}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -327,6 +425,7 @@ function HeaderIndex() {
         </Toolbar>
       </AppBar>
       {isLoggedIn && <LoginIndex handleMenuClose={handleMenuClose} />}
+
       {renderMobileMenu}
       {!isLoggedIn && renderMenu}
       <div

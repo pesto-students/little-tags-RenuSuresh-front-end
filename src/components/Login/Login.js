@@ -11,20 +11,13 @@ import CloseIcon from "@material-ui/icons/Close";
 import { useTranslation } from "react-i18next";
 import { facebookProvider, googleProvider } from "../../config/authMethod";
 import socialMediaAuth from "../../service/auth";
-import { makeStyles } from "@material-ui/core";
 import "./Login.css";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import { SET_USER } from "../../constant/properties";
-
-const useStyles = makeStyles((theme) => ({
-  shade: {
-    backgroundImage: "linear-gradient(to bottom right, #c4c1e9, #ffffff)",
-  },
-}));
-function LoginIndex({ handleMenuClose }) {
+function Login({ handleMenuClose }) {
   const [t] = useTranslation("common");
   const dispatch = useDispatch();
-  const classes = useStyles();
+
   const handleLogin = async (provider) => {
     const res = await socialMediaAuth(provider);
     dispatch({ type: SET_USER, data: res.providerData[0].displayName });
@@ -36,7 +29,7 @@ function LoginIndex({ handleMenuClose }) {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <Dialog
         fullWidth={true}
         maxWidth={"sm"}
@@ -76,14 +69,15 @@ function LoginIndex({ handleMenuClose }) {
             </div>
             <div class="col-right">
               <div class="login-form">
+                {/* <h2>Login</h2> */}
                 <form>
-                  <p className="login__form">
-                    <input type="text" placeholder="Email" required />
+                  <p>
+                    <input type="text" placeholder="Username" required />
                   </p>
-                  <p className="login__form">
+                  <p>
                     <input type="password" placeholder="Password" required />
                   </p>
-                  <p className="login__form">
+                  <p>
                     <input class="btn" type="submit" value="Sign In" />
                   </p>
                 </form>
@@ -92,8 +86,9 @@ function LoginIndex({ handleMenuClose }) {
           </div>
         </DialogContent>
       </Dialog>
-    </React.Fragment>
+      <div class="wrapper"></div>
+    </div>
   );
 }
 
-export default LoginIndex;
+export default Login;

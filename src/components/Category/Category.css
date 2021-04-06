@@ -21,3 +21,8 @@
 .checkbox {
   background: "green";
 }
+
+.category__percentage {
+  color: green;
+  font-weight: 600;
+}

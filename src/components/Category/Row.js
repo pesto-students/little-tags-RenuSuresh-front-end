@@ -13,7 +13,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Backdrop from "@material-ui/core/Backdrop";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SET_PRODUCT, SET_CATEGORY } from "../../constant/properties";
 import Error from "./Error";
 import "./Category.css";
@@ -23,6 +23,8 @@ function Row({ category }) {
   const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
   const dispatch = useDispatch();
+  const { categoryReducer } = useSelector((state) => state);
+  const filterByBrand = categoryReducer.category;
 
   useEffect(() => {
     fetch("https://arrow-shopping-site.herokuapp.com/api/product")
@@ -35,7 +37,15 @@ function Row({ category }) {
       });
   }, [category, dispatch]);
 
-  const categoryRow = product.filter((Product) => Product.category === category);
+  const categoryRow = product.filter((Product) => {
+    if (filterByBrand.length > 0) {
+      return (
+        filterByBrand.includes(Product.brand) && Product.category == category
+      );
+    } else {
+      return Product.category == category;
+    }
+  });
 
   const useStyles = makeStyles({
     root: {
@@ -75,16 +85,32 @@ function Row({ category }) {
   return (
     <>
       {isLoading && (
-        <Backdrop className={classesBackdrop.backdrop} open={isLoading} invisible={true}>
+        <Backdrop
+          className={classesBackdrop.backdrop}
+          open={isLoading}
+          invisible={true}
+        >
           <CircularProgress className={classes.spinner} />
         </Backdrop>
       )}
       {!isLoading && (
-        <Grid item md={12} container spacing={3} direction="column" className={classes.root} justify="center">
+        <Grid
+          item
+          md={12}
+          container
+          spacing={3}
+          direction="column"
+          className={classes.root}
+          justify="center"
+        >
           {categoryRow.length > 0 ? (
             categoryRow.map((mapProduct) => (
               <Grid spacing={3} item xs={12} sm={6} md={3} lg={3}>
-                <Card className={classes.Card} onClick={() => getProduct(mapProduct)} style={{ height: "fit-content" }}>
+                <Card
+                  className={classes.Card}
+                  onClick={() => getProduct(mapProduct)}
+                  style={{ height: "fit-content" }}
+                >
                   <CardActionArea className={classes.CardActionArea}>
                     <CardMedia
                       component="img"
@@ -92,7 +118,9 @@ function Row({ category }) {
                       image={mapProduct.image}
                       style={{ maxHeight: "460px", maxWidth: "450px" }}
                     />
-                    <CardContent style={{ maxHeight: "650px", maxWidth: "450px" }}>
+                    <CardContent
+                      style={{ maxHeight: "650px", maxWidth: "450px" }}
+                    >
                       <Typography gutterBottom component="h2" noWrap="true">
                         {mapProduct.title}
                       </Typography>
@@ -128,7 +156,11 @@ function Row({ category }) {
                             currency: "INR",
                           })}
                         </text>
-                        <text size="small" color="primary">
+                        <text
+                          size="small"
+                          color="primary"
+                          className="category__percentage"
+                        >
                           {mapProduct.discountPercentage} % off
                         </text>
                       </CardActions>

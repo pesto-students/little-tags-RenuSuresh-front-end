@@ -5,15 +5,23 @@ import { SLIDE_INFO } from "../../constant/properties";
 import Box from "@material-ui/core/Box";
 import Fade from "@material-ui/core/Fade";
 import Paper from "@material-ui/core/Paper";
+import { makeStyles } from "@material-ui/core";
 
 const dataPerPage = 3;
 
 const durationEnter = 1500;
 const durationExit = 500;
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    width: "fit-content",
+  },
+}));
 function CarouselTestIndex() {
   const [currentSlide, setcurrentSlide] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages] = useState(Math.ceil(SLIDE_INFO.length / dataPerPage));
+  const classes = useStyles();
 
   const getChangeOfPage = useCallback(() => {
     if (currentSlide === 0) return 1;
@@ -75,7 +83,7 @@ function CarouselTestIndex() {
               in={index === currentSlide}
               timeout={{ enter: durationEnter, exit: durationExit }}
             >
-              <Paper elevation={2} className="paper">
+              <Paper elevation={2} className={classes.paper}>
                 <img
                   src={d.backgroundImage}
                   alt={d.backgroundImage}

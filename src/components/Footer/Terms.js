@@ -10,7 +10,7 @@ function Terms() {
       <div className="footer__terms">
         <h3>{t(`footer.policy`)}</h3>
 
-        <ul>
+        <ul className="footer__contact__details">
           <li>{t(`footer.terms`)}</li>
           <li>{t(`footer.shipping`)}</li>
           <li>{t(`footer.cancel`)}</li>

@@ -65,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "1em 0em 5em 3em",
     // width: "6em",
     marginLeft: "auto",
+    borderRadius: 0,
     "@media only screen and (max-width: 770px)": {
       width: "60%",
       marginLeft: "auto",

@@ -11,9 +11,10 @@ import watch_1 from "../assets/images/watch_1.jpg";
 import arrival1 from "../assets/images/arrival1.png";
 import arrival6 from "../assets/images/arrival6.png";
 import arrival8 from "../assets/images/arrival8.png";
-import slide_1 from "../assets/images/slide_1.webp";
-import slide_2 from "../assets/images/slide_2.webp";
-import slide_3 from "../assets/images/slide_3.webp";
+import slide_4 from "../assets/images/slide_4.webp";
+import slide_5 from "../assets/images/slide_5.webp";
+import slide_6 from "../assets/images/slide_6.jpg";
+
 import PhonePeImage from "../assets/images/phone-pe.png";
 import GooglePayImage from "../assets/images/google-pay.png";
 
@@ -32,6 +33,7 @@ export const REMOVE_FROM_BAG = "REMOVE_FROM_BAG";
 export const ADD_TO_WISHLIST = "ADD_TO_WISHLIST";
 export const SET_ADDRESS = "SET_ADDRESS";
 export const SET_SELECTED_ADDRESS = "SET_SELECTED_ADDRESS";
+export const SET_FILTER = "SET_FILTER";
 
 export const HOME_CATEGORY = [
   {
@@ -108,13 +110,13 @@ export const HOME_CATEGORY = [
 
 export const SLIDE_INFO = [
   {
-    backgroundImage: slide_1,
+    backgroundImage: slide_4,
   },
   {
-    backgroundImage: slide_2,
+    backgroundImage: slide_5,
   },
   {
-    backgroundImage: slide_3,
+    backgroundImage: slide_6,
   },
 ];
 

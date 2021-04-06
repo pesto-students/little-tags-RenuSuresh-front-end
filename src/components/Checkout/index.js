@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "column-reverse",
     },
   },
+  alignRight: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
 }));
 
 export default function PaymentIndex() {
@@ -42,7 +46,7 @@ export default function PaymentIndex() {
             <PaymentOption />
           </Grid>
         </Grid>
-        <Grid item xs={6} md={5}>
+        <Grid item xs={6} md={5} className={classes.alignRight}>
           <CheckoutDetails />
         </Grid>
       </Grid>

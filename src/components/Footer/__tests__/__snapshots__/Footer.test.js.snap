@@ -10,7 +10,9 @@ exports[`<Footer /> should render snapshot 1`] = `
     <h3>
       footer.contactDetails
     </h3>
-    <pre>
+    <pre
+      className="footer__contact__details"
+    >
       9 , Shivaji Colony, Opp Guddy Bar,
 Andheri Kurla Rd, Chakala,
 Andheri (west),
@@ -25,7 +27,9 @@ Maharashtra- 400099
     <h3>
       footer.policy
     </h3>
-    <ul>
+    <ul
+      className="footer__contact__details"
+    >
       <li>
         footer.terms
       </li>
@@ -46,7 +50,9 @@ Maharashtra- 400099
     <h3>
       footer.quickLinks
     </h3>
-    <ul>
+    <ul
+      className="footer__contact__details"
+    >
       <li>
         header.category.men
       </li>

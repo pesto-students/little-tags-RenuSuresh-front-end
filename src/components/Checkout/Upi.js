@@ -52,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "50%",
     maxHeight: "4em",
   },
+  radioBtn: {
+    marginRight: 0,
+  },
 }));
 
 const allSelectors = createSelector(
@@ -71,20 +74,14 @@ function Upi() {
           aria-label="position"
           name="position"
           defaultValue="top"
-          //   onChange={radioButtonChange}
         >
           {PAY_WITH_UPI.map((method, i) => (
             <>
               <ListItem alignItems="flex-start">
                 <FormControlLabel
                   value={method.type}
-                  control={
-                    <Radio
-                      color="primary"
-                      size="small"
-                      //   checked={address.id == cartAddress.id}
-                    />
-                  }
+                  className={classes.radioBtn}
+                  control={<Radio color="primary" size="small" />}
                 />
                 <ListItemAvatar>
                   <img

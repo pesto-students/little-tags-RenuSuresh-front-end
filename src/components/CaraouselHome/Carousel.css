@@ -1,6 +1,6 @@
 .principal {
   width: 98vw;
-  height: 55vh;
+  height: 58vh;
   margin: 0px auto;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,13 @@
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
+  width: fit-content;
+}
+
+.slide__image {
+  /* height: 50%; */
+  width: 100%;
+  object-fit: contain;
 }
 
 @media only screen and (max-width: 768px) {
@@ -61,6 +68,7 @@
   .slide__image {
     height: 100%;
     width: 20rem;
+    width: auto;
     object-fit: contain;
   }
 }
