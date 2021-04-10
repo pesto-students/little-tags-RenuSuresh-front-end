@@ -78,19 +78,12 @@ function AddressModalIndex({ handleMenuClose }) {
       type: SET_SELECTED_ADDRESS,
       id: e.target.value,
     });
+    console.log(e.target.value);
     setTimeout(function () {
       handleClose();
     }, 1000);
   };
-  const addr = commAddress.addressReducer.selectedAddress.id;
-  if (addr) {
-    cartAddress = commAddress.addressReducer.selectedAddress;
-  } else {
-    const defaultaddr = commAddress.addressReducer.addressData.filter(
-      (add) => add.default
-    );
-    cartAddress = defaultaddr[0];
-  }
+  cartAddress = commAddress.addressReducer.selectedAddress;
 
   const handleAddAddressClose = () => {
     setIsAddAddress(false);
@@ -160,7 +153,9 @@ function AddressModalIndex({ handleMenuClose }) {
                             className={classes.inline}
                             color="textPrimary"
                           >
-                            {address.address}
+                            {cartAddress.address1}, {cartAddress.town},{" "}
+                            {cartAddress.city}, {cartAddress.state}-{" "}
+                            {cartAddress.pincode}
                           </Typography>
                           <Typography
                             component="span"

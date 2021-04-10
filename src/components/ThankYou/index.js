@@ -5,6 +5,9 @@ import { Grid, Typography, Button } from "@material-ui/core";
 import { classes } from "istanbul-lib-coverage";
 import { makeStyles } from "@material-ui/styles";
 import { useHistory } from "react-router-dom";
+
+import { createSelector } from "reselect";
+import { useSelector, useDispatch } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   thankyouText: {
     margin: "0.5em 3em 0em 3em",
@@ -33,9 +36,15 @@ const useStyles = makeStyles((theme) => ({
     color: "#187412",
   },
 }));
+const allSelectors = createSelector(
+  (state) => state,
+  (state) => state
+);
 function ThankYouIndex() {
   const classes = useStyles();
   const history = useHistory();
+  const commAddress = useSelector(allSelectors);
+  console.log("order", commAddress);
   const goToHome = () => {
     history.push("/");
   };

@@ -37,15 +37,7 @@ function Address() {
 
   let cartAddress = {};
 
-  const addr = commAddress.addressReducer.selectedAddress.id;
-  if (addr) {
-    cartAddress = commAddress.addressReducer.selectedAddress;
-  } else {
-    const defaultaddr = commAddress.addressReducer.addressData.filter(
-      (add) => add.default
-    );
-    cartAddress = defaultaddr[0];
-  }
+  cartAddress = commAddress.addressReducer.selectedAddress;
 
   return (
     <div>
@@ -60,7 +52,10 @@ function Address() {
               <span className={classes.name}>{cartAddress.name}</span>
             </Typography>
             <Typography variant="body2" component="p">
-              <span>{cartAddress.address}</span>
+              <span>
+                {cartAddress.address1}, {cartAddress.town}, {cartAddress.city},{" "}
+                {cartAddress.state}- {cartAddress.pincode}
+              </span>
             </Typography>
             <Typography variant="body2" component="p">
               <span>{cartAddress.mobile}</span>

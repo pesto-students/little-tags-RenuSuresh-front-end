@@ -34,7 +34,9 @@ export const ADD_TO_WISHLIST = "ADD_TO_WISHLIST";
 export const SET_ADDRESS = "SET_ADDRESS";
 export const SET_SELECTED_ADDRESS = "SET_SELECTED_ADDRESS";
 export const SET_FILTER = "SET_FILTER";
-
+export const SET_ORDER = "SET_ORDER";
+export const SET_ESTIMATED_DELIVERY = "SET_ESTIMATED_DELIVERY";
+export const EMPTY_CART = "EMPTY_CART";
 export const HOME_CATEGORY = [
   {
     spotlight: [
@@ -129,3 +131,6 @@ export const PAY_WITH_UPI = [
   { id: 1, type: "PhonePe", image: PhonePeImage },
   { id: 2, type: "Google Pay", image: GooglePayImage },
 ];
+
+export const BASE_URL = "https://fullcart-admin.herokuapp.com/api";
+export const CATEGORY = ["men", "women", "electronics"];
