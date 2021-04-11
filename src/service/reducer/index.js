@@ -6,6 +6,7 @@ import cartReducer from "./cartReducer";
 import addressReducer from "./addressReducer";
 import orderReducer from "./orderReducer";
 import deliveryDateReducer from "./deliveryDateReducer";
+import historyReducer from "./historyReducer";
 
 export default combineReducers({
   userReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   addressReducer,
   orderReducer,
   deliveryDateReducer,
+  historyReducer,
 });

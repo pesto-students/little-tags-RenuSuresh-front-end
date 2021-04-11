@@ -8,7 +8,7 @@ import Box from "@material-ui/core/Box";
 import { Button } from "@material-ui/core";
 import { createSelector } from "reselect";
 import { useSelector, useDispatch } from "react-redux";
-import { SET_ORDER, EMPTY_CART } from "../../constant/properties";
+import { SET_ORDER, EMPTY_CART, BASE_URL } from "../../constant/properties";
 
 import CardPayment from "./Card";
 import Upi from "./Upi";
@@ -92,14 +92,14 @@ function PaymentOption() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  console.log("value is>>>>", value);
+
   const goToThankYou = () => {
     const {
-      address1,
+      location,
       city,
       town,
       state,
-      pincode,
+      pinCode,
       name,
       mobile,
     } = reducers.addressReducer.selectedAddress;
@@ -112,7 +112,7 @@ function PaymentOption() {
       const { productId } = data.data;
       productArray.push({ productId, size, quantity });
     });
-    const userId = reducers.userReducer.userData;
+
     let paymentType;
     switch (value) {
       case 0:
@@ -128,15 +128,20 @@ function PaymentOption() {
         return;
     }
     const data = {
-      address: { name, mobile, address1, town, city, state, pincode },
-      productInfo: productArray,
+      address: { name, mobile, location, town, city, state, pinCode },
+      products: productArray,
       estimatedDelivery: deliveryDate,
-      userId,
+      deliveryType: "free",
       paymentType,
     };
     dispatch({
       type: SET_ORDER,
       data: data,
+    });
+    fetch(`${BASE_URL}/order/history`, {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     });
     history.push("/orderPlacedSuccessfully");
     dispatch({ type: EMPTY_CART });

@@ -6,11 +6,11 @@ const initialState = {
       id: "1",
       name: "Shakti  Palan",
 
-      address1: "Rounak Arcade, Gokhale Rd, Nr Sandesh Sweets",
+      location: "Rounak Arcade, Gokhale Rd, Nr Sandesh Sweets",
       town: "Thane (west)",
       city: "Mumbai",
       state: "Maharashtra",
-      pincode: 400602,
+      pinCode: 400602,
 
       mobile: "9876655409",
       default: true,
@@ -19,11 +19,11 @@ const initialState = {
       id: "2",
       name: "Pratik Mohan",
 
-      address1: "MG Road (west)",
+      location: "MG Road (west)",
       town: "",
       city: "Chennai",
       state: "Tamil Nadu",
-      pincode: 400602,
+      pinCode: 400602,
 
       mobile: "9876655408",
       default: false,
@@ -33,11 +33,11 @@ const initialState = {
     id: "1",
     name: "Shakti  Palan",
 
-    address1: "Rounak Arcade, Gokhale Rd, Nr Sandesh Sweets",
+    location: "Rounak Arcade, Gokhale Rd, Nr Sandesh Sweets",
     town: "Thane (west)",
     city: "Mumbai",
     state: "Maharashtra",
-    pincode: 400602,
+    pinCode: 400602,
 
     mobile: "9876655409",
     default: true,
