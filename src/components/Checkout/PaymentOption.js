@@ -6,12 +6,19 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { Button } from "@material-ui/core";
+import { createSelector } from "reselect";
+import { useSelector, useDispatch } from "react-redux";
+import { SET_ORDER, EMPTY_CART, BASE_URL } from "../../constant/properties";
 
 import CardPayment from "./Card";
 import Upi from "./Upi";
 import Cod from "./Cod";
 import { useHistory } from "react-router-dom";
 
+const allSelectors = createSelector(
+  (state) => state,
+  (state) => state
+);
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -79,13 +86,65 @@ function PaymentOption() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const history = useHistory();
+  const reducers = useSelector(allSelectors);
+  const dispatch = useDispatch();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const goToThankYou = () => {
+    const {
+      location,
+      city,
+      town,
+      state,
+      pinCode,
+      name,
+      mobile,
+    } = reducers.addressReducer.selectedAddress;
+
+    const deliveryDate = reducers.deliveryDateReducer.estimatedDelivery;
+
+    let productArray = [];
+    reducers.cartReducer.cart.forEach((data) => {
+      const { size, quantity } = data;
+      const { productId } = data.data;
+      productArray.push({ productId, size, quantity });
+    });
+
+    let paymentType;
+    switch (value) {
+      case 0:
+        paymentType = "Card";
+        break;
+      case 1:
+        paymentType = "UPI";
+        break;
+      case 2:
+        paymentType = "COD";
+        break;
+      default:
+        return;
+    }
+    const data = {
+      address: { name, mobile, location, town, city, state, pinCode },
+      products: productArray,
+      estimatedDelivery: deliveryDate,
+      deliveryType: "free",
+      paymentType,
+    };
+    dispatch({
+      type: SET_ORDER,
+      data: data,
+    });
+    fetch(`${BASE_URL}/order/history`, {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
     history.push("/orderPlacedSuccessfully");
+    dispatch({ type: EMPTY_CART });
   };
 
   return (

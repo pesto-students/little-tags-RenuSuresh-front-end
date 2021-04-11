@@ -4,6 +4,7 @@ import {
   MODIFY_ITEM_SIZE,
   REMOVE_FROM_BAG,
   ADD_TO_WISHLIST,
+  EMPTY_CART,
 } from "../../constant/properties";
 
 const initialState = {
@@ -62,7 +63,8 @@ function productReducer(state = initialState, action) {
         cartArr.splice(indexofProduct, 1);
       }
       return { ...state, cart: cartArr, wishlist: wishlistArr };
-
+    case EMPTY_CART:
+      return { ...state, cart: [] };
     default:
       return { ...state };
   }

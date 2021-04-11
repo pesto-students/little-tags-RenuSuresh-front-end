@@ -5,20 +5,43 @@ const initialState = {
     {
       id: "1",
       name: "Shakti  Palan",
-      address:
-        "Rounak Arcade, Gokhale Rd, Nr Sandesh Sweets, Thane (west) Mumbai,  Maharashtra -400602",
+
+      location: "Rounak Arcade, Gokhale Rd, Nr Sandesh Sweets",
+      town: "Thane (west)",
+      city: "Mumbai",
+      state: "Maharashtra",
+      pinCode: 400602,
+
       mobile: "9876655409",
       default: true,
     },
     {
       id: "2",
       name: "Pratik Mohan",
-      address: "Nr Sandesh Sweets, MG Road (west) Chennai,  Tamil Nadu -400602",
+
+      location: "MG Road (west)",
+      town: "",
+      city: "Chennai",
+      state: "Tamil Nadu",
+      pinCode: 400602,
+
       mobile: "9876655408",
       default: false,
     },
   ],
-  selectedAddress: {},
+  selectedAddress: {
+    id: "1",
+    name: "Shakti  Palan",
+
+    location: "Rounak Arcade, Gokhale Rd, Nr Sandesh Sweets",
+    town: "Thane (west)",
+    city: "Mumbai",
+    state: "Maharashtra",
+    pinCode: 400602,
+
+    mobile: "9876655409",
+    default: true,
+  },
 };
 
 function addressReducer(state = initialState, action) {

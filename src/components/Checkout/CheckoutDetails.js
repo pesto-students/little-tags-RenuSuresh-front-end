@@ -102,7 +102,6 @@ const allSelectors = createSelector(
 );
 function CheckoutDetails() {
   const classes = useStyles();
-  const [deliveryDate, setDeliveryDate] = useState("");
   const cart = useSelector(allSelectors);
 
   const [totalItems, setTotalItems] = useState(0);
@@ -111,21 +110,6 @@ function CheckoutDetails() {
   const [totalAmount, setTotalAmount] = useState(0);
   const [t] = useTranslation("common");
   const history = useHistory();
-  useEffect(() => {
-    var t = new Date();
-    t.setDate(t.getDate() + 2);
-    var month = "0" + (t.getMonth() + 1);
-    var date = "0" + t.getDate();
-    month = month.slice(-2) - 1;
-    date = date.slice(-2);
-    var d = new Date(t.getFullYear(), month, date).toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-
-    setDeliveryDate(d);
-  }, []);
 
   useEffect(() => {
     let count = 0;
@@ -141,6 +125,7 @@ function CheckoutDetails() {
     setTotalDiscount(totalmrp - sellingPrice);
     setTotalAmount(sellingPrice);
   }, [cart]);
+  const deliveryDate = cart.deliveryDateReducer.estimatedDelivery;
   return (
     <div>
       <Grid>

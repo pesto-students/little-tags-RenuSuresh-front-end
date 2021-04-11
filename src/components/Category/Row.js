@@ -14,7 +14,12 @@ import Backdrop from "@material-ui/core/Backdrop";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_PRODUCT, SET_CATEGORY } from "../../constant/properties";
+import {
+  SET_PRODUCT,
+  SET_CATEGORY,
+  BASE_URL,
+  CATEGORY,
+} from "../../constant/properties";
 import Error from "./Error";
 import "./Category.css";
 
@@ -27,7 +32,7 @@ function Row({ category }) {
   const filterByBrand = categoryReducer.category;
 
   useEffect(() => {
-    fetch("https://arrow-shopping-site.herokuapp.com/api/product")
+    fetch(`${BASE_URL}/product/v1`)
       .then((res) => res.json())
       .then((result) => {
         setProduct(result.data.productList);
@@ -42,8 +47,10 @@ function Row({ category }) {
       return (
         filterByBrand.includes(Product.brand) && Product.category == category
       );
-    } else {
+    } else if (CATEGORY.includes(category)) {
       return Product.category == category;
+    } else {
+      return Product.title.toLowerCase().includes(category.toLowerCase());
     }
   });
 

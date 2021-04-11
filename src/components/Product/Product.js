@@ -14,7 +14,12 @@ import "./Product.css";
 import { useTranslation } from "react-i18next";
 import Quantity from "./Quantity";
 import { useDispatch } from "react-redux";
-import { SET_CART_ITEM, ERRORS, SELECT_SIZE } from "../../constant/properties";
+import {
+  SET_CART_ITEM,
+  ERRORS,
+  SELECT_SIZE,
+  SET_ESTIMATED_DELIVERY,
+} from "../../constant/properties";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -105,13 +110,14 @@ function Product() {
     const cartItems = cartItem.filter(
       (item) => item.data.productId === productDetails.productId
     );
+    dispatch({ type: SET_ESTIMATED_DELIVERY, data: d });
 
     if (cartItems.length > 0) {
       setEnableAddBtn(false);
     } else {
       setEnableAddBtn(true);
     }
-  }, [product.productReducer.productData, product.cartReducer.cart]);
+  }, [product.productReducer.productData, product.cartReducer.cart, dispatch]);
 
   const changeImage = (image) => {
     setImage(image);

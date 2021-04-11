@@ -117,7 +117,7 @@
 
 .header__searchdropdown {
   position: absolute;
-  padding-left: 0.75rem;
+  padding-left: 2.5rem;
   padding-right: 0.75rem;
   margin-top: 2.75rem;
   transform: translate(108%, -10%);

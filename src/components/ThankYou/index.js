@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ThankYou.css";
 import shipping from "../../assets/images/shipping.webp";
 import { Grid, Typography, Button } from "@material-ui/core";
-import { classes } from "istanbul-lib-coverage";
 import { makeStyles } from "@material-ui/styles";
 import { useHistory } from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
   thankyouText: {
     margin: "0.5em 3em 0em 3em",
@@ -33,9 +33,11 @@ const useStyles = makeStyles((theme) => ({
     color: "#187412",
   },
 }));
+
 function ThankYouIndex() {
   const classes = useStyles();
   const history = useHistory();
+
   const goToHome = () => {
     history.push("/");
   };

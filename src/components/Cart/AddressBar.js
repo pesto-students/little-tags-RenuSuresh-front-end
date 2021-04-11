@@ -7,8 +7,9 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import AddressModalIndex from "../AddressModal";
 import { createSelector } from "reselect";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { SET_SELECTED_ADDRESS } from "../../constant/properties";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,32 +52,25 @@ const allSelectors = createSelector(
 
 function AddressBar() {
   const classes = useStyles();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAddressModal, setAddressModal] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const commAddress = useSelector(allSelectors);
   const [t] = useTranslation("common");
+  const dispatch = useDispatch();
 
   let cartAddress = {};
 
   const handleProfileMenuOpen = (event) => {
-    setIsLoggedIn(true);
+    setAddressModal(true);
     setAnchorEl(event.currentTarget);
   };
 
   const handleMenuClose = () => {
-    setIsLoggedIn(false);
+    setAddressModal(false);
     setAnchorEl(null);
   };
 
-  const addr = commAddress.addressReducer.selectedAddress.id;
-  if (addr) {
-    cartAddress = commAddress.addressReducer.selectedAddress;
-  } else {
-    const defaultaddr = commAddress.addressReducer.addressData.filter(
-      (add) => add.default
-    );
-    cartAddress = defaultaddr[0];
-  }
+  cartAddress = commAddress.addressReducer.selectedAddress;
 
   return (
     <>
@@ -91,7 +85,10 @@ function AddressBar() {
               <span className={classes.name}>{cartAddress.name}</span>
             </Typography>
             <Typography variant="body2" component="p">
-              <span>{cartAddress.address}</span>
+              <span>
+                {cartAddress.address1}, {cartAddress.town}, {cartAddress.city},{" "}
+                {cartAddress.state}- {cartAddress.pincode}
+              </span>
             </Typography>
             <Typography variant="body2" component="p">
               <span>{cartAddress.mobile}</span>
@@ -109,7 +106,9 @@ function AddressBar() {
           </Button>
         </CardActions>
       </Card>
-      {isLoggedIn && <AddressModalIndex handleMenuClose={handleMenuClose} />}
+      {isAddressModal && (
+        <AddressModalIndex handleMenuClose={handleMenuClose} />
+      )}
     </>
   );
 }
