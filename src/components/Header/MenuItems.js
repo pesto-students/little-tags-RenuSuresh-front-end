@@ -5,6 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import Badge from "@material-ui/core/Badge";
 
 const useStyles = makeStyles((theme) => ({
   iconColor: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuItems() {
+export default function MenuItems({ wishlist }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const history = useHistory();
   const classes = useStyles();
@@ -53,7 +54,9 @@ export default function MenuItems() {
         onClose={handleClose}
       >
         <MenuItem onClick={openHistory}>Order History</MenuItem>
-        <MenuItem onClick={openWishlist}>Wishlist</MenuItem>
+        <Badge badgeContent={wishlist} color="default">
+          <MenuItem onClick={openWishlist}>Wishlist</MenuItem>
+        </Badge>
       </Menu>
     </div>
   );

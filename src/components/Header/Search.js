@@ -104,7 +104,6 @@ function Search({ getSearch, initialSearch }) {
         className={classes.search}
         style={{
           background: "#e0e4e5",
-          // boxShadow: "0px 4px 4px rgb(0 0 0 / 25%)",
         }}
       >
         <InputBase

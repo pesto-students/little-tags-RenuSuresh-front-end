@@ -38,6 +38,8 @@ export const SET_ORDER = "SET_ORDER";
 export const SET_ESTIMATED_DELIVERY = "SET_ESTIMATED_DELIVERY";
 export const EMPTY_CART = "EMPTY_CART";
 export const SET_HISTORY = "SET_HISTORY";
+export const ADD_PRODUCT_WISHLIST = "ADD_PRODUCT_WISHLIST";
+
 export const HOME_CATEGORY = [
   {
     spotlight: [

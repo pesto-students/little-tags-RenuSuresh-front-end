@@ -19,6 +19,7 @@ import {
   ERRORS,
   SELECT_SIZE,
   SET_ESTIMATED_DELIVERY,
+  ADD_PRODUCT_WISHLIST,
 } from "../../constant/properties";
 
 const useStyles = makeStyles((theme) => ({
@@ -86,6 +87,7 @@ function Product() {
   const [error, setError] = useState(null);
   const [enableAddBtn, setEnableAddBtn] = useState(true);
   const [openSnackBar, setOpenSnackBar] = useState(false);
+  const [openWishlistSnackBar, setOpenWishlistSnackBar] = useState(false);
 
   useEffect(() => {
     var t = new Date();
@@ -106,18 +108,27 @@ function Product() {
     setProductDetails(productDetails);
     setImage(productDetails.image);
     let cartItem = product.cartReducer.cart;
-
+    let wishlistItem = product.cartReducer.wishlist;
     const cartItems = cartItem.filter(
       (item) => item.data.productId === productDetails.productId
     );
+    const wishlistItems = wishlistItem.filter(
+      (item) => item.data.productId === productDetails.productId
+    );
+
     dispatch({ type: SET_ESTIMATED_DELIVERY, data: d });
 
-    if (cartItems.length > 0) {
+    if (cartItems.length > 0 || wishlistItems.length > 0) {
       setEnableAddBtn(false);
     } else {
       setEnableAddBtn(true);
     }
-  }, [product.productReducer.productData, product.cartReducer.cart, dispatch]);
+  }, [
+    product.productReducer.productData,
+    product.cartReducer.cart,
+    dispatch,
+    product.cartReducer.wishlist,
+  ]);
 
   const changeImage = (image) => {
     setImage(image);
@@ -148,6 +159,15 @@ function Product() {
     setSize(e.target.value);
     setError(null);
   };
+  const addToWishlist = () => {
+    setOpenWishlistSnackBar(true);
+
+    dispatch({
+      type: ADD_PRODUCT_WISHLIST,
+      data: { data: productDetails },
+    });
+  };
+
   const productImages = (
     <Grid item xs={6} sm={3} className={classes.gridItem}>
       <div className="product__subimages">
@@ -183,7 +203,7 @@ function Product() {
     <Grid item xs={6} sm={4} className={classes.gridItem}>
       <div style={{ width: "100%" }}>
         <div>
-          <Typography gutterBottom variant="h3">
+          <Typography gutterBottom variant="h5">
             {productDetails.title}
           </Typography>
         </div>
@@ -304,7 +324,12 @@ function Product() {
           >
             <span>{t("product.addToBag")}</span>
           </Button>
-          <Button variant="contained" className={classes.button_wishlist}>
+          <Button
+            variant="contained"
+            className={classes.button_wishlist}
+            onClick={addToWishlist}
+            disabled={!enableAddBtn}
+          >
             <span>{t("product.addToWishlist")}</span>
           </Button>
         </div>
@@ -322,13 +347,29 @@ function Product() {
           anchorOrigin={{ vertical: "top", horizontal: "right" }}
           open={openSnackBar}
           onClose={() => setOpenSnackBar(false)}
-          autoHideDuration={2000}
+          autoHideDuration={1000}
         >
           <SnackbarContent
             style={{
               backgroundColor: "green",
             }}
             message={<span id="client-snackbar">Product Added in Bag</span>}
+          />
+        </Snackbar>
+
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          open={openWishlistSnackBar}
+          onClose={() => setOpenWishlistSnackBar(false)}
+          autoHideDuration={1000}
+        >
+          <SnackbarContent
+            style={{
+              backgroundColor: "gray",
+            }}
+            message={
+              <span id="client-snackbar">Product Added to Wishlist</span>
+            }
           />
         </Snackbar>
       </div>

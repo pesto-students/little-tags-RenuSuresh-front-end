@@ -111,13 +111,13 @@
   flex-direction: column;
   position: absolute;
   transform: translate(-50%, -50%);
-  left: 54%;
+  left: 58%;
   top: 50%;
 }
 
 .header__searchdropdown {
   position: absolute;
-  padding-left: 2.5rem;
+  padding-left: 4.5rem;
   padding-right: 0.75rem;
   margin-top: 2.75rem;
   transform: translate(108%, -10%);

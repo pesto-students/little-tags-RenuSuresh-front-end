@@ -5,6 +5,7 @@ import {
   REMOVE_FROM_BAG,
   ADD_TO_WISHLIST,
   EMPTY_CART,
+  ADD_PRODUCT_WISHLIST,
 } from "../../constant/properties";
 
 const initialState = {
@@ -65,6 +66,11 @@ function productReducer(state = initialState, action) {
       return { ...state, cart: cartArr, wishlist: wishlistArr };
     case EMPTY_CART:
       return { ...state, cart: [] };
+    case ADD_PRODUCT_WISHLIST:
+      return {
+        ...state,
+        wishlist: [...state.wishlist, action.data],
+      };
     default:
       return { ...state };
   }

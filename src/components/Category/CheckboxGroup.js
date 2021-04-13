@@ -22,6 +22,16 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(5),
   },
   container: {},
+  inputCheckbox: {
+    color: "#0c0351",
+    "&:hover": {
+      color: "#0c0351",
+      backgroundColor: "#07156633",
+    },
+    "&:checked": {
+      color: "#0c0351",
+    },
+  },
 }));
 function CheckBoxesGroup() {
   const [brand, setBrand] = React.useState([]);
@@ -51,23 +61,53 @@ function CheckBoxesGroup() {
           <FormLabel component="legend">Brand</FormLabel>
           <FormGroup>
             <FormControlLabel
-              control={<Checkbox onChange={handleChange} value="nike" />}
+              control={
+                <Checkbox
+                  onChange={handleChange}
+                  value="nike"
+                  className={classes.inputCheckbox}
+                />
+              }
               label="nike"
             />
             <FormControlLabel
-              control={<Checkbox onChange={handleChange} value="puma" />}
+              control={
+                <Checkbox
+                  onChange={handleChange}
+                  value="puma"
+                  className={classes.inputCheckbox}
+                />
+              }
               label="puma"
             />
             <FormControlLabel
-              control={<Checkbox onChange={handleChange} value="dressberry" />}
+              control={
+                <Checkbox
+                  onChange={handleChange}
+                  value="dressberry"
+                  className={classes.inputCheckbox}
+                />
+              }
               label="dressberry"
             />
             <FormControlLabel
-              control={<Checkbox onChange={handleChange} value="octave" />}
+              control={
+                <Checkbox
+                  onChange={handleChange}
+                  value="octave"
+                  className={classes.inputCheckbox}
+                />
+              }
               label="octave"
             />
             <FormControlLabel
-              control={<Checkbox onChange={handleChange} value="roadster" />}
+              control={
+                <Checkbox
+                  onChange={handleChange}
+                  value="roadster"
+                  className={classes.inputCheckbox}
+                />
+              }
               label="roadster"
             />
           </FormGroup>

@@ -119,7 +119,7 @@ function Product() {
   const history = useHistory();
 
   const backToHome = () => history.push("/");
-
+  console.log("wishlist", wishlist);
   return (
     <div className="wishlist__product">
       <Grid container xs={12} sm={12} md={8}>

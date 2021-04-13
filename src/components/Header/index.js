@@ -103,6 +103,8 @@ function HeaderIndex() {
   const login = t("header.user.login");
   const signup = t("header.user.signup");
   const cart = useSelector((state) => state.cartReducer.cart);
+  const wishlist = useSelector((state) => state.cartReducer.wishlist);
+
   const history = useHistory();
 
   const changeLang = (event) => {
@@ -337,7 +339,14 @@ function HeaderIndex() {
               </Tooltip>
             </IconButton>
 
-            <Link to="/cart" style={{ textDecoration: "none", color: "black" }}>
+            <Link
+              to="/cart"
+              style={{
+                textDecoration: "none",
+                color: "black",
+                marginLeft: "-10px",
+              }}
+            >
               <IconButton
                 edge="end"
                 aria-label="account of current user"
@@ -368,7 +377,7 @@ function HeaderIndex() {
               </Tooltip>
             </IconButton>
 
-            <MenuItems />
+            <MenuItems wishlist={wishlist.length} />
 
             {/* popper start */}
 
